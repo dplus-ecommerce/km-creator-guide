@@ -115,13 +115,13 @@
             <sc-for list="{{ aboutFields }}" as="f" hint-placeholder-count="3">
               <div style="margin-bottom:9px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
             </sc-for>
-            <div style="display:flex;flex-wrap:wrap;gap:9px;margin:14px 0 10px;">
-              <sc-for list="{{ badgePreview }}" as="b" hint-placeholder-count="4">
-                <span style="font-size:12px;color:#5c4d40;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:5px 14px;white-space:nowrap;">{{ b.label }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px;">
+              <sc-for list="{{ badgeItems }}" as="b" hint-placeholder-count="4">
+                <span style="display:inline-flex;align-items:center;gap:2px;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:3px 5px 3px 12px;"><input value="{{ b.f1.value }}" onInput="{{ b.f1.onInput }}" placeholder="{{ b.f1.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;font-size:12.5px;color:#5c4d40;width:11em;"/><button onClick="{{ b.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button></span>
               </sc-for>
+              <button onClick="{{ addBadge }}" style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:22px;padding:5px 13px;color:#8a6f4e;cursor:pointer;font-size:12.5px;">+ เพิ่มป้าย</button>
             </div>
-            <textarea class="kmList" value="{{ badgesField.value }}" onInput="{{ badgesField.onInput }}" rows="{{ badgesField.rows }}" placeholder="บรรทัดละ 1 ป้าย"></textarea>
-            <p class="kmHint">ป้ายใต้ข้อความแบรนด์ — พิมพ์บรรทัดละ 1 ป้าย (ใส่อีโมจิได้)</p>
+            <p class="kmHint">คลิกที่ป้ายเพื่อพิมพ์แก้ได้เลย (ใส่อีโมจิได้) · ✕ ลบป้ายนั้น</p>
           </div>
         </section>
 
@@ -145,17 +145,18 @@
               <div style="margin-bottom:8px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
             </sc-for>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:12px;">
-            <sc-for list="{{ whyPreview }}" as="w" hint-placeholder-count="5">
-              <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:16px 18px;">
-                <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ w.th }}</div>
-                <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:#a4917f;margin-top:3px;">{{ w.en }}</div>
-                <p style="margin:9px 0 0;font-size:13.5px;color:#5f5044;line-height:1.75;">{{ w.desc }}</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+            <sc-for list="{{ whyItems }}" as="w" hint-placeholder-count="5">
+              <div style="position:relative;background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:14px 18px 16px;">
+                <div style="display:flex;justify-content:flex-end;gap:2px;margin-bottom:2px;"><button onClick="{{ w.up }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▲</button><button onClick="{{ w.down }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▼</button><button onClick="{{ w.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button></div>
+                <div style="margin-top:0px;"><textarea class="kmEdit" value="{{ w.f1.value }}" onInput="{{ w.f1.onInput }}" rows="{{ w.f1.rows }}" placeholder="{{ w.f1.ph }}" style="{{ w.f1.style }}"></textarea></div>
+                <div style="margin-top:5px;"><textarea class="kmEdit" value="{{ w.f2.value }}" onInput="{{ w.f2.onInput }}" rows="{{ w.f2.rows }}" placeholder="{{ w.f2.ph }}" style="{{ w.f2.style }}"></textarea></div>
+                <div style="margin-top:7px;"><textarea class="kmEdit" value="{{ w.f3.value }}" onInput="{{ w.f3.onInput }}" rows="{{ w.f3.rows }}" placeholder="{{ w.f3.ph }}" style="{{ w.f3.style }}"></textarea></div>
               </div>
             </sc-for>
           </div>
-          <textarea class="kmList" value="{{ whyField.value }}" onInput="{{ whyField.onInput }}" rows="{{ whyField.rows }}" placeholder="หัวข้อไทย | หัวข้ออังกฤษ | คำอธิบาย"></textarea>
-          <p class="kmHint">การ์ด 1 ใบ = 1 บรรทัด · รูปแบบ <strong>หัวข้อไทย | หัวข้ออังกฤษ | คำอธิบาย</strong></p>
+          <button onClick="{{ addWhy }}" style="margin-top:10px;background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:9px;padding:9px 15px;color:#8a6f4e;cursor:pointer;font-size:12.5px;">+ เพิ่มการ์ด</button>
+          <p class="kmHint">คลิกที่ข้อความในการ์ดเพื่อแก้ · ▲▼ สลับลำดับ · ✕ ลบการ์ด</p>
         </section>
 
         <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
@@ -172,15 +173,16 @@
               </sc-for>
               <span style="display:inline-block;margin-top:6px;background:var(--gold);color:#fffaf3;border-radius:9px;padding:9px 15px;font-size:13px;">⤓ ดาวน์โหลดโลโก้</span>
             </div>
-            <sc-for list="{{ assetPreview }}" as="a" hint-placeholder-count="2">
-              <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:18px;">
-                <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ a.title }}</div>
-                <p style="margin:9px 0 0;font-size:13.5px;color:#5f5044;line-height:1.8;">{{ a.body }}</p>
+            <sc-for list="{{ assetItems }}" as="a" hint-placeholder-count="2">
+              <div style="position:relative;background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:14px 18px 16px;">
+                <div style="display:flex;justify-content:flex-end;gap:2px;margin-bottom:2px;"><button onClick="{{ a.up }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▲</button><button onClick="{{ a.down }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▼</button><button onClick="{{ a.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button></div>
+                <div style="margin-top:0px;"><textarea class="kmEdit" value="{{ a.f1.value }}" onInput="{{ a.f1.onInput }}" rows="{{ a.f1.rows }}" placeholder="{{ a.f1.ph }}" style="{{ a.f1.style }}"></textarea></div>
+                <div style="margin-top:7px;"><textarea class="kmEdit" value="{{ a.f2.value }}" onInput="{{ a.f2.onInput }}" rows="{{ a.f2.rows }}" placeholder="{{ a.f2.ph }}" style="{{ a.f2.style }}"></textarea></div>
               </div>
             </sc-for>
           </div>
-          <textarea class="kmList" value="{{ assetField.value }}" onInput="{{ assetField.onInput }}" rows="{{ assetField.rows }}" placeholder="หัวข้อ | คำอธิบาย"></textarea>
-          <p class="kmHint">การ์ดข้างโลโก้ · รูปแบบ <strong>หัวข้อ | คำอธิบาย</strong> (บรรทัดละการ์ด)</p>
+          <button onClick="{{ addAsset }}" style="margin-top:10px;background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:9px;padding:9px 15px;color:#8a6f4e;cursor:pointer;font-size:12.5px;">+ เพิ่มการ์ด</button>
+          <p class="kmHint">คลิกที่ข้อความในการ์ดเพื่อแก้ · ▲▼ สลับลำดับ · ✕ ลบการ์ด</p>
         </section>
 
         <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
@@ -189,19 +191,17 @@
               <div style="margin-bottom:8px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
             </sc-for>
           </div>
-          <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:12px;">
-            <sc-for list="{{ faqPreview }}" as="q" hint-placeholder-count="4">
-              <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:13px 18px;">
-                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-                  <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ q.q }}</span>
-                  <span style="font-size:13px;color:#b3a696;">+</span>
-                </div>
-                <div style="margin-top:8px;font-size:13px;color:#7c6c5d;line-height:1.75;white-space:pre-wrap;">{{ q.a }}</div>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <sc-for list="{{ faqItems }}" as="q" hint-placeholder-count="4">
+              <div style="position:relative;background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:14px 18px 16px;">
+                <div style="display:flex;justify-content:flex-end;gap:2px;margin-bottom:2px;"><button onClick="{{ q.up }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▲</button><button onClick="{{ q.down }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▼</button><button onClick="{{ q.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button></div>
+                <div style="margin-top:0px;"><textarea class="kmEdit" value="{{ q.q.value }}" onInput="{{ q.q.onInput }}" rows="{{ q.q.rows }}" placeholder="{{ q.q.ph }}" style="{{ q.q.style }}"></textarea></div>
+                <div style="margin-top:7px;"><textarea class="kmEdit" value="{{ q.a.value }}" onInput="{{ q.a.onInput }}" rows="{{ q.a.rows }}" placeholder="{{ q.a.ph }}" style="{{ q.a.style }}"></textarea></div>
               </div>
             </sc-for>
           </div>
-          <textarea class="kmList" value="{{ faqField.value }}" onInput="{{ faqField.onInput }}" rows="{{ faqField.rows }}" placeholder="บรรทัดแรก = คำถาม / บรรทัดถัดไป = คำตอบ / เว้นบรรทัดว่างเพื่อขึ้นข้อใหม่"></textarea>
-          <p class="kmHint">1 ข้อ = 1 ย่อหน้า · <strong>บรรทัดแรกคือคำถาม</strong> บรรทัดถัดไปคือคำตอบ · เว้น 1 บรรทัดว่างเพื่อขึ้นข้อใหม่</p>
+          <button onClick="{{ addFaq }}" style="margin-top:10px;background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:9px;padding:9px 15px;color:#8a6f4e;cursor:pointer;font-size:12.5px;">+ เพิ่มคำถาม</button>
+          <p class="kmHint">คลิกที่คำถาม/คำตอบเพื่อแก้ · คำตอบขึ้นบรรทัดใหม่ได้ · ▲▼ สลับลำดับ · ✕ ลบข้อนั้น</p>
         </section>
 
         <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
@@ -209,13 +209,17 @@
             <sc-for list="{{ helpFields }}" as="f" hint-placeholder-count="3">
               <div style="margin-bottom:9px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
             </sc-for>
-            <div style="display:flex;flex-wrap:wrap;gap:9px;margin:12px 0 10px;">
-              <sc-for list="{{ contactPreview }}" as="c" hint-placeholder-count="2">
-                <span style="font-size:13px;color:#7c6c5d;border:1px solid rgba(169,133,111,0.3);border-radius:8px;padding:10px 16px;">{{ c.label }}</span>
+            <div style="display:flex;flex-direction:column;gap:8px;margin:14px 0 4px;">
+              <sc-for list="{{ contactItems }}" as="c" hint-placeholder-count="2">
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;border:1px solid rgba(169,133,111,0.22);border-radius:9px;padding:8px 10px;">
+                  <input value="{{ c.f1.value }}" onInput="{{ c.f1.onInput }}" placeholder="{{ c.f1.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;flex:1;min-width:150px;font-size:13px;color:#5c4d40;"/>
+                  <input value="{{ c.f2.value }}" onInput="{{ c.f2.onInput }}" placeholder="{{ c.f2.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;flex:1;min-width:150px;font-size:12px;color:#a4917f;"/>
+                  <button onClick="{{ c.up }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▲</button><button onClick="{{ c.down }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▼</button><button onClick="{{ c.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button>
+                </div>
               </sc-for>
+              <button onClick="{{ addContact }}" style="margin-top:10px;background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:9px;padding:9px 15px;color:#8a6f4e;cursor:pointer;font-size:12.5px;align-self:flex-start;margin-top:2px;">+ เพิ่มช่องทางติดต่อ</button>
             </div>
-            <textarea class="kmList" value="{{ contactField.value }}" onInput="{{ contactField.onInput }}" rows="{{ contactField.rows }}" placeholder="ป้ายที่แสดง | ลิงก์ (เว้นว่างได้)"></textarea>
-            <p class="kmHint">ช่องทางติดต่อ · รูปแบบ <strong>ป้ายที่แสดง | ลิงก์</strong> — ถ้าใส่ลิงก์จะกลายเป็นปุ่มกดได้ (ใช้ทั้งในกล่องนี้และคอลัมน์ “ติดต่อ” ท้ายเว็บ)</p>
+            <p class="kmHint">ช่องซ้าย = ป้ายที่แสดง · ช่องขวา = ลิงก์ (ใส่แล้วกลายเป็นปุ่มกดได้) · ใช้ทั้งกล่องนี้และคอลัมน์ “ติดต่อ” ท้ายเว็บ</p>
           </div>
         </section>
 
@@ -224,13 +228,17 @@
             <div class="kmTop2" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
               <div>
                 <textarea class="kmEdit" value="{{ channelTitleField.value }}" onInput="{{ channelTitleField.onInput }}" rows="1" style="{{ channelTitleField.style }}"></textarea>
-                <div style="margin:9px 0 8px;">
-                  <sc-for list="{{ channelPreview }}" as="c" hint-placeholder-count="5">
-                    <div style="font-size:13px;color:#7c6c5d;margin-bottom:5px;">{{ c.label }} <span style="font-size:11px;color:#b3a696;">{{ c.note }}</span></div>
+                <div style="display:flex;flex-direction:column;gap:7px;margin:10px 0 4px;">
+                  <sc-for list="{{ channelItems }}" as="c" hint-placeholder-count="5">
+                    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;border:1px solid rgba(169,133,111,0.22);border-radius:9px;padding:7px 9px;">
+                      <input value="{{ c.f1.value }}" onInput="{{ c.f1.onInput }}" placeholder="{{ c.f1.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;flex:1;min-width:110px;font-size:13px;color:#5c4d40;"/>
+                      <input value="{{ c.f2.value }}" onInput="{{ c.f2.onInput }}" placeholder="{{ c.f2.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;flex:1.4;min-width:130px;font-size:12px;color:#a4917f;"/>
+                      <button onClick="{{ c.up }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▲</button><button onClick="{{ c.down }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▼</button><button onClick="{{ c.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button>
+                    </div>
                   </sc-for>
+                  <button onClick="{{ addChannel }}" style="margin-top:10px;background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:9px;padding:9px 15px;color:#8a6f4e;cursor:pointer;font-size:12.5px;align-self:flex-start;margin-top:2px;">+ เพิ่มช่องทาง</button>
                 </div>
-                <textarea class="kmList" value="{{ channelField.value }}" onInput="{{ channelField.onInput }}" rows="{{ channelField.rows }}" placeholder="ชื่อช่องทาง | ลิงก์"></textarea>
-                <p class="kmHint">ยังไม่ใส่ลิงก์ = แสดงคำว่า “เร็ว ๆ นี้” · ใส่ลิงก์แล้วกดได้ทันที</p>
+                <p class="kmHint">ยังไม่ใส่ลิงก์ = หน้าเว็บแสดง “เร็ว ๆ นี้” · ใส่ลิงก์แล้วกดได้ทันที</p>
               </div>
               <div>
                 <textarea class="kmEdit" value="{{ contactTitleField.value }}" onInput="{{ contactTitleField.onInput }}" rows="1" style="{{ contactTitleField.style }}"></textarea>
@@ -252,11 +260,21 @@
             <div class="kmTop2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
               <div>
                 <div style="font-size:12.5px;color:#8a7a6b;margin-bottom:6px;">สินค้าทั่วไป</div>
-                <textarea class="kmList" value="{{ recField.value }}" onInput="{{ recField.onInput }}" rows="{{ recField.rows }}"></textarea>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                  <sc-for list="{{ recItems }}" as="b" hint-placeholder-count="3">
+                    <span style="display:inline-flex;align-items:center;gap:2px;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:3px 5px 3px 12px;"><input value="{{ b.f1.value }}" onInput="{{ b.f1.onInput }}" placeholder="{{ b.f1.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;font-size:12.5px;color:#5c4d40;width:9em;"/><button onClick="{{ b.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button></span>
+                  </sc-for>
+                  <button onClick="{{ addRec }}" style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:22px;padding:5px 13px;color:#8a6f4e;cursor:pointer;font-size:12.5px;">+ เพิ่ม</button>
+                </div>
               </div>
               <div>
                 <div style="font-size:12.5px;color:#8a7a6b;margin-bottom:6px;">สินค้าเด็ก (Kids Care)</div>
-                <textarea class="kmList" value="{{ recKidsField.value }}" onInput="{{ recKidsField.onInput }}" rows="{{ recKidsField.rows }}"></textarea>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                  <sc-for list="{{ recKidsItems }}" as="b" hint-placeholder-count="2">
+                    <span style="display:inline-flex;align-items:center;gap:2px;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:3px 5px 3px 12px;"><input value="{{ b.f1.value }}" onInput="{{ b.f1.onInput }}" placeholder="{{ b.f1.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;font-size:12.5px;color:#5c4d40;width:9em;"/><button onClick="{{ b.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button></span>
+                  </sc-for>
+                  <button onClick="{{ addRecKids }}" style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:22px;padding:5px 13px;color:#8a6f4e;cursor:pointer;font-size:12.5px;">+ เพิ่ม</button>
+                </div>
               </div>
             </div>
           </div>
@@ -514,6 +532,48 @@ class Component extends DCLogic {
     return { value:v, rows:this.rows(v, minRows||3), onInput:(ev)=>this.siteSet(key, ev.target.value) };
   }
 
+  // ---------- แก้รายการทีละใบ (การ์ด/ป้าย/FAQ/ช่องทาง) ----------
+  H(){ return window.KM_SITE || { lines:function(){return [];}, parts:function(){return [];}, blocks:function(){return [];} }; }
+  listParts(key, n){ const H=this.H(); return H.lines(this.siteEff(key)).map(l=>H.parts(l, n)); }
+  writeParts(key, arr){ this.siteSet(key, arr.map(p=>p.join(' | ')).join('\n')); }
+  clean(v){ return String(v==null?'':v).replace(/\|/g,'/').replace(/[\r\n]+/g,' '); }
+  setPart(key, n, idx, part, val){
+    const a = this.listParts(key, n); if (!a[idx]) return;
+    a[idx][part] = this.clean(val); this.writeParts(key, a);
+  }
+  addItem(key, n, tpl){ const a=this.listParts(key,n); a.push(tpl.slice()); this.writeParts(key,a); }
+  removeItem(key, n, idx){ const a=this.listParts(key,n); a.splice(idx,1); this.writeParts(key,a); }
+  moveItem(key, n, idx, dir){
+    const a=this.listParts(key,n); const j=idx+dir; if(j<0||j>=a.length) return;
+    const t=a[idx]; a[idx]=a[j]; a[j]=t; this.writeParts(key,a);
+  }
+  // การ์ดหลายช่อง: คืน array ของ { f1,f2,f3 (แต่ละอัน {value,rows,style,ph,onInput}), remove, up, down }
+  cardList(key, n, specs){
+    return this.listParts(key, n).map((parts, idx) => {
+      const o = { remove: ()=>this.removeItem(key, n, idx), up: ()=>this.moveItem(key, n, idx, -1), down: ()=>this.moveItem(key, n, idx, 1) };
+      specs.forEach((sp, pi) => {
+        o['f' + (pi + 1)] = {
+          value: parts[pi] || '', ph: sp.ph || '', style: this.st(sp.preset), rows: this.rows(parts[pi], sp.rows || 1),
+          onInput: (ev)=>this.setPart(key, n, idx, pi, ev.target.value)
+        };
+      });
+      return o;
+    });
+  }
+  addCard(key, n, tpl){ return ()=>this.addItem(key, n, tpl); }
+
+  // FAQ เก็บเป็นย่อหน้า (บรรทัดแรก=คำถาม) — แก้ทีละข้อ
+  faqItems(){ return this.H().blocks(this.siteEff('faq')); }
+  writeFaq(items){ this.siteSet('faq', items.map(b=>[b.q, b.a].filter(x=>x!=='').join('\n')).join('\n\n')); }
+  setFaq(idx, field, val){
+    const items = this.faqItems(); if (!items[idx]) return;
+    items[idx][field] = field==='q' ? String(val).replace(/[\r\n]+/g,' ') : String(val);
+    this.writeFaq(items);
+  }
+  addFaq(){ const items=this.faqItems(); items.push({ q:'คำถามใหม่', a:'คำตอบ' }); this.writeFaq(items); }
+  removeFaq(idx){ const items=this.faqItems(); items.splice(idx,1); this.writeFaq(items); }
+  moveFaq(idx, dir){ const items=this.faqItems(); const j=idx+dir; if(j<0||j>=items.length) return; const t=items[idx]; items[idx]=items[j]; items[j]=t; this.writeFaq(items); }
+
   // ---------- เนื้อหาสินค้า (ตาราง creator_brief) ----------
   BASIC_KEYS(){ return ['thaiName','enName','claim','net','intro','howto','caution']; }
   DEFAULT_DONT(){ return [
@@ -653,7 +713,8 @@ class Component extends DCLogic {
           this.siteField('aboutBody','body','เนื้อหาเกี่ยวกับแบรนด์',3)
         ],
         badgesField: badgesField,
-        badgePreview: H.lines(badgesField.value).map(l=>({ label:l })),
+        badgeItems: this.cardList('badges', 1, [{ preset:'pill', ph:'ชื่อป้าย', rows:1 }]),
+        addBadge: this.addCard('badges', 1, ['ป้ายใหม่']),
         colFields: [
           this.siteField('colTitleEn','h2en','หัวข้ออังกฤษ',1),
           this.siteField('colTitleTh','sub','หัวข้อไทย',1),
@@ -662,7 +723,12 @@ class Component extends DCLogic {
         chipPreview: chipPreview,
         whyTitleFields: [ this.siteField('whyTitleEn','h2en','หัวข้ออังกฤษ',1), this.siteField('whyTitleTh','sub','หัวข้อไทย',1) ],
         whyField: whyField,
-        whyPreview: H.lines(whyField.value).map(l=>{ const p=H.parts(l,3); return { th:p[0], en:p[1], desc:p[2] }; }),
+        whyItems: this.cardList('why', 3, [
+          { preset:'cardTitle', ph:'หัวข้อไทย', rows:1 },
+          { preset:'detailEn',  ph:'หัวข้ออังกฤษ', rows:1 },
+          { preset:'cardBody',  ph:'คำอธิบาย', rows:3 }
+        ]),
+        addWhy: this.addCard('why', 3, ['หัวข้อใหม่','New Card','คำอธิบาย']),
         assetTitleFields: [
           this.siteField('assetsTitleEn','h2en','หัวข้ออังกฤษ',1),
           this.siteField('assetsTitleTh','sub','หัวข้อไทย',1),
@@ -670,24 +736,45 @@ class Component extends DCLogic {
         ],
         logoCardFields: [ this.siteField('assetLogoTitle','cardTitle','หัวข้อการ์ดโลโก้',1), this.siteField('assetLogoBody','cardBody','คำอธิบายการใช้โลโก้',2) ],
         assetField: assetField,
-        assetPreview: H.lines(assetField.value).map(l=>{ const p=H.parts(l,2); return { title:p[0], body:p[1] }; }),
+        assetItems: this.cardList('assets', 2, [
+          { preset:'cardTitle', ph:'หัวข้อการ์ด', rows:1 },
+          { preset:'cardBody',  ph:'คำอธิบาย', rows:3 }
+        ]),
+        addAsset: this.addCard('assets', 2, ['หัวข้อใหม่','คำอธิบาย']),
         faqTitleFields: [ this.siteField('faqTitleEn','h2en','หัวข้ออังกฤษ',1), this.siteField('faqTitleTh','sub','หัวข้อไทย',1) ],
         faqField: faqField,
-        faqPreview: H.blocks(faqField.value),
+        faqItems: this.faqItems().map((b,i)=>({
+          q: { value:b.q, ph:'คำถาม', style:this.st('cardTitle'), rows:1, onInput:(ev)=>this.setFaq(i,'q',ev.target.value) },
+          a: { value:b.a, ph:'คำตอบ (ขึ้นบรรทัดใหม่ได้)', style:this.st('cardBody'), rows:this.rows(b.a,2), onInput:(ev)=>this.setFaq(i,'a',ev.target.value) },
+          remove: ()=>this.removeFaq(i), up: ()=>this.moveFaq(i,-1), down: ()=>this.moveFaq(i,1)
+        })),
+        addFaq: ()=>this.addFaq(),
         helpFields: [
           this.siteField('helpTag','tag','ป้ายหัวข้อ (อังกฤษ)',1),
           this.siteField('helpTitle','h2th','หัวข้อติดต่อ',1),
           this.siteField('helpBody','small','ข้อความชวนติดต่อ',2)
         ],
         contactField: contactField,
-        contactPreview: H.lines(contactField.value).map(l=>({ label:H.parts(l,2)[0] })),
+        contactItems: this.cardList('contacts', 2, [
+          { preset:'pill', ph:'ป้ายที่แสดง', rows:1 },
+          { preset:'footSmall', ph:'ลิงก์ (เว้นว่างได้)', rows:1 }
+        ]),
+        addContact: this.addCard('contacts', 2, ['ช่องทางใหม่','']),
         channelTitleField: this.siteField('channelTitle','tag','หัวคอลัมน์',1),
         contactTitleField: this.siteField('contactTitle','tag','หัวคอลัมน์',1),
         channelField: channelField,
-        channelPreview: H.lines(channelField.value).map(l=>{ const p=H.parts(l,2); return { label:p[0], note:(p[1] ? '' : '(เร็ว ๆ นี้)') }; }),
+        channelItems: this.cardList('channels', 2, [
+          { preset:'pill', ph:'ชื่อช่องทาง', rows:1 },
+          { preset:'footSmall', ph:'ลิงก์ (เว้นว่าง = เร็ว ๆ นี้)', rows:1 }
+        ]),
+        addChannel: this.addCard('channels', 2, ['ช่องทางใหม่','']),
         footFields: [ this.siteField('footNote','footSmall','ข้อความท้ายเว็บ',2), this.siteField('footBrand','footSmall','ชื่อแบรนด์ท้ายเว็บ',1) ],
         recField: this.siteListField('recBadges', 3),
         recKidsField: this.siteListField('recBadgesKids', 2),
+        recItems: this.cardList('recBadges', 1, [{ preset:'pill', ph:'ชื่อป้าย', rows:1 }]),
+        addRec: this.addCard('recBadges', 1, ['ป้ายใหม่']),
+        recKidsItems: this.cardList('recBadgesKids', 1, [{ preset:'pill', ph:'ชื่อป้าย', rows:1 }]),
+        addRecKids: this.addCard('recBadgesKids', 1, ['ป้ายใหม่']),
         collectionsField: this.siteListField('collections', 5),
         panelTitlesField: this.siteListField('panelTitles', 8),
         guideTitlesField: this.siteListField('guideTitles', 6),
