@@ -77,9 +77,9 @@
     <button onClick="{{ goHome }}" style="display:flex;align-items:center;gap:14px;background:none;border:none;padding:0;cursor:pointer;">
       <img class="kmHeaderLogo" src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:52px;width:auto;display:block;"/>
       <span style="height:30px;width:1px;background:rgba(169,133,111,0.35);"></span>
-      <span class="kmHeaderSub" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:0.02em;color:#a9856f;">Creator Product Guide</span>
+      <span class="kmHeaderSub" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:0.02em;color:#a9856f;">{{ s.headerTag }}</span>
     </button>
-    <div class="kmHeaderTag" style="font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#a4917f;">{{ productCount }} Products</div>
+    <div class="kmHeaderTag" style="font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#a4917f;">{{ productCount }} {{ s.headerUnit }}</div>
   </header>
 
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
@@ -142,7 +142,7 @@
                   <sc-if value="{{ p.noImage }}">
                     <div style="display:flex;flex-direction:column;align-items:center;gap:12px;opacity:.6;">
                       <img src="img/logo/km-trans.png" alt="" style="height:70px;width:auto;opacity:.4;"/>
-                      <span style="font-size:12px;color:#9c8b7c;">ภาพเร็ว ๆ นี้</span>
+                      <span style="font-size:12px;color:#9c8b7c;">{{ s.imgSoon }}</span>
                     </div>
                   </sc-if>
                 </div>
@@ -248,7 +248,7 @@
 
   <sc-if value="{{ isDetail }}">
   <div class="kmDetail" style="animation:kmFade .45s ease both;max-width:1120px;margin:0 auto;padding:26px 40px 96px;">
-    <button onClick="{{ goHome }}" style="display:inline-flex;align-items:center;gap:9px;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:30px;padding:9px 18px;color:#7c6c5d;cursor:pointer;font-size:13px;letter-spacing:0.02em;transition:border-color .2s,color .2s;" style-hover="border-color:var(--gold);color:#3f342c;">← กลับหน้ารวมสินค้า</button>
+    <button onClick="{{ goHome }}" style="display:inline-flex;align-items:center;gap:9px;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:30px;padding:9px 18px;color:#7c6c5d;cursor:pointer;font-size:13px;letter-spacing:0.02em;transition:border-color .2s,color .2s;" style-hover="border-color:var(--gold);color:#3f342c;">{{ s.backBtn }}</button>
 
     <div class="kmTopGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:50px;margin-top:26px;align-items:start;">
 
@@ -258,7 +258,7 @@
           <sc-if value="{{ current.noImage }}">
             <div style="display:flex;flex-direction:column;align-items:center;gap:16px;opacity:.6;">
               <img src="img/logo/km-trans.png" alt="" style="height:110px;width:auto;opacity:.4;"/>
-              <span style="font-size:13px;color:#9c8b7c;">ภาพสินค้ากำลังจัดเตรียม</span>
+              <span style="font-size:13px;color:#9c8b7c;">{{ s.imgPrep }}</span>
             </div>
           </sc-if>
         </div>
@@ -281,7 +281,7 @@
 
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;">
           <span style="font-size:12px;color:#5c4d40;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:5px 14px;">{{ current.claim }}</span>
-          <span style="font-size:12px;color:#7c6c5d;border:1px solid rgba(169,133,111,0.3);border-radius:22px;padding:5px 14px;">ปริมาณสุทธิ {{ current.net }}</span>
+          <span style="font-size:12px;color:#7c6c5d;border:1px solid rgba(169,133,111,0.3);border-radius:22px;padding:5px 14px;">{{ s.netPrefix }} {{ current.net }}</span>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:9px;margin-top:26px;">
@@ -311,20 +311,20 @@
                   </sc-if>
                 </sc-if>
                 <sc-if value="{{ d.isAssets }}">
-                  <div style="font-size:13px;color:#7c6c5d;line-height:1.7;margin-bottom:12px;">รูปสินค้าพร้อมใช้ {{ shotCount }} รูป — บันทึกลงเครื่องแล้วนำไปทำคอนเทนต์ได้เลย</div>
+                  <div style="font-size:13px;color:#7c6c5d;line-height:1.7;margin-bottom:12px;">{{ assetsNote }}</div>
                   <div style="display:flex;gap:10px;flex-wrap:wrap;">
-                    <button class="kmSaveBtn" onClick="{{ saveActive }}" style="flex:1;min-width:148px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#fffaf3;border:none;border-radius:9px;padding:12px 16px;font-size:13.5px;font-weight:500;cursor:pointer;">⤓ บันทึกรูปที่เลือก</button>
+                    <button class="kmSaveBtn" onClick="{{ saveActive }}" style="flex:1;min-width:148px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#fffaf3;border:none;border-radius:9px;padding:12px 16px;font-size:13.5px;font-weight:500;cursor:pointer;">{{ s.saveOneBtn }}</button>
                     <sc-if value="{{ hasShots }}">
-                    <button class="kmSaveBtn" onClick="{{ saveAll }}" style="flex:1;min-width:148px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fffdf9;color:#7c6c5d;border:1px solid rgba(169,133,111,0.4);border-radius:9px;padding:12px 16px;font-size:13.5px;font-weight:500;cursor:pointer;">⤓ บันทึกทั้งหมด ({{ shotCount }})</button>
+                    <button class="kmSaveBtn" onClick="{{ saveAll }}" style="flex:1;min-width:148px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fffdf9;color:#7c6c5d;border:1px solid rgba(169,133,111,0.4);border-radius:9px;padding:12px 16px;font-size:13.5px;font-weight:500;cursor:pointer;">{{ saveAllLabel }}</button>
                     </sc-if>
                   </div>
                 </sc-if>
                 <sc-if value="{{ d.isLink }}">
                   <sc-if value="{{ hasLink }}">
-                    <a class="kmLink" href="{{ linkHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fffaf3;text-decoration:none;font-weight:500;font-size:13px;border-radius:8px;padding:11px 18px;">เปิดหน้าสินค้า ↗</a>
+                    <a class="kmLink" href="{{ linkHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fffaf3;text-decoration:none;font-weight:500;font-size:13px;border-radius:8px;padding:11px 18px;">{{ s.linkBtn }}</a>
                   </sc-if>
                   <sc-if value="{{ noLink }}">
-                    <div style="font-size:13px;color:#8a7a6b;line-height:1.7;">ลิงก์สั่งซื้อจะแจ้งให้ทราบเมื่อเปิดขายในแต่ละช่องทาง สอบถามได้ที่ทีมการตลาด</div>
+                    <div style="font-size:13px;color:#8a7a6b;line-height:1.7;">{{ s.linkEmpty }}</div>
                   </sc-if>
                 </sc-if>
               </div>
@@ -339,10 +339,10 @@
     <section style="margin-top:48px;padding-top:32px;border-top:1px solid rgba(169,133,111,0.28);">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px;">
         <div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;margin-bottom:6px;">Content Guide</div>
-          <h2 style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:24px;color:#3f342c;margin:0;">แนวทางทำคอนเทนต์</h2>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;margin-bottom:6px;">{{ s.guideTag }}</div>
+          <h2 style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:24px;color:#3f342c;margin:0;">{{ s.guideTitle }}</h2>
         </div>
-        <span style="font-size:11px;letter-spacing:0.03em;color:#a4917f;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:20px;padding:6px 14px;white-space:nowrap;">แตะหัวข้อเพื่อดูรายละเอียด</span>
+        <span style="font-size:11px;letter-spacing:0.03em;color:#a4917f;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:20px;padding:6px 14px;white-space:nowrap;">{{ s.guideHint }}</span>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:9px;">
@@ -367,8 +367,8 @@
     </section>
 
     <div class="kmNav" style="display:flex;justify-content:space-between;gap:14px;margin-top:32px;padding-top:22px;border-top:1px solid rgba(169,133,111,0.22);">
-      <button onClick="{{ goPrev }}" style="flex:1;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:9px;padding:13px;color:#7c6c5d;cursor:pointer;font-size:13px;transition:border-color .2s,color .2s;" style-hover="border-color:var(--gold);color:#3f342c;">← ก่อนหน้า</button>
-      <button onClick="{{ goNext }}" style="flex:1;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:9px;padding:13px;color:#7c6c5d;cursor:pointer;font-size:13px;transition:border-color .2s,color .2s;" style-hover="border-color:var(--gold);color:#3f342c;">ถัดไป →</button>
+      <button onClick="{{ goPrev }}" style="flex:1;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:9px;padding:13px;color:#7c6c5d;cursor:pointer;font-size:13px;transition:border-color .2s,color .2s;" style-hover="border-color:var(--gold);color:#3f342c;">{{ s.prevBtn }}</button>
+      <button onClick="{{ goNext }}" style="flex:1;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:9px;padding:13px;color:#7c6c5d;cursor:pointer;font-size:13px;transition:border-color .2s,color .2s;" style-hover="border-color:var(--gold);color:#3f342c;">{{ s.nextBtn }}</button>
     </div>
   </div>
   </sc-if>
@@ -476,7 +476,10 @@ class Component extends DCLogic {
       'colTitleEn','colTitleTh','colDesc','whyTitleEn','whyTitleTh',
       'assetsTitleEn','assetsTitleTh','assetsDesc','assetLogoTitle','assetLogoBody',
       'faqTitleEn','faqTitleTh','helpTag','helpTitle','helpBody',
-      'channelTitle','contactTitle','footNote','footBrand'];
+      'channelTitle','contactTitle','footNote','footBrand',
+      'headerTag','headerUnit','chipAll','imgSoon','imgPrep',
+      'backBtn','netPrefix','saveOneBtn','linkBtn','linkEmpty','prevBtn','nextBtn',
+      'guideTag','guideTitle','guideHint'];
     const o = {};
     keys.forEach(k => { o[k] = this.siteVal(k); });
     return o;
@@ -511,15 +514,24 @@ class Component extends DCLogic {
   saveLogoFile(){ this.dl('img/logo/km-trans.png', 'kangaroo-mommy-logo.png'); }
 
   lineMeta(){
-    return [
-      { key:'wheatgerm', th:'วีทเจิร์ม มอยส์แคร์ พลัส', en:'Wheat Germ Moist Care Plus', short:'Wheat Germ', desc:'สารสกัดจมูกข้าวสาลี เติมความชุ่มชื้นและฟื้นบำรุงผิวให้นุ่มเรียบเนียน' },
-      { key:'radiant', th:'ผิวกระจ่างใส', en:'Radiant & Brightening', short:'Radiant', desc:'ปรนนิบัติผิวให้ดูกระจ่างใส เปล่งปลั่ง มีออร่า' },
-      { key:'truffle', th:'ทรัฟเฟิล ลักชัวเรียส แคร์', en:'Truffle Luxurious Care', short:'Truffle', desc:'สัมผัสหรูหราจากสารสกัดทรัฟเฟิล ฟื้นบำรุงผิวให้เนียนกระชับ' },
-      { key:'body', th:'บอดี้ & สเปเชียล แคร์', en:'Body & Special Care', short:'Body Care', desc:'ดูแลผิวกายและปัญหาเฉพาะจุด ลดเลือนริ้วรอยและเพิ่มความชุ่มชื้น' },
-      { key:'kids', th:'สำหรับเด็ก', en:'Kids Care', short:'Kids', desc:'สูตรอ่อนโยน ปลอบประโลมผิวบอบบางของลูกน้อย' }
-    ];
+    const H = window.KM_SITE;
+    if (!H) return [];
+    return H.lines(this.siteVal('collections')).map(line => {
+      const p = H.parts(line, 5);
+      return { key:p[0], th:p[1], en:p[2], short:p[3] || p[2], desc:p[4] };
+    }).filter(l => l.key);
   }
-  shortOf(key){ const m={wheatgerm:'Wheat Germ',radiant:'Radiant',truffle:'Truffle',body:'Body Care',kids:'Kids'}; return m[key]||''; }
+  // "คีย์ | ไทย | อังกฤษ" → map คีย์ไปหัวข้อที่แก้ได้ในหลังบ้าน
+  titleMap(key){
+    const H = window.KM_SITE; const m = {};
+    if (!H) return m;
+    H.lines(this.siteVal(key)).forEach(line => {
+      const p = H.parts(line, 3);
+      if (p[0]) m[p[0]] = { th:p[1], en:p[2] };
+    });
+    return m;
+  }
+  shortOf(key){ const l=this.lineMeta().find(x=>x.key===key); return l?l.short:''; }
   fullOf(key){ const l=this.lineMeta().find(x=>x.key===key); return l?l.en:''; }
 
   decorate(p){
@@ -552,7 +564,7 @@ class Component extends DCLogic {
   }
 
   renderVals(){
-    const accent = this.props.accent ?? '#a9856f';
+    const accent = this.siteVal('accent') || this.props.accent || '#a9856f';
     const P = window.KM_PRODUCTS || [];
     const route = this.state.route;
     const lines = this.lineMeta();
@@ -569,7 +581,7 @@ class Component extends DCLogic {
 
     const chipOn  = { bg:'var(--gold)', fg:'#fffaf3', bd:'var(--gold)' };
     const chipOff = { bg:'#fffdf9', fg:'#7c6c5d', bd:'rgba(169,133,111,0.32)' };
-    const chips = [{ key:'all', label:'ทั้งหมด' }].concat(
+    const chips = [{ key:'all', label:(this.siteVal('chipAll') || 'ทั้งหมด') }].concat(
       sections.map(s=>({ key:s.key, label:s.short }))
     ).map(c => Object.assign({}, c, (activeCol===c.key ? chipOn : chipOff), {
       pick: () => this.setState({ collection: c.key })
@@ -646,15 +658,17 @@ class Component extends DCLogic {
 
     // ---- Product Details — accordion (ลำดับตามที่ครีเอเตอร์ต้องใช้จริง)
     const recBadges = this.siteLines(raw.line === 'kids' ? 'recBadgesKids' : 'recBadges');
+    const PT = this.titleMap('panelTitles');
+    const ttl = (k, thFb, enFb) => ({ th:(PT[k]&&PT[k].th)||thFb, en:(PT[k]&&PT[k].en)||enFb });
     const panelDefs = [
-      { key:'overview',    th:'ภาพรวมสินค้า',    en:'Product Overview', kind:'text',   value: current.intro },
-      { key:'benefits',    th:'จุดเด่นของสินค้า', en:'Key Benefits',     kind:'text',   value: val('features') },
-      { key:'ingredients', th:'ส่วนผสมสำคัญ',    en:'Hero Ingredients', kind:'text',   value: val('ingredients') },
-      { key:'recommended', th:'เหมาะกับใคร',     en:'Recommended For',  kind:'badges', value: val('suitable') },
-      { key:'howto',       th:'วิธีใช้',         en:'How to Use',       kind:'text',   value: current.howto },
-      { key:'know',        th:'ข้อควรรู้',       en:'Things to Know',    kind:'text',   value: (this.props.showCautions ?? true) ? current.caution : '', tone:'warn' },
-      { key:'assets',      th:'ดาวน์โหลดไฟล์',   en:'Download Assets',  kind:'assets' },
-      { key:'links',       th:'ลิงก์สินค้า',     en:'Product Links',    kind:'link' }
+      Object.assign({ key:'overview',    kind:'text',   value: current.intro },      ttl('overview','ภาพรวมสินค้า','Product Overview')),
+      Object.assign({ key:'benefits',    kind:'text',   value: val('features') },    ttl('benefits','จุดเด่นของสินค้า','Key Benefits')),
+      Object.assign({ key:'ingredients', kind:'text',   value: val('ingredients') }, ttl('ingredients','ส่วนผสมสำคัญ','Hero Ingredients')),
+      Object.assign({ key:'recommended', kind:'badges', value: val('suitable') },    ttl('recommended','เหมาะกับใคร','Recommended For')),
+      Object.assign({ key:'howto',       kind:'text',   value: current.howto },      ttl('howto','วิธีใช้','How to Use')),
+      Object.assign({ key:'know',        kind:'text',   value: (this.props.showCautions ?? true) ? current.caution : '', tone:'warn' }, ttl('know','ข้อควรรู้','Things to Know')),
+      Object.assign({ key:'assets',      kind:'assets' }, ttl('assets','ดาวน์โหลดไฟล์','Download Assets')),
+      Object.assign({ key:'links',       kind:'link' },   ttl('links','ลิงก์สินค้า','Product Links'))
     ];
     const detailPanels = panelDefs.filter(p => {
       if (p.kind === 'assets') return shotList.length > 0;
@@ -675,13 +689,15 @@ class Component extends DCLogic {
     });
 
     // ---- Content Guide — accordion
+    const GT = this.titleMap('guideTitles');
+    const gt = (k, thFb, enFb) => ({ th:(GT[k]&&GT[k].th)||thFb, en:(GT[k]&&GT[k].en)||enFb });
     const guideDefs = [
-      { key:'keymsg',   th:'คีย์เมสเสจ',         en:'Key Message' },
-      { key:'content',  th:'ไอเดียคอนเทนต์',      en:'Content Ideas' },
-      { key:'scenes',   th:'โครงคลิป',           en:'Video Structure' },
-      { key:'refs',     th:'คลิปอ้างอิง',         en:'Content References' },
-      { key:'hashtags', th:'แฮชแท็กและการแท็ก',   en:'Hashtag & Tag' },
-      { key:'dontList', th:'สิ่งที่ควรเลี่ยง',     en:"Don't", def:DEFAULT_DONT, tone:'dont' }
+      Object.assign({ key:'keymsg' },   gt('keymsg','คีย์เมสเสจ','Key Message')),
+      Object.assign({ key:'content' },  gt('content','ไอเดียคอนเทนต์','Content Ideas')),
+      Object.assign({ key:'scenes' },   gt('scenes','โครงคลิป','Video Structure')),
+      Object.assign({ key:'refs' },     gt('refs','คลิปอ้างอิง','Content References')),
+      Object.assign({ key:'hashtags' }, gt('hashtags','แฮชแท็กและการแท็ก','Hashtag & Tag')),
+      Object.assign({ key:'dontList', def:DEFAULT_DONT, tone:'dont' }, gt('dontList','สิ่งที่ควรเลี่ยง',"Don't"))
     ];
     const guideFields = guideDefs.map(f => {
       const v = val(f.key, f.def);
@@ -708,6 +724,8 @@ class Component extends DCLogic {
         src: activeShot.src, alt: current.enName,
         style: { maxWidth:'100%', maxHeight:'100%', objectFit:'contain', filter:'drop-shadow(0 18px 32px rgba(90,70,55,0.18))' }
       }) : null,
+      assetsNote: String(this.siteVal('assetsNote')||'').replace('{n}', String(shots.length)),
+      saveAllLabel: String(this.siteVal('saveAllBtn')||'').replace('{n}', String(shots.length)),
       hasShots: shots.length>1,
       hasAnyShot: shots.length>0,
       shotCount: shots.length,

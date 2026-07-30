@@ -261,6 +261,53 @@
             </div>
           </div>
         </section>
+
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:22px 40px 0;">
+          <div style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.4);border-radius:11px;padding:20px 24px;">
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">คอลเลกชันสินค้า</div>
+            <p class="kmHint" style="margin:0 0 12px;">ชื่อหมวดที่แสดงบนหน้าแรกและปุ่มเลือกคอลเลกชัน · บรรทัดละ 1 คอลเลกชัน · รูปแบบ <strong>คีย์ | ชื่อไทย | ชื่ออังกฤษ | ชื่อบนปุ่ม | คำอธิบาย</strong> — <strong style="color:#b5623f;">ห้ามแก้คีย์</strong> (คีย์คือตัวผูกสินค้าเข้าหมวด)</p>
+            <textarea class="kmList" value="{{ collectionsField.value }}" onInput="{{ collectionsField.onInput }}" rows="{{ collectionsField.rows }}"></textarea>
+          </div>
+        </section>
+
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:22px 40px 0;">
+          <div style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.4);border-radius:11px;padding:20px 24px;">
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">ชื่อหัวข้อในหน้าสินค้า</div>
+            <p class="kmHint" style="margin:0 0 12px;">รูปแบบ <strong>คีย์ | ชื่อไทย | ชื่ออังกฤษ</strong> · เรียงบรรทัดใหม่ = เรียงลำดับหัวข้อบนเว็บ · <strong style="color:#b5623f;">ห้ามแก้คีย์</strong></p>
+            <div class="kmTop2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div>
+                <div style="font-size:12.5px;color:#8a7a6b;margin-bottom:6px;">หัวข้อรายละเอียดสินค้า (8 หัวข้อ)</div>
+                <textarea class="kmList" value="{{ panelTitlesField.value }}" onInput="{{ panelTitlesField.onInput }}" rows="{{ panelTitlesField.rows }}"></textarea>
+              </div>
+              <div>
+                <div style="font-size:12.5px;color:#8a7a6b;margin-bottom:6px;">หัวข้อแนวทางทำคอนเทนต์ (6 หัวข้อ)</div>
+                <textarea class="kmList" value="{{ guideTitlesField.value }}" onInput="{{ guideTitlesField.onInput }}" rows="{{ guideTitlesField.rows }}"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:22px 40px 0;">
+          <div style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.4);border-radius:11px;padding:20px 24px;">
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">ข้อความ ปุ่ม และสีบนเว็บ</div>
+            <p class="kmHint" style="margin:0 0 14px;">ข้อความเล็ก ๆ ที่เหลือทั้งหมด — แถบด้านบน ปุ่มต่าง ๆ และป้ายในหน้าสินค้า · <strong>{n}</strong> จะถูกแทนด้วยจำนวนรูป</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+              <sc-for list="{{ uiFields }}" as="f" hint-placeholder-count="10">
+                <div>
+                  <div style="font-size:12px;color:#8a7a6b;margin-bottom:5px;">{{ f.label }}</div>
+                  <textarea class="kmList" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="font-size:12.5px;"></textarea>
+                </div>
+              </sc-for>
+              <div>
+                <div style="font-size:12px;color:#8a7a6b;margin-bottom:5px;">สีหลักของเว็บ (ปุ่ม/เส้นเน้น)</div>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <input value="{{ accentField.value }}" onInput="{{ accentField.onInput }}" placeholder="#a9856f" style="flex:1;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:9px;color:#463a2f;font-size:12.5px;padding:10px 12px;outline:none;"/>
+                  <span style="width:34px;height:34px;border-radius:8px;border:1px solid rgba(169,133,111,0.35);background:{{ accentField.value }};flex:none;"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       </sc-if>
 
@@ -640,7 +687,33 @@ class Component extends DCLogic {
         channelPreview: H.lines(channelField.value).map(l=>{ const p=H.parts(l,2); return { label:p[0], note:(p[1] ? '' : '(เร็ว ๆ นี้)') }; }),
         footFields: [ this.siteField('footNote','footSmall','ข้อความท้ายเว็บ',2), this.siteField('footBrand','footSmall','ชื่อแบรนด์ท้ายเว็บ',1) ],
         recField: this.siteListField('recBadges', 3),
-        recKidsField: this.siteListField('recBadgesKids', 2)
+        recKidsField: this.siteListField('recBadgesKids', 2),
+        collectionsField: this.siteListField('collections', 5),
+        panelTitlesField: this.siteListField('panelTitles', 8),
+        guideTitlesField: this.siteListField('guideTitles', 6),
+        accentField: { value: this.siteEff('accent'), onInput:(ev)=>this.siteSet('accent', ev.target.value) },
+        uiFields: [
+          ['headerTag','ข้อความข้างโลโก้ (แถบบน)','Creator Product Guide'],
+          ['headerUnit','คำต่อท้ายจำนวนสินค้า','Products'],
+          ['chipAll','ปุ่มดูสินค้าทั้งหมด','ทั้งหมด'],
+          ['backBtn','ปุ่มกลับหน้ารวมสินค้า','← กลับหน้ารวมสินค้า'],
+          ['netPrefix','คำนำหน้าปริมาณสุทธิ','ปริมาณสุทธิ'],
+          ['guideTag','ป้ายหัวข้อแนวทางคอนเทนต์ (อังกฤษ)','Content Guide'],
+          ['guideTitle','หัวข้อแนวทางคอนเทนต์','แนวทางทำคอนเทนต์'],
+          ['guideHint','ป้ายบอกวิธีใช้ accordion','แตะหัวข้อเพื่อดูรายละเอียด'],
+          ['assetsNote','ข้อความในหัวข้อดาวน์โหลด (ใช้ {n})','รูปสินค้าพร้อมใช้ {n} รูป…'],
+          ['saveOneBtn','ปุ่มบันทึกรูปที่เลือก','⤓ บันทึกรูปที่เลือก'],
+          ['saveAllBtn','ปุ่มบันทึกรูปทั้งหมด (ใช้ {n})','⤓ บันทึกทั้งหมด ({n})'],
+          ['linkBtn','ปุ่มเปิดลิงก์สินค้า','เปิดหน้าสินค้า ↗'],
+          ['linkEmpty','ข้อความเมื่อยังไม่มีลิงก์สินค้า','ลิงก์สั่งซื้อจะแจ้งให้ทราบ…'],
+          ['prevBtn','ปุ่มสินค้าก่อนหน้า','← ก่อนหน้า'],
+          ['nextBtn','ปุ่มสินค้าถัดไป','ถัดไป →'],
+          ['imgSoon','ข้อความแทนรูปในหน้ารวม','ภาพเร็ว ๆ นี้'],
+          ['imgPrep','ข้อความแทนรูปในหน้าสินค้า','ภาพสินค้ากำลังจัดเตรียม']
+        ].map(a=>{
+          const v = this.siteEff(a[0]);
+          return { label:a[1], ph:a[2], value:v, rows:this.rows(v,1), onInput:(ev)=>this.siteSet(a[0], ev.target.value) };
+        })
       });
     }
 

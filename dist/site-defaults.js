@@ -83,7 +83,58 @@
 
     // ป้ายในหัวข้อ "เหมาะกับใคร" ของหน้าสินค้า (บรรทัดละป้าย) — kids ใช้ชุดแยก
     recBadges:     ['คุณแม่ตั้งครรภ์','คุณแม่หลังคลอด','ผิวบอบบางแพ้ง่าย'].join('\n'),
-    recBadgesKids: ['เด็กและทารก','ผิวบอบบางแพ้ง่าย'].join('\n')
+    recBadgesKids: ['เด็กและทารก','ผิวบอบบางแพ้ง่าย'].join('\n'),
+
+    // ---- แถบด้านบน + ข้อความ/ปุ่มทั่วเว็บ
+    headerTag:  'Creator Product Guide',
+    headerUnit: 'Products',
+    chipAll:    'ทั้งหมด',
+    imgSoon:    'ภาพเร็ว ๆ นี้',
+    imgPrep:    'ภาพสินค้ากำลังจัดเตรียม',
+    accent:     '#a9856f',
+
+    // ---- หน้าสินค้า
+    backBtn:    '← กลับหน้ารวมสินค้า',
+    netPrefix:  'ปริมาณสุทธิ',
+    assetsNote: 'รูปสินค้าพร้อมใช้ {n} รูป — บันทึกลงเครื่องแล้วนำไปทำคอนเทนต์ได้เลย',
+    saveOneBtn: '⤓ บันทึกรูปที่เลือก',
+    saveAllBtn: '⤓ บันทึกทั้งหมด ({n})',
+    linkBtn:    'เปิดหน้าสินค้า ↗',
+    linkEmpty:  'ลิงก์สั่งซื้อจะแจ้งให้ทราบเมื่อเปิดขายในแต่ละช่องทาง สอบถามได้ที่ทีมการตลาด',
+    prevBtn:    '← ก่อนหน้า',
+    nextBtn:    'ถัดไป →',
+    guideTag:   'Content Guide',
+    guideTitle: 'แนวทางทำคอนเทนต์',
+    guideHint:  'แตะหัวข้อเพื่อดูรายละเอียด',
+
+    // ---- หัวข้อ accordion ในหน้าสินค้า: บรรทัดละ "คีย์ | ชื่อไทย | ชื่ออังกฤษ" (ห้ามแก้คีย์)
+    panelTitles: [
+      'overview | ภาพรวมสินค้า | Product Overview',
+      'benefits | จุดเด่นของสินค้า | Key Benefits',
+      'ingredients | ส่วนผสมสำคัญ | Hero Ingredients',
+      'recommended | เหมาะกับใคร | Recommended For',
+      'howto | วิธีใช้ | How to Use',
+      'know | ข้อควรรู้ | Things to Know',
+      'assets | ดาวน์โหลดไฟล์ | Download Assets',
+      'links | ลิงก์สินค้า | Product Links'
+    ].join('\n'),
+    guideTitles: [
+      'keymsg | คีย์เมสเสจ | Key Message',
+      'content | ไอเดียคอนเทนต์ | Content Ideas',
+      'scenes | โครงคลิป | Video Structure',
+      'refs | คลิปอ้างอิง | Content References',
+      'hashtags | แฮชแท็กและการแท็ก | Hashtag & Tag',
+      'dontList | สิ่งที่ควรเลี่ยง | Don\'t'
+    ].join('\n'),
+
+    // ---- คอลเลกชันสินค้า: "คีย์ | ชื่อไทย | ชื่ออังกฤษ | ชื่อบนปุ่ม | คำอธิบาย" (ห้ามแก้คีย์)
+    collections: [
+      'wheatgerm | วีทเจิร์ม มอยส์แคร์ พลัส | Wheat Germ Moist Care Plus | Wheat Germ | สารสกัดจมูกข้าวสาลี เติมความชุ่มชื้นและฟื้นบำรุงผิวให้นุ่มเรียบเนียน',
+      'radiant | ผิวกระจ่างใส | Radiant & Brightening | Radiant | ปรนนิบัติผิวให้ดูกระจ่างใส เปล่งปลั่ง มีออร่า',
+      'truffle | ทรัฟเฟิล ลักชัวเรียส แคร์ | Truffle Luxurious Care | Truffle | สัมผัสหรูหราจากสารสกัดทรัฟเฟิล ฟื้นบำรุงผิวให้เนียนกระชับ',
+      'body | บอดี้ & สเปเชียล แคร์ | Body & Special Care | Body Care | ดูแลผิวกายและปัญหาเฉพาะจุด ลดเลือนริ้วรอยและเพิ่มความชุ่มชื้น',
+      'kids | สำหรับเด็ก | Kids Care | Kids | สูตรอ่อนโยน ปลอบประโลมผิวบอบบางของลูกน้อย'
+    ].join('\n')
   };
 
   // ---- helper แปลง list เป็นโครงสร้างที่หน้าเว็บใช้ (ใช้ร่วมกันทั้งหน้าเว็บและหลังบ้าน)
