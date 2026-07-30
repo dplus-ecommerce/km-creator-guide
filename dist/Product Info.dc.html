@@ -23,8 +23,21 @@
   textarea::placeholder,input::placeholder{color:#b3a696;}
   .kmSaveBtn{transition:background .2s,border-color .2s,transform .1s;}
   .kmSaveBtn:active{transform:scale(0.97);}
+  .kmChip{transition:background .2s,border-color .2s,color .2s;}
+  .kmAccBtn{transition:background .2s,color .2s;}
+  .kmAccBtn:hover{background:rgba(169,133,111,0.06);}
+  .kmLink{transition:color .2s,border-color .2s;}
+  .kmLink:hover{color:#3f342c;}
   /* ---- mobile ---- */
   @media (max-width:680px){
+    .kmAbout{padding:20px 18px !important;}
+    .kmAboutH2{font-size:20px !important;}
+    .kmChipRow{gap:8px !important;}
+    .kmChip{font-size:12px !important;padding:7px 12px !important;}
+    .kmCardGrid{grid-template-columns:1fr !important;gap:12px !important;}
+    .kmAccHead{font-size:14px !important;padding:14px 16px !important;}
+    .kmAccBody{padding:0 16px 16px !important;}
+    .kmFootGrid{grid-template-columns:repeat(2,1fr) !important;gap:14px 18px !important;text-align:left !important;}
     .kmHeader{padding:11px 16px !important;}
     .kmHeaderTag{display:none !important;}
     .kmHeaderLogo{height:42px !important;}
@@ -72,14 +85,44 @@
   <div style="animation:kmFade .5s ease both;">
     <section class="kmHero" style="text-align:center;padding:66px 24px 30px;">
       <img class="kmHeroLogo" src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:190px;width:auto;margin-bottom:22px;"/>
-      <h1 class="kmHeroH1" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:39px;line-height:1.25;color:#3f342c;margin:0 auto;max-width:16em;">ข้อมูลผลิตภัณฑ์สำหรับครีเอเตอร์</h1>
+      <h1 class="kmHeroH1" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:39px;line-height:1.25;color:#3f342c;margin:0 auto;max-width:16em;">ข้อมูลสินค้าสำหรับครีเอเตอร์</h1>
       <p class="kmHeroSub" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#a9856f;margin:12px 0 0;">Everything you need to create — in one place</p>
-      <p class="kmHeroLead" style="max-width:42em;margin:20px auto 0;font-size:15.5px;color:#7c6c5d;">แตะที่ผลิตภัณฑ์เพื่อดูรายละเอียด จุดเด่น วิธีใช้ ปริมาณสุทธิ ภาพประกอบ และรูปพร้อมบันทึกสำหรับใช้ในคอนเทนต์</p>
+      <p class="kmHeroLead" style="max-width:42em;margin:20px auto 0;font-size:15.5px;color:#7c6c5d;">รวมข้อมูลสินค้า จุดเด่น รูปภาพ และข้อมูลที่จำเป็นสำหรับการสร้างคอนเทนต์ไว้ในที่เดียว</p>
+    </section>
+
+    <section class="kmPad" style="max-width:1180px;margin:0 auto;padding:6px 40px 0;">
+      <div class="kmAbout" style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:26px 30px 24px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">About the Brand</div>
+        <h2 class="kmAboutH2" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:23px;color:#3f342c;margin:0 0 12px;">เกี่ยวกับ Kangaroo Mommy</h2>
+        <p style="margin:0;font-size:15px;color:#5f5044;line-height:1.85;max-width:58em;">Kangaroo Mommy คือแบรนด์สกินแคร์สำหรับคุณแม่ตั้งครรภ์ คุณแม่หลังคลอด และผู้ที่มีผิวบอบบางแพ้ง่าย โดยให้ความสำคัญกับความอ่อนโยน ความปลอดภัย และคุณภาพของผลิตภัณฑ์ เพื่อให้คุณแม่สามารถดูแลผิวได้อย่างมั่นใจในทุกช่วงเวลาของการเป็นคุณแม่</p>
+        <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:18px;">
+          <sc-for list="{{ brandBadges }}" as="b" hint-placeholder-count="4">
+            <span style="font-size:12px;color:#5c4d40;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:5px 14px;white-space:nowrap;">{{ b.label }}</span>
+          </sc-for>
+        </div>
+      </div>
     </section>
 
     <main class="kmPad" style="max-width:1180px;margin:0 auto;padding:20px 40px 90px;">
+      <section class="kmSec" style="margin-top:48px;">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:20px;border-bottom:1px solid rgba(169,133,111,0.28);">
+          <div>
+            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">Product Collections</h2>
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">คอลเลกชันสินค้า</div>
+            <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">เลือกคอลเลกชันเพื่อดูเฉพาะกลุ่มที่สนใจ หรือแตะที่สินค้าเพื่อดูข้อมูล จุดเด่น วิธีใช้ และดาวน์โหลดรูป</p>
+          </div>
+          <div class="kmSecCount" style="font-family:'Cormorant Garamond',serif;font-size:42px;color:rgba(169,133,111,0.4);line-height:1;">{{ productCount }}</div>
+        </div>
+        <div class="kmChipRow" style="display:flex;flex-wrap:wrap;gap:9px;">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
+            <button class="kmChip" onClick="{{ c.pick }}" style="background:{{ c.bg }};color:{{ c.fg }};border:1px solid {{ c.bd }};border-radius:22px;padding:8px 16px;font-size:12.5px;letter-spacing:0.02em;cursor:pointer;white-space:nowrap;">{{ c.label }}</button>
+          </sc-for>
+        </div>
+      </section>
+
       <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="3">
-        <section class="kmSec" style="margin-top:58px;">
+        <sc-if value="{{ sec.visible }}" hint-placeholder-val="{{ true }}">
+        <section class="kmSec" style="margin-top:44px;">
           <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:26px;border-bottom:1px solid rgba(169,133,111,0.28);">
             <div>
               <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ sec.en }}</h2>
@@ -112,14 +155,101 @@
             </sc-for>
           </div>
         </section>
+        </sc-if>
       </sc-for>
+
+      <section class="kmSec" style="margin-top:58px;">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
+          <div>
+            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">Why Work With Us</h2>
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">ร่วมงานกับเราแล้วได้อะไร</div>
+          </div>
+        </div>
+        <div class="kmCardGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;">
+          <sc-for list="{{ whyCards }}" as="w" hint-placeholder-count="5">
+            <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:18px 20px 19px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
+              <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ w.th }}</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:#a4917f;margin-top:3px;">{{ w.en }}</div>
+              <p style="margin:10px 0 0;font-size:13.5px;color:#5f5044;line-height:1.75;">{{ w.desc }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section class="kmSec" style="margin-top:58px;">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
+          <div>
+            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">Brand Assets</h2>
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">ไฟล์แบรนด์</div>
+            <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">โลโก้และแนวทางการใช้ชื่อแบรนด์ — รูปสินค้าดาวน์โหลดได้ในหน้าสินค้าแต่ละรายการ</p>
+          </div>
+        </div>
+        <div class="kmCardGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+          <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);display:flex;flex-direction:column;gap:14px;align-items:flex-start;">
+            <img src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:64px;width:auto;"/>
+            <div>
+              <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">โลโก้แบรนด์ (PNG พื้นใส)</div>
+              <p style="margin:7px 0 0;font-size:13.5px;color:#5f5044;line-height:1.75;">ใช้บนพื้นสีอ่อน เว้นระยะรอบโลโก้ให้พอ ไม่ยืด บิด หรือเปลี่ยนสี</p>
+            </div>
+            <button class="kmSaveBtn" onClick="{{ saveLogo }}" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fffaf3;border:none;border-radius:9px;padding:11px 18px;font-size:13.5px;font-weight:500;cursor:pointer;">⤓ ดาวน์โหลดโลโก้</button>
+          </div>
+          <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">การเรียกชื่อแบรนด์</div>
+            <p style="margin:9px 0 0;font-size:13.5px;color:#5f5044;line-height:1.8;">เขียนว่า <strong style="font-weight:600;color:#3f342c;">Kangaroo Mommy</strong> (ตัว K และ M ใหญ่) หรือ “แคงการู มัมมี่” ในเนื้อหาภาษาไทย ไม่ย่อเป็น KM ในคอนเทนต์ที่เผยแพร่</p>
+          </div>
+          <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">รูปสินค้า</div>
+            <p style="margin:9px 0 0;font-size:13.5px;color:#5f5044;line-height:1.8;">เปิดหน้าสินค้าที่ต้องการ แล้วดาวน์โหลดได้ที่หัวข้อ “ดาวน์โหลดไฟล์” — มีทั้งภาพสินค้าและภาพประกอบไลฟ์สไตล์</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="kmSec" style="margin-top:58px;">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
+          <div>
+            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">FAQ</h2>
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">คำถามที่พบบ่อย</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+            <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;overflow:hidden;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
+              <button class="kmAccBtn kmAccHead" onClick="{{ q.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:14px;background:none;border:none;cursor:pointer;padding:15px 20px;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">
+                <span>{{ q.q }}</span>
+                <span style="flex:none;font-size:13px;color:{{ q.iconColor }};">{{ q.icon }}</span>
+              </button>
+              <sc-if value="{{ q.open }}">
+              <div class="kmAccBody" style="padding:0 20px 17px;font-size:13.5px;color:#5f5044;line-height:1.8;white-space:pre-wrap;">{{ q.a }}</div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section class="kmSec" style="margin-top:58px;">
+        <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:26px 30px 24px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">Need Help?</div>
+          <h2 class="kmAboutH2" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:23px;color:#3f342c;margin:0 0 10px;">มีคำถามเพิ่มเติม</h2>
+          <p style="margin:0;font-size:14.5px;color:#5f5044;line-height:1.85;max-width:52em;">สอบถามเรื่องบรีฟ ข้อมูลสินค้า การส่งตัวอย่าง หรือรายละเอียดการร่วมงาน ติดต่อทีมการตลาด Kangaroo Mommy ได้เลย เรายินดีช่วยเหลือทุกขั้นตอน</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;">
+            <sc-for list="{{ contactChannels }}" as="c" hint-placeholder-count="2">
+              <sc-if value="{{ c.hasHref }}">
+                <a class="kmLink" href="{{ c.href }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fffaf3;text-decoration:none;font-weight:500;font-size:13px;border-radius:8px;padding:11px 18px;white-space:nowrap;">{{ c.label }} ↗</a>
+              </sc-if>
+              <sc-if value="{{ c.noHref }}">
+                <span style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#7c6c5d;border:1px solid rgba(169,133,111,0.3);border-radius:8px;padding:11px 18px;white-space:nowrap;">{{ c.label }}</span>
+              </sc-if>
+            </sc-for>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
   </sc-if>
 
   <sc-if value="{{ isDetail }}">
   <div class="kmDetail" style="animation:kmFade .45s ease both;max-width:1120px;margin:0 auto;padding:26px 40px 96px;">
-    <button onClick="{{ goHome }}" style="display:inline-flex;align-items:center;gap:9px;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:30px;padding:9px 18px;color:#7c6c5d;cursor:pointer;font-size:13px;letter-spacing:0.02em;transition:border-color .2s,color .2s;" style-hover="border-color:var(--gold);color:#3f342c;">← กลับหน้ารวมผลิตภัณฑ์</button>
+    <button onClick="{{ goHome }}" style="display:inline-flex;align-items:center;gap:9px;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:30px;padding:9px 18px;color:#7c6c5d;cursor:pointer;font-size:13px;letter-spacing:0.02em;transition:border-color .2s,color .2s;" style-hover="border-color:var(--gold);color:#3f342c;">← กลับหน้ารวมสินค้า</button>
 
     <div class="kmTopGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:50px;margin-top:26px;align-items:start;">
 
@@ -129,7 +259,7 @@
           <sc-if value="{{ current.noImage }}">
             <div style="display:flex;flex-direction:column;align-items:center;gap:16px;opacity:.6;">
               <img src="img/logo/km-trans.png" alt="" style="height:110px;width:auto;opacity:.4;"/>
-              <span style="font-size:13px;color:#9c8b7c;">ภาพผลิตภัณฑ์กำลังจัดเตรียม</span>
+              <span style="font-size:13px;color:#9c8b7c;">ภาพสินค้ากำลังจัดเตรียม</span>
             </div>
           </sc-if>
         </div>
@@ -143,15 +273,6 @@
           </div>
           <div style="margin-top:9px;font-size:11.5px;letter-spacing:0.06em;color:#9c8b7c;">{{ activeShot.label }}</div>
         </sc-if>
-        <sc-if value="{{ hasAnyShot }}">
-        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
-          <button class="kmSaveBtn" onClick="{{ saveActive }}" style="flex:1;min-width:150px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#fffaf3;border:none;border-radius:9px;padding:13px 16px;font-size:13.5px;font-weight:500;cursor:pointer;">⤓ บันทึกรูปนี้</button>
-          <sc-if value="{{ hasShots }}">
-          <button class="kmSaveBtn" onClick="{{ saveAll }}" style="flex:1;min-width:150px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fffdf9;color:#7c6c5d;border:1px solid rgba(169,133,111,0.4);border-radius:9px;padding:13px 16px;font-size:13.5px;font-weight:500;cursor:pointer;">⤓ บันทึกรูปทั้งหมด ({{ shotCount }})</button>
-          </sc-if>
-        </div>
-        <div style="margin-top:8px;font-size:11.5px;color:#9c8b7c;">แตะเพื่อบันทึกรูปลงเครื่อง แล้วนำไปทำคอนเทนต์ได้เลย</div>
-        </sc-if>
       </div>
 
       <div>
@@ -164,24 +285,54 @@
           <span style="font-size:12px;color:#7c6c5d;border:1px solid rgba(169,133,111,0.3);border-radius:22px;padding:5px 14px;">ปริมาณสุทธิ {{ current.net }}</span>
         </div>
 
-        <div style="margin-top:28px;">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">รายละเอียดผลิตภัณฑ์</div>
-          <p style="margin:0;font-size:15px;color:#5f5044;line-height:1.85;">{{ current.intro }}</p>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-top:26px;">
+          <sc-for list="{{ detailPanels }}" as="d" hint-placeholder-count="6">
+            <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;overflow:hidden;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
+              <button class="kmAccBtn kmAccHead" onClick="{{ d.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;padding:14px 18px;">
+                <span style="width:7px;height:7px;border-radius:50%;background:{{ d.accentColor }};flex:none;"></span>
+                <span style="flex:1;">
+                  <span style="display:block;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ d.th }}</span>
+                  <span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ d.en }}</span>
+                </span>
+                <span style="flex:none;font-size:13px;color:{{ d.iconColor }};">{{ d.icon }}</span>
+              </button>
+              <sc-if value="{{ d.open }}">
+              <div class="kmAccBody" style="padding:0 18px 16px;">
+                <sc-if value="{{ d.isText }}">
+                  <div style="white-space:pre-wrap;color:#5f5044;font-size:13.8px;line-height:1.82;">{{ d.value }}</div>
+                </sc-if>
+                <sc-if value="{{ d.isBadges }}">
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:11px;">
+                    <sc-for list="{{ d.badges }}" as="b" hint-placeholder-count="3">
+                      <span style="font-size:12px;color:#5c4d40;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:5px 13px;white-space:nowrap;">{{ b.label }}</span>
+                    </sc-for>
+                  </div>
+                  <sc-if value="{{ d.hasValue }}">
+                    <div style="white-space:pre-wrap;color:#5f5044;font-size:13.8px;line-height:1.82;">{{ d.value }}</div>
+                  </sc-if>
+                </sc-if>
+                <sc-if value="{{ d.isAssets }}">
+                  <div style="font-size:13px;color:#7c6c5d;line-height:1.7;margin-bottom:12px;">รูปสินค้าพร้อมใช้ {{ shotCount }} รูป — บันทึกลงเครื่องแล้วนำไปทำคอนเทนต์ได้เลย</div>
+                  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <button class="kmSaveBtn" onClick="{{ saveActive }}" style="flex:1;min-width:148px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#fffaf3;border:none;border-radius:9px;padding:12px 16px;font-size:13.5px;font-weight:500;cursor:pointer;">⤓ บันทึกรูปที่เลือก</button>
+                    <sc-if value="{{ hasShots }}">
+                    <button class="kmSaveBtn" onClick="{{ saveAll }}" style="flex:1;min-width:148px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#fffdf9;color:#7c6c5d;border:1px solid rgba(169,133,111,0.4);border-radius:9px;padding:12px 16px;font-size:13.5px;font-weight:500;cursor:pointer;">⤓ บันทึกทั้งหมด ({{ shotCount }})</button>
+                    </sc-if>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ d.isLink }}">
+                  <sc-if value="{{ hasLink }}">
+                    <a class="kmLink" href="{{ linkHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fffaf3;text-decoration:none;font-weight:500;font-size:13px;border-radius:8px;padding:11px 18px;">เปิดหน้าสินค้า ↗</a>
+                  </sc-if>
+                  <sc-if value="{{ noLink }}">
+                    <div style="font-size:13px;color:#8a7a6b;line-height:1.7;">ลิงก์สั่งซื้อจะแจ้งให้ทราบเมื่อเปิดขายในแต่ละช่องทาง สอบถามได้ที่ทีมการตลาด</div>
+                  </sc-if>
+                </sc-if>
+              </div>
+              </sc-if>
+            </div>
+          </sc-for>
         </div>
-
-        <sc-if value="{{ current.howto }}">
-        <div style="margin-top:24px;padding-top:22px;border-top:1px solid rgba(169,133,111,0.2);">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">วิธีใช้</div>
-          <p style="margin:0;font-size:14.5px;color:#5f5044;line-height:1.85;">{{ current.howto }}</p>
-        </div>
-        </sc-if>
-
-        <sc-if value="{{ showCaution }}">
-        <div style="margin-top:24px;padding-top:22px;border-top:1px solid rgba(169,133,111,0.2);">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#b08a5f;margin-bottom:8px;">ข้อควรระวัง</div>
-          <p style="margin:0;font-size:13.5px;color:#8a7a6b;line-height:1.8;">{{ current.caution }}</p>
-        </div>
-        </sc-if>
       </div>
 
     </div>
@@ -189,37 +340,31 @@
     <section style="margin-top:48px;padding-top:32px;border-top:1px solid rgba(169,133,111,0.28);">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px;">
         <div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;margin-bottom:6px;">Creator Brief</div>
-          <h2 style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:24px;color:#3f342c;margin:0;">บรีฟสำหรับครีเอเตอร์</h2>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;margin-bottom:6px;">Content Guide</div>
+          <h2 style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:24px;color:#3f342c;margin:0;">แนวทางทำคอนเทนต์</h2>
         </div>
-        <span style="font-size:11px;letter-spacing:0.03em;color:#a4917f;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:20px;padding:6px 14px;white-space:nowrap;">ข้อมูลอ้างอิงสำหรับครีเอเตอร์</span>
+        <span style="font-size:11px;letter-spacing:0.03em;color:#a4917f;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:20px;padding:6px 14px;white-space:nowrap;">แตะหัวข้อเพื่อดูรายละเอียด</span>
       </div>
 
-      <div class="kmBriefGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
-        <sc-for list="{{ briefFields }}" as="f" hint-placeholder-count="6">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <sc-for list="{{ guideFields }}" as="f" hint-placeholder-count="6">
           <sc-if value="{{ f.hasValue }}">
-          <div style="{{ f.spanStyle }}background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:16px 18px 17px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
-            <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px;flex-wrap:wrap;">
+          <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;overflow:hidden;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
+            <button class="kmAccBtn kmAccHead" onClick="{{ f.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;padding:14px 18px;">
               <span style="width:7px;height:7px;border-radius:50%;background:{{ f.accentColor }};flex:none;"></span>
-              <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ f.th }}</span>
-              <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ f.en }}</span>
-            </div>
-            <div style="white-space:pre-wrap;color:#5f5044;font-size:13.5px;line-height:1.78;">{{ f.value }}</div>
+              <span style="flex:1;">
+                <span style="display:block;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ f.th }}</span>
+                <span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ f.en }}</span>
+              </span>
+              <span style="flex:none;font-size:13px;color:{{ f.iconColor }};">{{ f.icon }}</span>
+            </button>
+            <sc-if value="{{ f.open }}">
+            <div class="kmAccBody" style="padding:0 18px 16px;white-space:pre-wrap;color:#5f5044;font-size:13.8px;line-height:1.82;">{{ f.value }}</div>
+            </sc-if>
           </div>
           </sc-if>
         </sc-for>
       </div>
-
-      <sc-if value="{{ hasLink }}">
-      <div style="margin-top:16px;background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:16px 18px 18px;box-shadow:0 2px 10px rgba(120,95,75,0.04);display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
-        <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;">
-          <span style="width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none;"></span>
-          <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">ลิงก์สินค้า</span>
-          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">Product Link</span>
-        </div>
-        <a href="{{ linkHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fffaf3;text-decoration:none;font-weight:500;font-size:13px;border-radius:8px;padding:11px 18px;white-space:nowrap;">เปิดลิงก์สินค้า ↗</a>
-      </div>
-      </sc-if>
     </section>
 
     <div class="kmNav" style="display:flex;justify-content:space-between;gap:14px;margin-top:32px;padding-top:22px;border-top:1px solid rgba(169,133,111,0.22);">
@@ -229,9 +374,33 @@
   </div>
   </sc-if>
 
-  <footer class="kmFooter" style="border-top:1px solid rgba(169,133,111,0.22);padding:26px 40px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-    <img src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:40px;width:auto;opacity:.8;"/>
-    <span style="font-size:11.5px;color:#a4917f;letter-spacing:0.05em;">เอกสารข้อมูลผลิตภัณฑ์สำหรับครีเอเตอร์ · ใช้เพื่ออ้างอิงในการผลิตคอนเทนต์เท่านั้น</span>
+  <footer class="kmFooter" style="border-top:1px solid rgba(169,133,111,0.22);padding:30px 40px 26px;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div class="kmFootGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px 24px;align-items:start;">
+        <div>
+          <img src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:40px;width:auto;opacity:.85;"/>
+        </div>
+        <sc-for list="{{ footerGroups }}" as="g" hint-placeholder-count="2">
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:0.2em;text-transform:uppercase;color:#a9856f;margin-bottom:10px;">{{ g.title }}</div>
+            <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="3">
+              <div style="margin-bottom:7px;">
+                <sc-if value="{{ i.hasHref }}">
+                  <a class="kmLink" href="{{ i.href }}" target="_blank" rel="noopener" style="font-size:13px;color:#7c6c5d;text-decoration:none;border-bottom:1px solid rgba(169,133,111,0.3);padding-bottom:1px;">{{ i.label }}</a>
+                </sc-if>
+                <sc-if value="{{ i.noHref }}">
+                  <span style="font-size:13px;color:#a4917f;">{{ i.label }}<span style="font-size:11px;color:#b3a696;"> {{ i.note }}</span></span>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:22px;padding-top:16px;border-top:1px solid rgba(169,133,111,0.16);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:11.5px;color:#a4917f;letter-spacing:0.05em;">ข้อมูลสินค้าสำหรับครีเอเตอร์ · ใช้อ้างอิงในการผลิตคอนเทนต์เท่านั้น</span>
+        <span style="font-size:11.5px;color:#a4917f;letter-spacing:0.05em;">Kangaroo Mommy Thailand</span>
+      </div>
+    </div>
   </footer>
 
 </div>
@@ -240,8 +409,15 @@
 class Component extends DCLogic {
   constructor(props){
     super(props);
-    this.state = { route: this.parseHash(), activeImg: 0, edits: {}, gallery: {} };
+    this.state = { route: this.parseHash(), activeImg: 0, edits: {}, gallery: {},
+      collection: 'all', openPanel: 'overview', openGuide: 'keymsg', openFaq: '' };
   }
+  toggleKey(stateKey, key){
+    const cur = this.state[stateKey];
+    const next = {}; next[stateKey] = (cur === key) ? '' : key;
+    this.setState(next);
+  }
+  accIcon(isOpen){ return isOpen ? '−' : '+'; }
   parseHash(){
     const h = (location.hash || '').replace(/^#\/?/, '');
     const m = h.match(/^product\/(.+)$/);
@@ -287,6 +463,46 @@ class Component extends DCLogic {
       setTimeout(()=> this.dl(s.src, id+'-'+n+this.extOf(s.src)), i*350);
     });
   }
+
+  brandBadgeList(){
+    return ['🛡 Safety First','🌿 Gentle Formula','👩‍🍼 Pregnancy Skincare','🤍 Sensitive Skin'].map(l=>({label:l}));
+  }
+  whyCardList(){
+    return [
+      { th:'แบรนด์ทางการในไทย', en:'Official Thailand Brand', desc:'ทำตลาดในประเทศไทยอย่างเป็นทางการ มีข้อมูลสินค้าและเอกสารประกอบครบ พร้อมทีมงานดูแลครีเอเตอร์โดยตรง' },
+      { th:'งานจ้างมีค่าตอบแทน', en:'Paid Collaboration', desc:'มีทั้งงานจ้างและงานร่วมมือแบบรับสินค้า รายละเอียดและเงื่อนไขแจ้งเป็นรายแคมเปญโดยทีมการตลาด' },
+      { th:'รับคอมมิชชันจากยอดขาย', en:'Affiliate Program', desc:'ติดตะกร้าสินค้าในคลิปแล้วรับคอมมิชชันจากยอดขายได้ ผ่านระบบ Affiliate ของแพลตฟอร์ม' },
+      { th:'มีสินค้าให้ทดลองใช้', en:'Product Support', desc:'ส่งสินค้าตัวจริงให้ลองใช้ก่อนถ่าย พร้อมข้อมูลสินค้า จุดเด่น และรูปภาพครบในเว็บนี้' },
+      { th:'เล่าในสไตล์ของคุณ', en:'Creative Freedom', desc:'เราให้ข้อมูลที่ถูกต้องและกรอบที่ต้องระวัง ส่วนวิธีเล่าเรื่องเป็นสไตล์ของครีเอเตอร์เต็มที่' }
+    ];
+  }
+  faqList(){
+    return [
+      { key:'assets', q:'ดาวน์โหลดรูปสินค้าได้จากไหน',
+        a:'เปิดหน้าสินค้าที่ต้องการ แล้วเลือกหัวข้อ “ดาวน์โหลดไฟล์” จะบันทึกได้ทั้งรูปที่เลือกอยู่หรือทั้งชุด สำหรับโลโก้แบรนด์ดาวน์โหลดได้ที่หัวข้อ “ไฟล์แบรนด์” ในหน้านี้' },
+      { key:'claim', q:'ใช้คำโฆษณาแบบไหนได้ และแบบไหนควรเลี่ยง',
+        a:'ใช้คำที่บอกลักษณะที่เห็นได้ เช่น “ผิวดูกระจ่างใส” “ดูเรียบเนียน” “ช่วยลดเลือน”\nเลี่ยงคำเชิงรักษาโรค การการันตีผล และกรอบเวลา เช่น “รักษาสิว” “หายขาด” “ขาวใน 3 วัน” เพราะขัดกับกฎของ อย. และนโยบายแพลตฟอร์ม\nรายละเอียดทั้งหมดดูที่หัวข้อ “สิ่งที่ควรเลี่ยง” ในหน้าสินค้าแต่ละรายการ' },
+      { key:'tag', q:'ต้องแท็กแบรนด์และใส่แฮชแท็กอะไร',
+        a:'แต่ละสินค้ามีชุดแฮชแท็กและบัญชีที่ต้องแท็กระบุไว้ที่หัวข้อ “แฮชแท็กและการแท็ก” ในหน้าสินค้านั้น ใช้ตามที่ระบุเพื่อให้คลิปเข้าระบบติดตามผลของแคมเปญ' },
+      { key:'update', q:'ข้อมูลในเว็บนี้อัปเดตบ่อยแค่ไหน',
+        a:'ทีมการตลาดอัปเดตข้อมูลผ่านระบบ และหน้านี้จะแสดงเวอร์ชันล่าสุดทันที แนะนำให้เปิดเช็กอีกครั้งก่อนถ่ายทุกครั้ง' },
+      { key:'safe', q:'สื่อสารเรื่องความปลอดภัยสำหรับคุณแม่และเด็กได้แค่ไหน',
+        a:'บอกได้ว่าสูตรออกแบบมาให้อ่อนโยน เหมาะกับผิวบอบบางและช่วงตั้งครรภ์–หลังคลอด ตามที่ระบุในหัวข้อ “เหมาะกับใคร” ของสินค้านั้น\nแต่ไม่ควรให้คำแนะนำเชิงการแพทย์หรือรับรองความปลอดภัยแทนแพทย์ หากผู้ชมมีข้อสงสัยเฉพาะบุคคล แนะนำให้ปรึกษาแพทย์' },
+      { key:'deal', q:'ค่าตอบแทนและรูปแบบการร่วมงานเป็นแบบไหน',
+        a:'ขึ้นกับแคมเปญและรูปแบบงาน ทีมการตลาดจะแจ้งรายละเอียด เงื่อนไข และกำหนดส่งงานให้ก่อนเริ่มทุกครั้ง สอบถามได้ที่ผู้ประสานงานที่ติดต่อคุณ' }
+    ];
+  }
+  channelList(){
+    // เติม href เมื่อเปิดช่องทางจริงแล้ว (เว้นว่าง = แสดงเป็นข้อความ “เร็ว ๆ นี้”)
+    return [
+      { key:'web',      label:'เว็บไซต์ทางการ',   en:'Official Website', href:'' },
+      { key:'shopee',   label:'Shopee',           en:'Shopee',           href:'' },
+      { key:'tiktok',   label:'TikTok Shop',      en:'TikTok Shop',      href:'' },
+      { key:'facebook', label:'Facebook',         en:'Facebook',         href:'' },
+      { key:'line',     label:'LINE OA',          en:'LINE OA',          href:'' }
+    ];
+  }
+  saveLogoFile(){ this.dl('img/logo/km-trans.png', 'kangaroo-mommy-logo.png'); }
 
   lineMeta(){
     return [
@@ -335,20 +551,59 @@ class Component extends DCLogic {
     const route = this.state.route;
     const lines = this.lineMeta();
 
+    const activeCol = this.state.collection || 'all';
     const sections = lines.map(l => {
       const prods = P.filter(p=>p.line===l.key).map(p=>this.decorate(p));
       return Object.assign({}, l, {
         products: prods,
-        countLabel: String(prods.length).padStart(2,'0')
+        countLabel: String(prods.length).padStart(2,'0'),
+        visible: activeCol==='all' || activeCol===l.key
       });
     }).filter(s=>s.products.length);
+
+    const chipOn  = { bg:'var(--gold)', fg:'#fffaf3', bd:'var(--gold)' };
+    const chipOff = { bg:'#fffdf9', fg:'#7c6c5d', bd:'rgba(169,133,111,0.32)' };
+    const chips = [{ key:'all', label:'ทั้งหมด' }].concat(
+      sections.map(s=>({ key:s.key, label:s.short }))
+    ).map(c => Object.assign({}, c, (activeCol===c.key ? chipOn : chipOff), {
+      pick: () => this.setState({ collection: c.key })
+    }));
+
+    const faqs = this.faqList().map(f => {
+      const isOpen = this.state.openFaq === f.key;
+      return Object.assign({}, f, {
+        open: isOpen, icon: this.accIcon(isOpen),
+        iconColor: isOpen ? 'var(--gold)' : '#b3a696',
+        toggle: () => this.toggleKey('openFaq', f.key)
+      });
+    });
+
+    const contactChannels = [
+      { label:'ทีมการตลาด Kangaroo Mommy', href:'', note:'' },
+      { label:'ผู้ประสานงานที่ติดต่อคุณ', href:'', note:'' }
+    ].map(c => Object.assign({}, c, { hasHref: !!c.href, noHref: !c.href }));
+
+    const chan = this.channelList().map(c => Object.assign({}, c, {
+      hasHref: !!c.href, noHref: !c.href, note: c.href ? '' : '(เร็ว ๆ นี้)'
+    }));
+    const footerGroups = [
+      { title:'ช่องทางแบรนด์', items: chan },
+      { title:'ติดต่อ', items: [
+        { label:'ทีมการตลาด Kangaroo Mommy', href:'', hasHref:false, noHref:true, note:'' },
+        { label:'สอบถามผ่านผู้ประสานงานที่ติดต่อคุณ', href:'', hasHref:false, noHref:true, note:'' }
+      ] }
+    ];
 
     const base = {
       accent,
       productCount: P.length ? String(P.length) : '22',
       isHome: route.view==='home',
       isDetail: route.view==='detail',
-      sections,
+      sections, chips,
+      brandBadges: this.brandBadgeList(),
+      whyCards: this.whyCardList(),
+      faqs, contactChannels, footerGroups,
+      saveLogo: () => this.saveLogoFile(),
       activeShotSrc: '',
       mainImage: null,
       goHome: () => this.goHome()
@@ -369,18 +624,6 @@ class Component extends DCLogic {
 
     const ed = (this.state.edits && this.state.edits[raw.id]) || {};
     const linkVal = ed.link || '';
-    const DEFAULT_DO = [
-      'เปิดคลิป 3 วินาทีแรกให้สะดุด — ตั้งปัญหาผิว/ความกังวลของคุณแม่ก่อนเข้าสินค้า',
-      'ถ่ายในที่แสงสว่างเพียงพอ โทนธรรมชาติ เห็นเนื้อครีมและสีผลิตภัณฑ์ตามจริง',
-      'โชว์ผลิตภัณฑ์และฉลากให้ชัด เห็นแบรนด์ Kangaroo Mommy',
-      'ใช้สินค้าจริง โชว์เท็กซ์เจอร์ การเกลี่ย/การซึม และผลลัพธ์ก่อน–หลัง',
-      'พูดถึงจุดขายหลักและส่วนผสมเด่นให้ถูกต้อง ตรงตามข้อมูลแบรนด์',
-      'เน้นความอ่อนโยน–ปลอดภัย เหมาะกับคุณแม่ตั้งครรภ์/ให้นม และผิวบอบบางของเด็ก',
-      'อธิบายวิธีใช้และขั้นตอนแบบเข้าใจง่าย ทำตามได้จริง',
-      'ติดตะกร้า/ใส่ลิงก์สินค้า และใส่แฮชแท็ก + แท็กแบรนด์ตามที่กำหนด',
-      'ใช้น้ำเสียงเป็นมิตร จริงใจ เหมือนเพื่อนคุณแม่แนะนำกันเอง',
-      'ส่งคลิปตามกำหนดเวลา และไม่ลบโพสต์หลังจากลงแล้ว'
-    ].join('\n');
     const DEFAULT_DONT = [
       'ห้ามกล่าวอ้างสรรพคุณเกินจริงหรือเชิงรักษาโรค (เช่น รักษาสิว/ฝ้าหายขาด) — ผิดกฎ อย./แพลตฟอร์ม',
       'ห้ามการันตีผลลัพธ์ 100% หรือใช้คำเว่อร์ เช่น “ขาวใน 3 วัน / หายขาด”',
@@ -393,25 +636,63 @@ class Component extends DCLogic {
       'ไม่ลืมแท็กแบรนด์และแฮชแท็กที่กำหนด และห้ามลบคลิปหลังโพสต์',
       'ไม่ทำคอนเทนต์ที่เสี่ยงต่อความปลอดภัยของเด็ก (เช่น ทาใกล้ตา/ปากเด็กเกินจำเป็น)'
     ].join('\n');
-    const fieldDefs = [
-      { key:'keymsg',     th:'Key Message',            en:'คีย์เมสเสจ',        ph:'ประโยคจุดขายหลักที่อยากให้ครีเอเตอร์สื่อสาร…', rows:3, full:true },
-      { key:'features',   th:'จุดเด่น / คุณสมบัติ',      en:'Key Features',      ph:'จุดเด่นของผลิตภัณฑ์ (พิมพ์บรรทัดละข้อ)…',      rows:5 },
-      { key:'ingredients',th:'ส่วนผสมหลัก',             en:'Key Ingredients',   ph:'ส่วนผสมสำคัญและประโยชน์ (บรรทัดละข้อ)…',       rows:5 },
-      { key:'suitable',   th:'เหมาะกับสภาพผิว / ปัญหา',  en:'Suitable For',      ph:'กลุ่มผิวหรือปัญหาที่ผลิตภัณฑ์นี้เหมาะ…',        rows:4 },
-      { key:'content',    th:'ไอเดียคอนเทนต์ / หัวข้อคลิป', en:'Content Ideas',  ph:'ตัวอย่างหัวข้อหรือมุมเล่าเรื่อง (บรรทัดละข้อ)…',  rows:5, full:true },
-      { key:'scenes',     th:'โครงคลิป (เปิด 3 วิ / Scene 1–4)', en:'Video Structure', ph:'สรุปโครงคลิปที่อยากให้เล่า…',            rows:5, full:true },
-      { key:'refs',       th:'คลิปอ้างอิง',              en:'Reference Videos',  ph:'วางลิงก์คลิปตัวอย่าง (บรรทัดละ 1 ลิงก์)…',      rows:4, full:true },
-      { key:'hashtags',   th:'Hashtag & Tag',           en:'แฮชแท็ก & แท็ก',    ph:'#แฮชแท็กที่จำเป็น และ @แท็กแบรนด์…',           rows:4, full:true },
-      { key:'dontList',   th:"Don't — สิ่งที่ห้ามทำ",    en:"Don't",             ph:'สิ่งที่ห้ามทำ (บรรทัดละข้อ)…',                rows:11, tone:'dont', def:DEFAULT_DONT }
-    ];
     const bd = (window.KM_BRIEF_DEFAULTS || {})[raw.id] || {};
-    const briefFields = fieldDefs.map(f => {
-      const v = (ed[f.key] != null && ed[f.key] !== '') ? ed[f.key] : (bd[f.key] || f.def || '');
+    const val = (key, def) => {
+      const v = (ed[key] != null && ed[key] !== '') ? ed[key] : (bd[key] || def || '');
+      return v;
+    };
+
+    // ---- Product Details — accordion (ลำดับตามที่ครีเอเตอร์ต้องใช้จริง)
+    const recBadges = (raw.line === 'kids')
+      ? ['เด็กและทารก', 'ผิวบอบบางแพ้ง่าย']
+      : ['คุณแม่ตั้งครรภ์', 'คุณแม่หลังคลอด', 'ผิวบอบบางแพ้ง่าย'];
+    const panelDefs = [
+      { key:'overview',    th:'ภาพรวมสินค้า',    en:'Product Overview', kind:'text',   value: current.intro },
+      { key:'benefits',    th:'จุดเด่นของสินค้า', en:'Key Benefits',     kind:'text',   value: val('features') },
+      { key:'ingredients', th:'ส่วนผสมสำคัญ',    en:'Hero Ingredients', kind:'text',   value: val('ingredients') },
+      { key:'recommended', th:'เหมาะกับใคร',     en:'Recommended For',  kind:'badges', value: val('suitable') },
+      { key:'howto',       th:'วิธีใช้',         en:'How to Use',       kind:'text',   value: current.howto },
+      { key:'know',        th:'ข้อควรรู้',       en:'Things to Know',    kind:'text',   value: (this.props.showCautions ?? true) ? current.caution : '', tone:'warn' },
+      { key:'assets',      th:'ดาวน์โหลดไฟล์',   en:'Download Assets',  kind:'assets' },
+      { key:'links',       th:'ลิงก์สินค้า',     en:'Product Links',    kind:'link' }
+    ];
+    const detailPanels = panelDefs.filter(p => {
+      if (p.kind === 'assets') return shotList.length > 0;
+      if (p.kind === 'link' || p.kind === 'badges') return true;
+      return !!(p.value && String(p.value).trim());
+    }).map(p => {
+      const isOpen = this.state.openPanel === p.key;
+      return Object.assign({}, p, {
+        open: isOpen, icon: this.accIcon(isOpen),
+        iconColor: isOpen ? 'var(--gold)' : '#b3a696',
+        accentColor: p.tone === 'warn' ? '#b08a5f' : 'var(--gold)',
+        isText: p.kind === 'text', isBadges: p.kind === 'badges',
+        isAssets: p.kind === 'assets', isLink: p.kind === 'link',
+        badges: p.kind === 'badges' ? recBadges.map(b => ({ label: b })) : [],
+        hasValue: !!(p.value && String(p.value).trim()),
+        toggle: () => this.toggleKey('openPanel', p.key)
+      });
+    });
+
+    // ---- Content Guide — accordion
+    const guideDefs = [
+      { key:'keymsg',   th:'คีย์เมสเสจ',         en:'Key Message' },
+      { key:'content',  th:'ไอเดียคอนเทนต์',      en:'Content Ideas' },
+      { key:'scenes',   th:'โครงคลิป',           en:'Video Structure' },
+      { key:'refs',     th:'คลิปอ้างอิง',         en:'Content References' },
+      { key:'hashtags', th:'แฮชแท็กและการแท็ก',   en:'Hashtag & Tag' },
+      { key:'dontList', th:'สิ่งที่ควรเลี่ยง',     en:"Don't", def:DEFAULT_DONT, tone:'dont' }
+    ];
+    const guideFields = guideDefs.map(f => {
+      const v = val(f.key, f.def);
+      const isOpen = this.state.openGuide === f.key;
       return Object.assign({}, f, {
         value: v,
         hasValue: !!(v && String(v).trim()),
-        spanStyle: f.full ? 'grid-column:1/-1;' : '',
-        accentColor: f.tone==='dont' ? '#c07a52' : (f.tone==='do' ? '#7f9b62' : 'var(--gold)')
+        open: isOpen, icon: this.accIcon(isOpen),
+        iconColor: isOpen ? 'var(--gold)' : '#b3a696',
+        accentColor: f.tone === 'dont' ? '#c07a52' : 'var(--gold)',
+        toggle: () => this.toggleKey('openGuide', f.key)
       });
     });
 
@@ -433,8 +714,9 @@ class Component extends DCLogic {
       saveActive: ()=> this.saveShots(shotList, idx),
       saveAll: ()=> this.saveShots(shotList),
       showCaution: current.caution && (this.props.showCautions ?? true),
-      briefFields, linkVal,
+      detailPanels, guideFields, linkVal,
       hasLink: !!(linkVal && linkVal.trim()),
+      noLink: !(linkVal && linkVal.trim()),
       linkHref: linkVal,
       goPrev: ()=>this.open(prevId),
       goNext: ()=>this.open(nextId)
