@@ -68,6 +68,7 @@
 <script src="products.js"></script>
 <script src="brief-defaults.js"></script>
 <script src="gallery.js"></script>
+<script src="site-defaults.js"></script>
 <script src="sb-data.js"></script>
 </helmet>
 <div class="kmScroll" style="--gold:{{ accent }};min-height:100vh;background:linear-gradient(180deg,#faf5ec 0%,#f1e7d8 100%);color:#6a5a4d;font-family:'Noto Sans Thai',sans-serif;font-weight:400;line-height:1.65;">
@@ -85,16 +86,16 @@
   <div style="animation:kmFade .5s ease both;">
     <section class="kmHero" style="text-align:center;padding:66px 24px 30px;">
       <img class="kmHeroLogo" src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:190px;width:auto;margin-bottom:22px;"/>
-      <h1 class="kmHeroH1" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:39px;line-height:1.25;color:#3f342c;margin:0 auto;max-width:16em;">ข้อมูลสินค้าสำหรับครีเอเตอร์</h1>
-      <p class="kmHeroSub" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#a9856f;margin:12px 0 0;">Everything you need to create — in one place</p>
-      <p class="kmHeroLead" style="max-width:42em;margin:20px auto 0;font-size:15.5px;color:#7c6c5d;">รวมข้อมูลสินค้า จุดเด่น รูปภาพ และข้อมูลที่จำเป็นสำหรับการสร้างคอนเทนต์ไว้ในที่เดียว</p>
+      <h1 class="kmHeroH1" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:39px;line-height:1.25;color:#3f342c;margin:0 auto;max-width:16em;">{{ s.heroTitle }}</h1>
+      <p class="kmHeroSub" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#a9856f;margin:12px 0 0;">{{ s.heroTag }}</p>
+      <p class="kmHeroLead" style="max-width:42em;margin:20px auto 0;font-size:15.5px;color:#7c6c5d;">{{ s.heroLead }}</p>
     </section>
 
     <section class="kmPad" style="max-width:1180px;margin:0 auto;padding:6px 40px 0;">
       <div class="kmAbout" style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:26px 30px 24px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">About the Brand</div>
-        <h2 class="kmAboutH2" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:23px;color:#3f342c;margin:0 0 12px;">เกี่ยวกับ Kangaroo Mommy</h2>
-        <p style="margin:0;font-size:15px;color:#5f5044;line-height:1.85;max-width:58em;">Kangaroo Mommy คือแบรนด์สกินแคร์สำหรับคุณแม่ตั้งครรภ์ คุณแม่หลังคลอด และผู้ที่มีผิวบอบบางแพ้ง่าย โดยให้ความสำคัญกับความอ่อนโยน ความปลอดภัย และคุณภาพของผลิตภัณฑ์ เพื่อให้คุณแม่สามารถดูแลผิวได้อย่างมั่นใจในทุกช่วงเวลาของการเป็นคุณแม่</p>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">{{ s.aboutTag }}</div>
+        <h2 class="kmAboutH2" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:23px;color:#3f342c;margin:0 0 12px;">{{ s.aboutTitle }}</h2>
+        <p style="margin:0;font-size:15px;color:#5f5044;line-height:1.85;max-width:58em;">{{ s.aboutBody }}</p>
         <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:18px;">
           <sc-for list="{{ brandBadges }}" as="b" hint-placeholder-count="4">
             <span style="font-size:12px;color:#5c4d40;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:5px 14px;white-space:nowrap;">{{ b.label }}</span>
@@ -107,9 +108,9 @@
       <section class="kmSec" style="margin-top:48px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:20px;border-bottom:1px solid rgba(169,133,111,0.28);">
           <div>
-            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">Product Collections</h2>
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">คอลเลกชันสินค้า</div>
-            <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">เลือกคอลเลกชันเพื่อดูเฉพาะกลุ่มที่สนใจ หรือแตะที่สินค้าเพื่อดูข้อมูล จุดเด่น วิธีใช้ และดาวน์โหลดรูป</p>
+            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.colTitleEn }}</h2>
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.colTitleTh }}</div>
+            <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">{{ s.colDesc }}</p>
           </div>
           <div class="kmSecCount" style="font-family:'Cormorant Garamond',serif;font-size:42px;color:rgba(169,133,111,0.4);line-height:1;">{{ productCount }}</div>
         </div>
@@ -161,8 +162,8 @@
       <section class="kmSec" style="margin-top:58px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
           <div>
-            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">Why Work With Us</h2>
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">ร่วมงานกับเราแล้วได้อะไร</div>
+            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.whyTitleEn }}</h2>
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.whyTitleTh }}</div>
           </div>
         </div>
         <div class="kmCardGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;">
@@ -179,36 +180,34 @@
       <section class="kmSec" style="margin-top:58px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
           <div>
-            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">Brand Assets</h2>
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">ไฟล์แบรนด์</div>
-            <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">โลโก้และแนวทางการใช้ชื่อแบรนด์ — รูปสินค้าดาวน์โหลดได้ในหน้าสินค้าแต่ละรายการ</p>
+            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.assetsTitleEn }}</h2>
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.assetsTitleTh }}</div>
+            <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">{{ s.assetsDesc }}</p>
           </div>
         </div>
         <div class="kmCardGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
           <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);display:flex;flex-direction:column;gap:14px;align-items:flex-start;">
             <img src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:64px;width:auto;"/>
             <div>
-              <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">โลโก้แบรนด์ (PNG พื้นใส)</div>
-              <p style="margin:7px 0 0;font-size:13.5px;color:#5f5044;line-height:1.75;">ใช้บนพื้นสีอ่อน เว้นระยะรอบโลโก้ให้พอ ไม่ยืด บิด หรือเปลี่ยนสี</p>
+              <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ s.assetLogoTitle }}</div>
+              <p style="margin:7px 0 0;font-size:13.5px;color:#5f5044;line-height:1.75;">{{ s.assetLogoBody }}</p>
             </div>
             <button class="kmSaveBtn" onClick="{{ saveLogo }}" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fffaf3;border:none;border-radius:9px;padding:11px 18px;font-size:13.5px;font-weight:500;cursor:pointer;">⤓ ดาวน์โหลดโลโก้</button>
           </div>
-          <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">การเรียกชื่อแบรนด์</div>
-            <p style="margin:9px 0 0;font-size:13.5px;color:#5f5044;line-height:1.8;">เขียนว่า <strong style="font-weight:600;color:#3f342c;">Kangaroo Mommy</strong> (ตัว K และ M ใหญ่) หรือ “แคงการู มัมมี่” ในเนื้อหาภาษาไทย ไม่ย่อเป็น KM ในคอนเทนต์ที่เผยแพร่</p>
-          </div>
-          <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">รูปสินค้า</div>
-            <p style="margin:9px 0 0;font-size:13.5px;color:#5f5044;line-height:1.8;">เปิดหน้าสินค้าที่ต้องการ แล้วดาวน์โหลดได้ที่หัวข้อ “ดาวน์โหลดไฟล์” — มีทั้งภาพสินค้าและภาพประกอบไลฟ์สไตล์</p>
-          </div>
+          <sc-for list="{{ assetCards }}" as="a" hint-placeholder-count="2">
+            <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
+              <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ a.title }}</div>
+              <p style="margin:9px 0 0;font-size:13.5px;color:#5f5044;line-height:1.8;">{{ a.body }}</p>
+            </div>
+          </sc-for>
         </div>
       </section>
 
       <section class="kmSec" style="margin-top:58px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
           <div>
-            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">FAQ</h2>
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">คำถามที่พบบ่อย</div>
+            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.faqTitleEn }}</h2>
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.faqTitleTh }}</div>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;">
@@ -228,9 +227,9 @@
 
       <section class="kmSec" style="margin-top:58px;">
         <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:26px 30px 24px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">Need Help?</div>
-          <h2 class="kmAboutH2" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:23px;color:#3f342c;margin:0 0 10px;">มีคำถามเพิ่มเติม</h2>
-          <p style="margin:0;font-size:14.5px;color:#5f5044;line-height:1.85;max-width:52em;">สอบถามเรื่องบรีฟ ข้อมูลสินค้า การส่งตัวอย่าง หรือรายละเอียดการร่วมงาน ติดต่อทีมการตลาด Kangaroo Mommy ได้เลย เรายินดีช่วยเหลือทุกขั้นตอน</p>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">{{ s.helpTag }}</div>
+          <h2 class="kmAboutH2" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:23px;color:#3f342c;margin:0 0 10px;">{{ s.helpTitle }}</h2>
+          <p style="margin:0;font-size:14.5px;color:#5f5044;line-height:1.85;max-width:52em;">{{ s.helpBody }}</p>
           <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;">
             <sc-for list="{{ contactChannels }}" as="c" hint-placeholder-count="2">
               <sc-if value="{{ c.hasHref }}">
@@ -397,8 +396,8 @@
         </sc-for>
       </div>
       <div style="margin-top:22px;padding-top:16px;border-top:1px solid rgba(169,133,111,0.16);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-        <span style="font-size:11.5px;color:#a4917f;letter-spacing:0.05em;">ข้อมูลสินค้าสำหรับครีเอเตอร์ · ใช้อ้างอิงในการผลิตคอนเทนต์เท่านั้น</span>
-        <span style="font-size:11.5px;color:#a4917f;letter-spacing:0.05em;">Kangaroo Mommy Thailand</span>
+        <span style="font-size:11.5px;color:#a4917f;letter-spacing:0.05em;">{{ s.footNote }}</span>
+        <span style="font-size:11.5px;color:#a4917f;letter-spacing:0.05em;">{{ s.footBrand }}</span>
       </div>
     </div>
   </footer>
@@ -409,7 +408,7 @@
 class Component extends DCLogic {
   constructor(props){
     super(props);
-    this.state = { route: this.parseHash(), activeImg: 0, edits: {}, gallery: {},
+    this.state = { route: this.parseHash(), activeImg: 0, edits: {}, gallery: {}, site: null,
       collection: 'all', openPanel: 'overview', openGuide: 'keymsg', openFaq: '' };
   }
   toggleKey(stateKey, key){
@@ -428,7 +427,7 @@ class Component extends DCLogic {
     window.addEventListener('hashchange', this._onHash);
     const self = this;
     (function loadSB(n){
-      if (window.KM_SB) { window.KM_SB.load().then(function(d){ self.setState({ edits:d.edits, gallery:d.gallery }); }); }
+      if (window.KM_SB) { window.KM_SB.load().then(function(d){ self.setState({ edits:d.edits, gallery:d.gallery, site:d.site }); }); }
       else if (n < 60) { setTimeout(function(){ loadSB(n+1); }, 60); }
     })(0);
     if(!window.KM_PRODUCTS){
@@ -464,43 +463,50 @@ class Component extends DCLogic {
     });
   }
 
-  brandBadgeList(){
-    return ['🛡 Safety First','🌿 Gentle Formula','👩‍🍼 Pregnancy Skincare','🤍 Sensitive Skin'].map(l=>({label:l}));
+  // ---- เนื้อหาหน้าเว็บ: ใช้ค่าที่แก้ในหลังบ้าน (Supabase แถว __site__) ถ้าไม่มีใช้ค่าเริ่มต้น
+  siteVal(key){
+    const H = window.KM_SITE;
+    if (H) return H.eff(this.state.site, key);
+    const d = window.KM_SITE_DEFAULTS || {};
+    return d[key] != null ? d[key] : '';
   }
+  siteLines(key){ const H = window.KM_SITE; return H ? H.lines(this.siteVal(key)) : []; }
+  siteText(){
+    const keys = ['heroTitle','heroTag','heroLead','aboutTag','aboutTitle','aboutBody',
+      'colTitleEn','colTitleTh','colDesc','whyTitleEn','whyTitleTh',
+      'assetsTitleEn','assetsTitleTh','assetsDesc','assetLogoTitle','assetLogoBody',
+      'faqTitleEn','faqTitleTh','helpTag','helpTitle','helpBody',
+      'channelTitle','contactTitle','footNote','footBrand'];
+    const o = {};
+    keys.forEach(k => { o[k] = this.siteVal(k); });
+    return o;
+  }
+  brandBadgeList(){ return this.siteLines('badges').map(l => ({ label: l })); }
   whyCardList(){
-    return [
-      { th:'แบรนด์ทางการในไทย', en:'Official Thailand Brand', desc:'ทำตลาดในประเทศไทยอย่างเป็นทางการ มีข้อมูลสินค้าและเอกสารประกอบครบ พร้อมทีมงานดูแลครีเอเตอร์โดยตรง' },
-      { th:'งานจ้างมีค่าตอบแทน', en:'Paid Collaboration', desc:'มีทั้งงานจ้างและงานร่วมมือแบบรับสินค้า รายละเอียดและเงื่อนไขแจ้งเป็นรายแคมเปญโดยทีมการตลาด' },
-      { th:'รับคอมมิชชันจากยอดขาย', en:'Affiliate Program', desc:'ติดตะกร้าสินค้าในคลิปแล้วรับคอมมิชชันจากยอดขายได้ ผ่านระบบ Affiliate ของแพลตฟอร์ม' },
-      { th:'มีสินค้าให้ทดลองใช้', en:'Product Support', desc:'ส่งสินค้าตัวจริงให้ลองใช้ก่อนถ่าย พร้อมข้อมูลสินค้า จุดเด่น และรูปภาพครบในเว็บนี้' },
-      { th:'เล่าในสไตล์ของคุณ', en:'Creative Freedom', desc:'เราให้ข้อมูลที่ถูกต้องและกรอบที่ต้องระวัง ส่วนวิธีเล่าเรื่องเป็นสไตล์ของครีเอเตอร์เต็มที่' }
-    ];
+    const H = window.KM_SITE;
+    return this.siteLines('why').map(line => {
+      const p = H ? H.parts(line, 3) : ['','',''];
+      return { th: p[0], en: p[1], desc: p[2] };
+    });
+  }
+  assetCardList(){
+    const H = window.KM_SITE;
+    return this.siteLines('assets').map(line => {
+      const p = H ? H.parts(line, 2) : ['',''];
+      return { title: p[0], body: p[1] };
+    });
   }
   faqList(){
-    return [
-      { key:'assets', q:'ดาวน์โหลดรูปสินค้าได้จากไหน',
-        a:'เปิดหน้าสินค้าที่ต้องการ แล้วเลือกหัวข้อ “ดาวน์โหลดไฟล์” จะบันทึกได้ทั้งรูปที่เลือกอยู่หรือทั้งชุด สำหรับโลโก้แบรนด์ดาวน์โหลดได้ที่หัวข้อ “ไฟล์แบรนด์” ในหน้านี้' },
-      { key:'claim', q:'ใช้คำโฆษณาแบบไหนได้ และแบบไหนควรเลี่ยง',
-        a:'ใช้คำที่บอกลักษณะที่เห็นได้ เช่น “ผิวดูกระจ่างใส” “ดูเรียบเนียน” “ช่วยลดเลือน”\nเลี่ยงคำเชิงรักษาโรค การการันตีผล และกรอบเวลา เช่น “รักษาสิว” “หายขาด” “ขาวใน 3 วัน” เพราะขัดกับกฎของ อย. และนโยบายแพลตฟอร์ม\nรายละเอียดทั้งหมดดูที่หัวข้อ “สิ่งที่ควรเลี่ยง” ในหน้าสินค้าแต่ละรายการ' },
-      { key:'tag', q:'ต้องแท็กแบรนด์และใส่แฮชแท็กอะไร',
-        a:'แต่ละสินค้ามีชุดแฮชแท็กและบัญชีที่ต้องแท็กระบุไว้ที่หัวข้อ “แฮชแท็กและการแท็ก” ในหน้าสินค้านั้น ใช้ตามที่ระบุเพื่อให้คลิปเข้าระบบติดตามผลของแคมเปญ' },
-      { key:'update', q:'ข้อมูลในเว็บนี้อัปเดตบ่อยแค่ไหน',
-        a:'ทีมการตลาดอัปเดตข้อมูลผ่านระบบ และหน้านี้จะแสดงเวอร์ชันล่าสุดทันที แนะนำให้เปิดเช็กอีกครั้งก่อนถ่ายทุกครั้ง' },
-      { key:'safe', q:'สื่อสารเรื่องความปลอดภัยสำหรับคุณแม่และเด็กได้แค่ไหน',
-        a:'บอกได้ว่าสูตรออกแบบมาให้อ่อนโยน เหมาะกับผิวบอบบางและช่วงตั้งครรภ์–หลังคลอด ตามที่ระบุในหัวข้อ “เหมาะกับใคร” ของสินค้านั้น\nแต่ไม่ควรให้คำแนะนำเชิงการแพทย์หรือรับรองความปลอดภัยแทนแพทย์ หากผู้ชมมีข้อสงสัยเฉพาะบุคคล แนะนำให้ปรึกษาแพทย์' },
-      { key:'deal', q:'ค่าตอบแทนและรูปแบบการร่วมงานเป็นแบบไหน',
-        a:'ขึ้นกับแคมเปญและรูปแบบงาน ทีมการตลาดจะแจ้งรายละเอียด เงื่อนไข และกำหนดส่งงานให้ก่อนเริ่มทุกครั้ง สอบถามได้ที่ผู้ประสานงานที่ติดต่อคุณ' }
-    ];
+    const H = window.KM_SITE;
+    const blocks = H ? H.blocks(this.siteVal('faq')) : [];
+    return blocks.map((b, i) => ({ key: 'q' + i, q: b.q, a: b.a }));
   }
-  channelList(){
-    // เติม href เมื่อเปิดช่องทางจริงแล้ว (เว้นว่าง = แสดงเป็นข้อความ “เร็ว ๆ นี้”)
-    return [
-      { key:'web',      label:'เว็บไซต์ทางการ',   en:'Official Website', href:'' },
-      { key:'shopee',   label:'Shopee',           en:'Shopee',           href:'' },
-      { key:'tiktok',   label:'TikTok Shop',      en:'TikTok Shop',      href:'' },
-      { key:'facebook', label:'Facebook',         en:'Facebook',         href:'' },
-      { key:'line',     label:'LINE OA',          en:'LINE OA',          href:'' }
-    ];
+  linkListOf(key){
+    const H = window.KM_SITE;
+    return this.siteLines(key).map(line => {
+      const p = H ? H.parts(line, 2) : ['',''];
+      return { label: p[0], href: p[1] };
+    });
   }
   saveLogoFile(){ this.dl('img/logo/km-trans.png', 'kangaroo-mommy-logo.png'); }
 
@@ -578,30 +584,26 @@ class Component extends DCLogic {
       });
     });
 
-    const contactChannels = [
-      { label:'ทีมการตลาด Kangaroo Mommy', href:'', note:'' },
-      { label:'ผู้ประสานงานที่ติดต่อคุณ', href:'', note:'' }
-    ].map(c => Object.assign({}, c, { hasHref: !!c.href, noHref: !c.href }));
-
-    const chan = this.channelList().map(c => Object.assign({}, c, {
-      hasHref: !!c.href, noHref: !c.href, note: c.href ? '' : '(เร็ว ๆ นี้)'
+    const mark = (arr, showNote) => arr.map(c => Object.assign({}, c, {
+      hasHref: !!c.href, noHref: !c.href, note: (showNote && !c.href) ? '(เร็ว ๆ นี้)' : ''
     }));
+    const contactChannels = mark(this.linkListOf('contacts'), false);
+    const st = this.siteText();
     const footerGroups = [
-      { title:'ช่องทางแบรนด์', items: chan },
-      { title:'ติดต่อ', items: [
-        { label:'ทีมการตลาด Kangaroo Mommy', href:'', hasHref:false, noHref:true, note:'' },
-        { label:'สอบถามผ่านผู้ประสานงานที่ติดต่อคุณ', href:'', hasHref:false, noHref:true, note:'' }
-      ] }
+      { title: st.channelTitle, items: mark(this.linkListOf('channels'), true) },
+      { title: st.contactTitle, items: mark(this.linkListOf('contacts'), false) }
     ];
 
     const base = {
       accent,
+      s: st,
       productCount: P.length ? String(P.length) : '22',
       isHome: route.view==='home',
       isDetail: route.view==='detail',
       sections, chips,
       brandBadges: this.brandBadgeList(),
       whyCards: this.whyCardList(),
+      assetCards: this.assetCardList(),
       faqs, contactChannels, footerGroups,
       saveLogo: () => this.saveLogoFile(),
       activeShotSrc: '',
@@ -643,9 +645,7 @@ class Component extends DCLogic {
     };
 
     // ---- Product Details — accordion (ลำดับตามที่ครีเอเตอร์ต้องใช้จริง)
-    const recBadges = (raw.line === 'kids')
-      ? ['เด็กและทารก', 'ผิวบอบบางแพ้ง่าย']
-      : ['คุณแม่ตั้งครรภ์', 'คุณแม่หลังคลอด', 'ผิวบอบบางแพ้ง่าย'];
+    const recBadges = this.siteLines(raw.line === 'kids' ? 'recBadgesKids' : 'recBadges');
     const panelDefs = [
       { key:'overview',    th:'ภาพรวมสินค้า',    en:'Product Overview', kind:'text',   value: current.intro },
       { key:'benefits',    th:'จุดเด่นของสินค้า', en:'Key Benefits',     kind:'text',   value: val('features') },

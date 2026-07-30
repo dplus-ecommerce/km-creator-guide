@@ -10,56 +10,78 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  html,body{margin:0;padding:0;background:#efe7db;}
+  html,body{margin:0;padding:0;background:#f4ede2;}
   *{box-sizing:border-box;}
   button{font-family:inherit;}
   textarea,input{font-family:inherit;}
   .kmS::-webkit-scrollbar{width:9px;height:9px;}
   .kmS::-webkit-scrollbar-thumb{background:rgba(169,133,111,0.4);border-radius:8px;}
-  textarea::placeholder,input::placeholder{color:#b3a696;}
+  textarea::placeholder,input::placeholder{color:#c4b7a6;}
+  /* ช่องแก้ไข: ดูเหมือนข้อความบนเว็บจริง จนกว่าจะชี้หรือคลิก */
+  .kmEdit{width:100%;background:transparent;border:1px dashed rgba(169,133,111,0.28);border-radius:7px;padding:5px 8px;outline:none;resize:none;overflow:hidden;transition:background .15s,border-color .15s;}
+  .kmEdit:hover{border-color:rgba(169,133,111,0.55);background:rgba(255,253,249,0.6);}
+  .kmEdit:focus{border-style:solid;border-color:#a9856f;background:#fffdf9;}
+  .kmList{width:100%;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:9px;color:#463a2f;font-size:13px;line-height:1.7;padding:10px 12px;outline:none;resize:vertical;}
+  .kmList:focus{border-color:#a9856f;}
+  .kmHint{font-size:11.5px;color:#a4917f;margin:6px 0 0;}
+  .kmBar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .kmMini{background:none;border:none;color:#a9856f;cursor:pointer;font-size:11.5px;text-decoration:underline;padding:0;}
+  .kmAccBtn:hover{background:rgba(169,133,111,0.06);}
+  @media (max-width:900px){
+    .kmGrid{grid-template-columns:1fr !important;}
+    .kmSide{position:static !important;height:auto !important;max-height:230px;}
+    .kmTop2{grid-template-columns:1fr !important;}
+    .kmPad2{padding-left:18px !important;padding-right:18px !important;}
+  }
 </style>
 <script src="products.js"></script>
 <script src="brief-defaults.js"></script>
 <script src="gallery.js"></script>
+<script src="site-defaults.js"></script>
 <script src="sb-data.js"></script>
 </helmet>
-<div style="min-height:100vh;background:#f3ece0;color:#5f5044;font-family:'Noto Sans Thai',sans-serif;font-weight:400;display:flex;flex-direction:column;">
+<div style="--gold:#a9856f;min-height:100vh;background:linear-gradient(180deg,#faf5ec 0%,#f1e7d8 100%);color:#6a5a4d;font-family:'Noto Sans Thai',sans-serif;line-height:1.65;">
 
-  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 28px;background:#fffdf9;border-bottom:1px solid rgba(169,133,111,0.28);position:sticky;top:0;z-index:10;">
-    <div style="display:flex;align-items:center;gap:14px;">
-      <img src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:44px;width:auto;"/>
+  <header style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px 26px;background:rgba(250,245,236,0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(169,133,111,0.28);">
+    <div style="display:flex;align-items:center;gap:13px;">
+      <img src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:40px;width:auto;"/>
       <div>
-        <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:18px;color:#3f342c;">หลังบ้าน · จัดการเนื้อหา</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#a9856f;">Creator Brief Admin</div>
+        <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:16px;color:#3f342c;">หลังบ้าน · แก้ไขหน้าเว็บ</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:#a9856f;">คลิกที่ข้อความไหนก็แก้ได้ · บันทึกอัตโนมัติ</div>
       </div>
     </div>
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;">
       <span style="font-size:12px;color:{{ savedColor }};display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:{{ savedColor }};"></span>{{ savedText }}</span>
-      <button onClick="{{ toggleJson }}" style="background:#fffdf9;border:1px solid rgba(169,133,111,0.4);border-radius:8px;padding:9px 14px;color:#7c6c5d;cursor:pointer;font-size:13px;">นำเข้า / ส่งออก</button>
-      <a href="Product Info.dc.html" target="_blank" style="background:var(--gold,#a9856f);color:#fffaf3;text-decoration:none;border-radius:8px;padding:10px 16px;font-size:13px;font-weight:500;">เปิดหน้าเว็บ ↗</a>
+      <button onClick="{{ toggleJson }}" style="background:#fffdf9;border:1px solid rgba(169,133,111,0.4);border-radius:8px;padding:8px 13px;color:#7c6c5d;cursor:pointer;font-size:12.5px;">สำรอง / กู้คืน</button>
+      <a href="Product Info.dc.html" target="_blank" style="background:var(--gold);color:#fffaf3;text-decoration:none;border-radius:8px;padding:9px 15px;font-size:12.5px;font-weight:500;">ดูหน้าเว็บจริง ↗</a>
     </div>
   </header>
 
   <sc-if value="{{ jsonOpen }}">
-    <div style="background:#2c241b;color:#efe3cf;padding:18px 28px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px;">
-        <div style="font-size:13px;color:#d9c9a8;">คัดลอกโค้ดนี้เก็บไว้เพื่อสำรอง หรือวางโค้ดที่สำรองไว้แล้วกด “นำเข้า” เพื่อกู้คืน</div>
+    <div style="background:#2c241b;color:#efe3cf;padding:16px 26px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:9px;">
+        <div style="font-size:12.5px;color:#d9c9a8;">คัดลอกเก็บไว้เพื่อสำรอง หรือวางข้อมูลที่สำรองไว้แล้วกด “กู้คืน” (ครอบคลุมหน้าแรกและสินค้าทั้งหมด)</div>
         <div style="display:flex;gap:8px;">
-          <button onClick="{{ doImport }}" style="background:#a9856f;border:none;border-radius:7px;padding:8px 14px;color:#fff;cursor:pointer;font-size:12.5px;">นำเข้า</button>
-          <button onClick="{{ doDownload }}" style="background:#4a3d31;border:1px solid #6b5a48;border-radius:7px;padding:8px 14px;color:#efe3cf;cursor:pointer;font-size:12.5px;">ดาวน์โหลดไฟล์</button>
+          <button onClick="{{ doImport }}" style="background:#a9856f;border:none;border-radius:7px;padding:7px 13px;color:#fff;cursor:pointer;font-size:12px;">กู้คืน</button>
+          <button onClick="{{ doDownload }}" style="background:#4a3d31;border:1px solid #6b5a48;border-radius:7px;padding:7px 13px;color:#efe3cf;cursor:pointer;font-size:12px;">ดาวน์โหลดไฟล์</button>
         </div>
       </div>
-      <textarea value="{{ jsonText }}" onInput="{{ onJson }}" rows="7" style="width:100%;background:#1e1912;border:1px solid #4a3d31;border-radius:8px;color:#e7d8bc;font-family:ui-monospace,monospace;font-size:12px;line-height:1.5;padding:12px;outline:none;"></textarea>
+      <textarea value="{{ jsonText }}" onInput="{{ onJson }}" rows="6" style="width:100%;background:#1e1912;border:1px solid #4a3d31;border-radius:8px;color:#e7d8bc;font-family:ui-monospace,monospace;font-size:12px;line-height:1.5;padding:11px;outline:none;"></textarea>
     </div>
   </sc-if>
 
-  <div class="kmS" style="flex:1;display:grid;grid-template-columns:288px 1fr;min-height:0;">
+  <div class="kmGrid" style="display:grid;grid-template-columns:264px 1fr;align-items:start;">
 
-    <aside class="kmS" style="border-right:1px solid rgba(169,133,111,0.28);background:#faf5ec;overflow:auto;padding:10px 0 40px;">
+    <aside class="kmS kmSide" style="position:sticky;top:66px;height:calc(100vh - 66px);overflow:auto;border-right:1px solid rgba(169,133,111,0.26);background:#faf5ec;padding:14px 0 40px;">
+      <button onClick="{{ openHome }}" style="{{ homeBtnStyle }}">
+        <span style="width:6px;height:6px;border-radius:50%;background:{{ homeDot }};flex:none;"></span>
+        <span style="flex:1;text-align:left;">หน้าแรกของเว็บ</span>
+      </button>
+      <div style="padding:14px 20px 6px;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:0.2em;text-transform:uppercase;color:#a9856f;">Products</div>
       <sc-for list="{{ groups }}" as="g" hint-placeholder-count="5">
-        <div style="padding:16px 20px 6px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#a9856f;">{{ g.en }}</div>
+        <div style="padding:12px 20px 5px;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#b5a48f;">{{ g.en }}</div>
         <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
           <button onClick="{{ it.open }}" style="{{ it.style }}" style-hover="background:rgba(169,133,111,0.1);">
             <span style="width:6px;height:6px;border-radius:50%;background:{{ it.dot }};flex:none;"></span>
@@ -69,105 +91,328 @@
       </sc-for>
     </aside>
 
-    <main class="kmS" style="overflow:auto;padding:26px 32px 80px;">
-      <div style="max-width:860px;margin:0 auto;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:18px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
-          <div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:#a9856f;">{{ cur.lineEn }}</div>
-            <h1 style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:24px;color:#3f342c;margin:6px 0 2px;">{{ cur.thaiName }}</h1>
-            <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#a08972;">{{ cur.enName }}</div>
-          </div>
-          <button onClick="{{ resetProduct }}" style="background:#fffdf9;border:1px solid rgba(196,120,90,0.5);border-radius:8px;padding:9px 14px;color:#b5623f;cursor:pointer;font-size:12.5px;white-space:nowrap;">คืนค่าเริ่มต้นทั้งสินค้า</button>
+    <main class="kmS" style="padding:0 0 90px;">
+
+      <!-- ============ โหมดหน้าแรก ============ -->
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div class="kmPad2" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 40px;background:rgba(255,253,249,0.7);border-bottom:1px dashed rgba(169,133,111,0.3);">
+          <div style="font-size:12.5px;color:#8a7a6b;">กำลังแก้ <strong style="color:#3f342c;">หน้าแรกของเว็บ</strong> — ทุกอย่างด้านล่างคือหน้าเว็บจริง คลิกที่ข้อความเพื่อแก้</div>
+          <button onClick="{{ resetSite }}" style="background:#fffdf9;border:1px solid rgba(196,120,90,0.5);border-radius:8px;padding:8px 13px;color:#b5623f;cursor:pointer;font-size:12px;white-space:nowrap;">คืนค่าเริ่มต้นทั้งหน้าแรก</button>
         </div>
 
-        <div style="margin-bottom:24px;padding:16px 18px 18px;background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:13px;">
-            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-              <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">รูปภาพ & ลำดับการแสดง</span>
-              <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">Gallery &amp; Order</span>
-              <sc-if value="{{ galleryOverridden }}"><span style="font-size:10.5px;color:#8a6f4e;background:rgba(169,133,111,0.16);border-radius:20px;padding:2px 9px;">แก้ไขแล้ว</span></sc-if>
-            </div>
-            <div style="display:flex;gap:8px;align-items:center;">
-              <label style="background:var(--gold,#a9856f);color:#fff;border-radius:8px;padding:8px 14px;font-size:12.5px;cursor:pointer;">+ เพิ่มรูป<input type="file" accept="image/*" multiple onChange="{{ onAddImages }}" style="display:none;"/></label>
-              <sc-if value="{{ galleryOverridden }}"><button onClick="{{ resetGallery }}" style="background:none;border:1px solid rgba(169,133,111,0.4);border-radius:8px;padding:8px 12px;color:#a9856f;cursor:pointer;font-size:12px;">คืนค่าเริ่มต้น</button></sc-if>
-            </div>
+        <section class="kmPad2" style="text-align:center;padding:40px 24px 18px;">
+          <img src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:128px;width:auto;margin-bottom:14px;"/>
+          <div style="max-width:760px;margin:0 auto;">
+            <sc-for list="{{ heroFields }}" as="f" hint-placeholder-count="3">
+              <div style="margin-bottom:9px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
+            </sc-for>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:12px;">
-            <sc-for list="{{ shots }}" as="s" hint-placeholder-count="4">
-              <div style="border:1px solid rgba(169,133,111,0.28);border-radius:9px;overflow:hidden;background:#f6efe4;">
-                <div style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:8px;background:#fbf7f0;">{{ s.thumb }}</div>
-                <div style="display:flex;align-items:center;gap:2px;padding:6px 6px;border-top:1px solid rgba(169,133,111,0.2);">
-                  <button onClick="{{ s.onLeft }}" style="background:none;border:none;color:#a9856f;cursor:pointer;font-size:14px;padding:2px 4px;">◀</button>
-                  <span style="font-size:9.5px;color:#8a7a6b;flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ s.label }}</span>
-                  <button onClick="{{ s.onRight }}" style="background:none;border:none;color:#a9856f;cursor:pointer;font-size:14px;padding:2px 4px;">▶</button>
-                  <button onClick="{{ s.onRemove }}" style="background:none;border:none;color:#c07a52;cursor:pointer;font-size:13px;padding:2px 4px;">✕</button>
-                </div>
+        </section>
+
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:6px 40px 0;">
+          <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:22px 26px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
+            <sc-for list="{{ aboutFields }}" as="f" hint-placeholder-count="3">
+              <div style="margin-bottom:9px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
+            </sc-for>
+            <div style="display:flex;flex-wrap:wrap;gap:9px;margin:14px 0 10px;">
+              <sc-for list="{{ badgePreview }}" as="b" hint-placeholder-count="4">
+                <span style="font-size:12px;color:#5c4d40;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:5px 14px;white-space:nowrap;">{{ b.label }}</span>
+              </sc-for>
+            </div>
+            <textarea class="kmList" value="{{ badgesField.value }}" onInput="{{ badgesField.onInput }}" rows="{{ badgesField.rows }}" placeholder="บรรทัดละ 1 ป้าย"></textarea>
+            <p class="kmHint">ป้ายใต้ข้อความแบรนด์ — พิมพ์บรรทัดละ 1 ป้าย (ใส่อีโมจิได้)</p>
+          </div>
+        </section>
+
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
+          <div style="padding-bottom:14px;border-bottom:1px solid rgba(169,133,111,0.28);">
+            <sc-for list="{{ colFields }}" as="f" hint-placeholder-count="3">
+              <div style="margin-bottom:8px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:14px;">
+            <sc-for list="{{ chipPreview }}" as="c" hint-placeholder-count="6">
+              <span style="font-size:12.5px;color:#7c6c5d;background:#fffdf9;border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:7px 15px;">{{ c.label }}</span>
+            </sc-for>
+          </div>
+          <p class="kmHint">ปุ่มเลือกคอลเลกชันสร้างจากกลุ่มสินค้าอัตโนมัติ — เพิ่ม/ลบสินค้าแล้วปุ่มเปลี่ยนตาม</p>
+        </section>
+
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
+          <div style="padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid rgba(169,133,111,0.28);">
+            <sc-for list="{{ whyTitleFields }}" as="f" hint-placeholder-count="2">
+              <div style="margin-bottom:8px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:12px;">
+            <sc-for list="{{ whyPreview }}" as="w" hint-placeholder-count="5">
+              <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:16px 18px;">
+                <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ w.th }}</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:#a4917f;margin-top:3px;">{{ w.en }}</div>
+                <p style="margin:9px 0 0;font-size:13.5px;color:#5f5044;line-height:1.75;">{{ w.desc }}</p>
               </div>
             </sc-for>
           </div>
-          <div style="margin-top:10px;font-size:11px;color:#a4917f;">ลากรูปมาวางไม่ได้ ให้กด “+ เพิ่มรูป” · ◀ ▶ จัดลำดับ · ✕ ลบรูป · รูปที่เพิ่มถูกย่อขนาดอัตโนมัติเพื่อประหยัดพื้นที่</div>
-        </div>
+          <textarea class="kmList" value="{{ whyField.value }}" onInput="{{ whyField.onInput }}" rows="{{ whyField.rows }}" placeholder="หัวข้อไทย | หัวข้ออังกฤษ | คำอธิบาย"></textarea>
+          <p class="kmHint">การ์ด 1 ใบ = 1 บรรทัด · รูปแบบ <strong>หัวข้อไทย | หัวข้ออังกฤษ | คำอธิบาย</strong></p>
+        </section>
 
-        <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:13px;letter-spacing:0.04em;color:#8a6f4e;margin-bottom:14px;padding-bottom:8px;border-bottom:1px dashed rgba(169,133,111,0.32);">ข้อมูลพื้นฐานสินค้า · Product Basics</div>
-        <sc-for list="{{ basicFields }}" as="f" hint-placeholder-count="7">
-          <div style="margin-bottom:20px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
-              <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ f.th }}</span>
-              <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ f.en }}</span>
-              <sc-if value="{{ f.overridden }}">
-                <span style="font-size:10.5px;color:#8a6f4e;background:rgba(169,133,111,0.16);border-radius:20px;padding:2px 9px;">แก้ไขแล้ว</span>
-              </sc-if>
-              <span style="flex:1;"></span>
-              <sc-if value="{{ f.overridden }}">
-                <button onClick="{{ f.reset }}" style="background:none;border:none;color:#a9856f;cursor:pointer;font-size:12px;text-decoration:underline;padding:0;">คืนค่าเริ่มต้น</button>
-              </sc-if>
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
+          <div style="padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid rgba(169,133,111,0.28);">
+            <sc-for list="{{ assetTitleFields }}" as="f" hint-placeholder-count="3">
+              <div style="margin-bottom:8px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:12px;">
+            <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:18px;">
+              <img src="img/logo/km-trans.png" alt="" style="height:56px;width:auto;margin-bottom:10px;"/>
+              <sc-for list="{{ logoCardFields }}" as="f" hint-placeholder-count="2">
+                <div style="margin-bottom:7px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
+              </sc-for>
+              <span style="display:inline-block;margin-top:6px;background:var(--gold);color:#fffaf3;border-radius:9px;padding:9px 15px;font-size:13px;">⤓ ดาวน์โหลดโลโก้</span>
             </div>
-            <textarea value="{{ f.value }}" onInput="{{ f.onInput }}" placeholder="{{ f.ph }}" rows="{{ f.rows }}" style="width:100%;resize:vertical;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:9px;color:#463a2f;font-weight:400;font-size:14px;line-height:1.7;padding:12px 14px;outline:none;" style-focus="border-color:#a9856f;"></textarea>
+            <sc-for list="{{ assetPreview }}" as="a" hint-placeholder-count="2">
+              <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:18px;">
+                <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ a.title }}</div>
+                <p style="margin:9px 0 0;font-size:13.5px;color:#5f5044;line-height:1.8;">{{ a.body }}</p>
+              </div>
+            </sc-for>
           </div>
-        </sc-for>
+          <textarea class="kmList" value="{{ assetField.value }}" onInput="{{ assetField.onInput }}" rows="{{ assetField.rows }}" placeholder="หัวข้อ | คำอธิบาย"></textarea>
+          <p class="kmHint">การ์ดข้างโลโก้ · รูปแบบ <strong>หัวข้อ | คำอธิบาย</strong> (บรรทัดละการ์ด)</p>
+        </section>
 
-        <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:13px;letter-spacing:0.04em;color:#8a6f4e;margin:26px 0 14px;padding-bottom:8px;border-bottom:1px dashed rgba(169,133,111,0.32);">บรีฟสำหรับครีเอเตอร์ · Creator Brief</div>
-        <sc-for list="{{ fields }}" as="f" hint-placeholder-count="10">
-          <div style="margin-bottom:20px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
-              <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ f.th }}</span>
-              <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ f.en }}</span>
-              <sc-if value="{{ f.overridden }}">
-                <span style="font-size:10.5px;color:#8a6f4e;background:rgba(169,133,111,0.16);border-radius:20px;padding:2px 9px;">แก้ไขแล้ว</span>
-              </sc-if>
-              <span style="flex:1;"></span>
-              <sc-if value="{{ f.overridden }}">
-                <button onClick="{{ f.reset }}" style="background:none;border:none;color:#a9856f;cursor:pointer;font-size:12px;text-decoration:underline;padding:0;">คืนค่าเริ่มต้น</button>
-              </sc-if>
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
+          <div style="padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid rgba(169,133,111,0.28);">
+            <sc-for list="{{ faqTitleFields }}" as="f" hint-placeholder-count="2">
+              <div style="margin-bottom:8px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:12px;">
+            <sc-for list="{{ faqPreview }}" as="q" hint-placeholder-count="4">
+              <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:13px 18px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                  <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ q.q }}</span>
+                  <span style="font-size:13px;color:#b3a696;">+</span>
+                </div>
+                <div style="margin-top:8px;font-size:13px;color:#7c6c5d;line-height:1.75;white-space:pre-wrap;">{{ q.a }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <textarea class="kmList" value="{{ faqField.value }}" onInput="{{ faqField.onInput }}" rows="{{ faqField.rows }}" placeholder="บรรทัดแรก = คำถาม / บรรทัดถัดไป = คำตอบ / เว้นบรรทัดว่างเพื่อขึ้นข้อใหม่"></textarea>
+          <p class="kmHint">1 ข้อ = 1 ย่อหน้า · <strong>บรรทัดแรกคือคำถาม</strong> บรรทัดถัดไปคือคำตอบ · เว้น 1 บรรทัดว่างเพื่อขึ้นข้อใหม่</p>
+        </section>
+
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
+          <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:22px 26px;">
+            <sc-for list="{{ helpFields }}" as="f" hint-placeholder-count="3">
+              <div style="margin-bottom:9px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
+            </sc-for>
+            <div style="display:flex;flex-wrap:wrap;gap:9px;margin:12px 0 10px;">
+              <sc-for list="{{ contactPreview }}" as="c" hint-placeholder-count="2">
+                <span style="font-size:13px;color:#7c6c5d;border:1px solid rgba(169,133,111,0.3);border-radius:8px;padding:10px 16px;">{{ c.label }}</span>
+              </sc-for>
             </div>
-            <textarea value="{{ f.value }}" onInput="{{ f.onInput }}" placeholder="{{ f.ph }}" rows="{{ f.rows }}" style="width:100%;resize:vertical;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:9px;color:#463a2f;font-weight:400;font-size:14px;line-height:1.7;padding:12px 14px;outline:none;" style-focus="border-color:#a9856f;"></textarea>
+            <textarea class="kmList" value="{{ contactField.value }}" onInput="{{ contactField.onInput }}" rows="{{ contactField.rows }}" placeholder="ป้ายที่แสดง | ลิงก์ (เว้นว่างได้)"></textarea>
+            <p class="kmHint">ช่องทางติดต่อ · รูปแบบ <strong>ป้ายที่แสดง | ลิงก์</strong> — ถ้าใส่ลิงก์จะกลายเป็นปุ่มกดได้ (ใช้ทั้งในกล่องนี้และคอลัมน์ “ติดต่อ” ท้ายเว็บ)</p>
           </div>
-        </sc-for>
+        </section>
 
-        <div style="margin-bottom:20px;">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
-            <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">ลิงก์สินค้า</span>
-            <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">Product Link</span>
-            <sc-if value="{{ linkOverridden }}"><span style="font-size:10.5px;color:#8a6f4e;background:rgba(169,133,111,0.16);border-radius:20px;padding:2px 9px;">แก้ไขแล้ว</span></sc-if>
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
+          <div style="border-top:1px solid rgba(169,133,111,0.22);padding-top:20px;">
+            <div class="kmTop2" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+              <div>
+                <textarea class="kmEdit" value="{{ channelTitleField.value }}" onInput="{{ channelTitleField.onInput }}" rows="1" style="{{ channelTitleField.style }}"></textarea>
+                <div style="margin:9px 0 8px;">
+                  <sc-for list="{{ channelPreview }}" as="c" hint-placeholder-count="5">
+                    <div style="font-size:13px;color:#7c6c5d;margin-bottom:5px;">{{ c.label }} <span style="font-size:11px;color:#b3a696;">{{ c.note }}</span></div>
+                  </sc-for>
+                </div>
+                <textarea class="kmList" value="{{ channelField.value }}" onInput="{{ channelField.onInput }}" rows="{{ channelField.rows }}" placeholder="ชื่อช่องทาง | ลิงก์"></textarea>
+                <p class="kmHint">ยังไม่ใส่ลิงก์ = แสดงคำว่า “เร็ว ๆ นี้” · ใส่ลิงก์แล้วกดได้ทันที</p>
+              </div>
+              <div>
+                <textarea class="kmEdit" value="{{ contactTitleField.value }}" onInput="{{ contactTitleField.onInput }}" rows="1" style="{{ contactTitleField.style }}"></textarea>
+                <p class="kmHint" style="margin-top:9px;">คอลัมน์นี้ใช้รายการชุดเดียวกับ “ช่องทางติดต่อ” ด้านบน</p>
+              </div>
+            </div>
+            <div class="kmTop2" style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(169,133,111,0.16);display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <sc-for list="{{ footFields }}" as="f" hint-placeholder-count="2">
+                <textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea>
+              </sc-for>
+            </div>
           </div>
-          <input value="{{ linkVal }}" onInput="{{ onLink }}" placeholder="https://…" style="width:100%;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:9px;color:#463a2f;font-weight:400;font-size:14px;padding:12px 14px;outline:none;" style-focus="border-color:#a9856f;"/>
-        </div>
+        </section>
+
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
+          <div style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.4);border-radius:11px;padding:20px 24px;">
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">ป้าย “เหมาะกับใคร” ในหน้าสินค้า</div>
+            <p class="kmHint" style="margin:0 0 12px;">ใช้กับทุกสินค้า — สินค้าเด็กใช้ชุดแยก · บรรทัดละ 1 ป้าย</p>
+            <div class="kmTop2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div>
+                <div style="font-size:12.5px;color:#8a7a6b;margin-bottom:6px;">สินค้าทั่วไป</div>
+                <textarea class="kmList" value="{{ recField.value }}" onInput="{{ recField.onInput }}" rows="{{ recField.rows }}"></textarea>
+              </div>
+              <div>
+                <div style="font-size:12.5px;color:#8a7a6b;margin-bottom:6px;">สินค้าเด็ก (Kids Care)</div>
+                <textarea class="kmList" value="{{ recKidsField.value }}" onInput="{{ recKidsField.onInput }}" rows="{{ recKidsField.rows }}"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
+      </sc-if>
+
+      <!-- ============ โหมดสินค้า ============ -->
+      <sc-if value="{{ isProduct }}">
+      <div>
+        <div class="kmPad2" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 40px;background:rgba(255,253,249,0.7);border-bottom:1px dashed rgba(169,133,111,0.3);">
+          <div style="font-size:12.5px;color:#8a7a6b;">กำลังแก้ <strong style="color:#3f342c;">{{ cur.thaiName }}</strong> — หน้านี้แสดงเหมือนหน้าเว็บจริง แก้ได้ทุกช่อง</div>
+          <button onClick="{{ resetProduct }}" style="background:#fffdf9;border:1px solid rgba(196,120,90,0.5);border-radius:8px;padding:8px 13px;color:#b5623f;cursor:pointer;font-size:12px;white-space:nowrap;">คืนค่าเริ่มต้นทั้งสินค้า</button>
+        </div>
+
+        <div class="kmTop2 kmPad2" style="max-width:1100px;margin:0 auto;padding:24px 40px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px;align-items:start;">
+
+          <div>
+            <div style="position:relative;aspect-ratio:1/1;border-radius:12px;background:radial-gradient(circle at 50% 40%, rgba(169,133,111,0.14), rgba(255,255,255,0) 70%),#fbf6ee;border:1px solid rgba(169,133,111,0.2);display:flex;align-items:center;justify-content:center;padding:34px;overflow:hidden;">
+              {{ mainImage }}
+            </div>
+            <div style="margin-top:14px;padding:14px 16px;background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;">
+              <div class="kmBar" style="justify-content:space-between;margin-bottom:11px;">
+                <div class="kmBar">
+                  <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14px;color:#3f342c;">รูปภาพ &amp; ลำดับการแสดง</span>
+                  <sc-if value="{{ galleryOverridden }}"><span style="font-size:10.5px;color:#8a6f4e;background:rgba(169,133,111,0.16);border-radius:20px;padding:2px 9px;">แก้ไขแล้ว</span></sc-if>
+                </div>
+                <div class="kmBar">
+                  <label style="background:var(--gold);color:#fff;border-radius:8px;padding:7px 13px;font-size:12px;cursor:pointer;">+ เพิ่มรูป<input type="file" accept="image/*" multiple onChange="{{ onAddImages }}" style="display:none;"/></label>
+                  <sc-if value="{{ galleryOverridden }}"><button onClick="{{ resetGallery }}" class="kmMini">คืนค่าเริ่มต้น</button></sc-if>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;">
+                <sc-for list="{{ shots }}" as="s" hint-placeholder-count="4">
+                  <div style="border:1px solid {{ s.border }};border-radius:9px;overflow:hidden;background:#f6efe4;">
+                    <button onClick="{{ s.onPick }}" style="width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:7px;background:#fbf7f0;border:none;cursor:pointer;">{{ s.thumb }}</button>
+                    <div style="display:flex;align-items:center;gap:1px;padding:5px;border-top:1px solid rgba(169,133,111,0.2);">
+                      <button onClick="{{ s.onLeft }}" style="background:none;border:none;color:#a9856f;cursor:pointer;font-size:13px;padding:2px 3px;">◀</button>
+                      <span style="font-size:9px;color:#8a7a6b;flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ s.label }}</span>
+                      <button onClick="{{ s.onRight }}" style="background:none;border:none;color:#a9856f;cursor:pointer;font-size:13px;padding:2px 3px;">▶</button>
+                      <button onClick="{{ s.onRemove }}" style="background:none;border:none;color:#c07a52;cursor:pointer;font-size:12px;padding:2px 3px;">✕</button>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+              <p class="kmHint">กดรูปเพื่อดูเป็นรูปหลัก · ◀ ▶ จัดลำดับ · ✕ ลบ · รูปที่เพิ่มถูกย่อขนาดอัตโนมัติ</p>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:12.5px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;">{{ cur.lineEn }}</div>
+            <sc-for list="{{ headFields }}" as="f" hint-placeholder-count="4">
+              <div style="margin-top:9px;">
+                <div class="kmBar" style="margin-bottom:3px;">
+                  <span style="font-size:11px;color:#a4917f;">{{ f.label }}</span>
+                  <sc-if value="{{ f.overridden }}"><button onClick="{{ f.reset }}" class="kmMini">คืนค่าเริ่มต้น</button></sc-if>
+                </div>
+                <textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea>
+              </div>
+            </sc-for>
+
+            <div style="display:flex;flex-direction:column;gap:9px;margin-top:22px;">
+              <sc-for list="{{ detailPanels }}" as="d" hint-placeholder-count="6">
+                <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;overflow:hidden;">
+                  <button class="kmAccBtn" onClick="{{ d.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;padding:13px 17px;">
+                    <span style="width:7px;height:7px;border-radius:50%;background:{{ d.accentColor }};flex:none;"></span>
+                    <span style="flex:1;">
+                      <span style="display:block;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ d.th }}</span>
+                      <span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ d.en }}</span>
+                    </span>
+                    <sc-if value="{{ d.overridden }}"><span style="font-size:10.5px;color:#8a6f4e;background:rgba(169,133,111,0.16);border-radius:20px;padding:2px 9px;">แก้ไขแล้ว</span></sc-if>
+                    <span style="flex:none;font-size:13px;color:{{ d.iconColor }};">{{ d.icon }}</span>
+                  </button>
+                  <sc-if value="{{ d.open }}">
+                  <div style="padding:0 17px 15px;">
+                    <sc-if value="{{ d.isBadges }}">
+                      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+                        <sc-for list="{{ recPreview }}" as="b" hint-placeholder-count="3">
+                          <span style="font-size:12px;color:#5c4d40;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:5px 13px;">{{ b.label }}</span>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ d.editable }}">
+                      <textarea class="kmList" value="{{ d.value }}" onInput="{{ d.onInput }}" rows="{{ d.rows }}" placeholder="{{ d.ph }}"></textarea>
+                      <div class="kmBar" style="margin-top:7px;justify-content:space-between;">
+                        <span class="kmHint" style="margin:0;">{{ d.hint }}</span>
+                        <sc-if value="{{ d.overridden }}"><button onClick="{{ d.reset }}" class="kmMini">คืนค่าเริ่มต้น</button></sc-if>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ d.isAssets }}">
+                      <div style="font-size:13px;color:#7c6c5d;line-height:1.7;">ครีเอเตอร์จะเห็นปุ่มบันทึกรูป {{ shotCount }} รูปจากชุดด้านซ้าย — จัดการรูปได้ที่กล่อง “รูปภาพ &amp; ลำดับการแสดง”</div>
+                    </sc-if>
+                    <sc-if value="{{ d.isLink }}">
+                      <input value="{{ linkVal }}" onInput="{{ onLink }}" placeholder="https://… (เว้นว่าง = ยังไม่เปิดขาย)" style="width:100%;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:9px;color:#463a2f;font-size:13.5px;padding:11px 13px;outline:none;"/>
+                      <p class="kmHint">ลิงก์ที่จะให้ครีเอเตอร์ติดตะกร้า — เว้นว่างไว้ได้ หน้าเว็บจะแสดงว่ายังไม่เปิดขาย</p>
+                    </sc-if>
+                  </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
+          <div class="kmBar" style="justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(169,133,111,0.28);">
+            <div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:12.5px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;margin-bottom:5px;">Content Guide</div>
+              <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:22px;color:#3f342c;">แนวทางทำคอนเทนต์</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <sc-for list="{{ guideFields }}" as="f" hint-placeholder-count="6">
+              <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;overflow:hidden;">
+                <button class="kmAccBtn" onClick="{{ f.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;padding:13px 17px;">
+                  <span style="width:7px;height:7px;border-radius:50%;background:{{ f.accentColor }};flex:none;"></span>
+                  <span style="flex:1;">
+                    <span style="display:block;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ f.th }}</span>
+                    <span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ f.en }}</span>
+                  </span>
+                  <sc-if value="{{ f.overridden }}"><span style="font-size:10.5px;color:#8a6f4e;background:rgba(169,133,111,0.16);border-radius:20px;padding:2px 9px;">แก้ไขแล้ว</span></sc-if>
+                  <span style="flex:none;font-size:13px;color:{{ f.iconColor }};">{{ f.icon }}</span>
+                </button>
+                <sc-if value="{{ f.open }}">
+                <div style="padding:0 17px 15px;">
+                  <textarea class="kmList" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}"></textarea>
+                  <div class="kmBar" style="margin-top:7px;justify-content:space-between;">
+                    <span class="kmHint" style="margin:0;">{{ f.hint }}</span>
+                    <sc-if value="{{ f.overridden }}"><button onClick="{{ f.reset }}" class="kmMini">คืนค่าเริ่มต้น</button></sc-if>
+                  </div>
+                </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <p class="kmHint" style="margin-top:14px;">หัวข้อที่เว้นว่างจะไม่แสดงบนหน้าเว็บจริง</p>
+        </section>
+      </div>
+      </sc-if>
+
     </main>
   </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:880}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
 class Component extends DCLogic {
   constructor(props){
     super(props);
     const P = window.KM_PRODUCTS || [];
-    this.state = { selId: P.length ? P[0].id : null, edits: {}, gallery: {}, saved: 'idle', jsonOpen:false, jsonText:'' };
+    this.state = { view:'home', selId: P.length ? P[0].id : null, edits:{}, gallery:{}, site:{},
+      activeImg:0, openPanel:'intro', openGuide:'keymsg', saved:'idle', jsonOpen:false, jsonText:'' };
   }
   componentDidMount(){
     const self = this;
     (function loadSB(n){
-      if (window.KM_SB) { window.KM_SB.load().then(function(d){ self.setState({ edits:d.edits, gallery:d.gallery }); }); }
+      if (window.KM_SB) { window.KM_SB.load().then(function(d){ self.setState({ edits:d.edits, gallery:d.gallery, site:d.site || {} }); }); }
       else if (n < 60) { setTimeout(function(){ loadSB(n+1); }, 60); }
     })(0);
     if (!(window.KM_PRODUCTS||[]).length) {
@@ -178,27 +423,52 @@ class Component extends DCLogic {
     }
   }
   componentWillUnmount(){ if (this._t) clearInterval(this._t); }
-  ensureRec(id){ const p=(window.KM_PRODUCTS||[]).find(x=>x.id===id); return this.state.gallery[id] ? this.state.gallery[id].slice() : (window.KM_defaultRecord?window.KM_defaultRecord(p):[]); }
-  setGalleryRec(id,rec){ const g=Object.assign({},this.state.gallery); g[id]=rec; if(window.KM_SB) window.KM_SB.saveGallery(id,rec); this.setState({gallery:g}); this.flash(); }
-  moveImg(id,idx,dir){ const rec=this.ensureRec(id); const j=idx+dir; if(j<0||j>=rec.length)return; const t=rec[idx];rec[idx]=rec[j];rec[j]=t; this.setGalleryRec(id,rec); }
-  removeImg(id,idx){ const rec=this.ensureRec(id).filter((_,i)=>i!==idx); this.setGalleryRec(id,rec); }
-  resetGallery(id){ const g=Object.assign({},this.state.gallery); delete g[id]; if(window.KM_SB) window.KM_SB.resetGallery(id); this.setState({gallery:g}); this.flash(); }
-  downscale(file){ return new Promise(res=>{ const rd=new FileReader(); rd.onload=()=>{ const img=new Image(); img.onload=()=>{ const max=1200; const sc=Math.min(1,max/Math.max(img.width,img.height)); const w=Math.round(img.width*sc),h=Math.round(img.height*sc); const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h); res(c.toDataURL('image/jpeg',0.82)); }; img.src=rd.result; }; rd.readAsDataURL(file); }); }
-  async addImages(id,fileList){ let rec=this.ensureRec(id); for(const f of [...(fileList||[])]){ if(!/^image\//.test(f.type))continue; const d=await this.downscale(f); rec=rec.concat([{t:'a',d,label:'รูปเพิ่มเติม'}]); } this.setGalleryRec(id,rec); }
   flash(){ clearTimeout(this._ft); this.setState({saved:'saved'}); this._ft=setTimeout(()=>this.setState({saved:'idle'}),1400); }
+  rows(v, min){ const n = String(v==null?'':v).split('\n').length; return Math.max(min||1, Math.min(n, 30)); }
 
-  DEFAULT_DO(){ return [
-    'เปิดคลิป 3 วินาทีแรกให้สะดุด — ตั้งปัญหาผิว/ความกังวลของคุณแม่ก่อนเข้าสินค้า',
-    'ถ่ายในที่แสงสว่างเพียงพอ โทนธรรมชาติ เห็นเนื้อครีมและสีผลิตภัณฑ์ตามจริง',
-    'โชว์ผลิตภัณฑ์และฉลากให้ชัด เห็นแบรนด์ Kangaroo Mommy',
-    'ใช้สินค้าจริง โชว์เท็กซ์เจอร์ การเกลี่ย/การซึม และผลลัพธ์ก่อน–หลัง',
-    'พูดถึงจุดขายหลักและส่วนผสมเด่นให้ถูกต้อง ตรงตามข้อมูลแบรนด์',
-    'เน้นความอ่อนโยน–ปลอดภัย เหมาะกับคุณแม่ตั้งครรภ์/ให้นม และผิวบอบบางของเด็ก',
-    'อธิบายวิธีใช้และขั้นตอนแบบเข้าใจง่าย ทำตามได้จริง',
-    'ติดตะกร้า/ใส่ลิงก์สินค้า และใส่แฮชแท็ก + แท็กแบรนด์ตามที่กำหนด',
-    'ใช้น้ำเสียงเป็นมิตร จริงใจ เหมือนเพื่อนคุณแม่แนะนำกันเอง',
-    'ส่งคลิปตามกำหนดเวลา และไม่ลบโพสต์หลังจากลงแล้ว'
-  ].join('\n'); }
+  // ---------- เนื้อหาหน้าเว็บ (Supabase แถว __site__) ----------
+  siteEff(key){ return window.KM_SITE ? window.KM_SITE.eff(this.state.site, key) : ''; }
+  siteSet(key, val){
+    const site = Object.assign({}, this.state.site || {}); site[key] = val;
+    if (window.KM_SB) window.KM_SB.saveSite(site);
+    this.setState({ site }); this.flash();
+  }
+  resetSite(){
+    if (window.KM_SB) window.KM_SB.resetSite();
+    this.setState({ site:{} }); this.flash();
+  }
+  st(preset){
+    const map = {
+      h1:"font-family:'Noto Serif Thai',serif;font-weight:600;font-size:32px;line-height:1.3;color:#3f342c;text-align:center;",
+      heroTag:"font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#a9856f;text-align:center;",
+      lead:"font-size:15px;color:#7c6c5d;text-align:center;line-height:1.75;",
+      tag:"font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;",
+      h2en:"font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;color:#3f342c;",
+      h2th:"font-family:'Noto Serif Thai',serif;font-weight:600;font-size:21px;color:#3f342c;",
+      sub:"font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;",
+      body:"font-size:15px;color:#5f5044;line-height:1.85;",
+      small:"font-size:14px;color:#8a7a6b;line-height:1.75;",
+      cardTitle:"font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;",
+      cardBody:"font-size:13.5px;color:#5f5044;line-height:1.8;",
+      footSmall:"font-size:12px;color:#a4917f;",
+      detailH1:"font-family:'Noto Serif Thai',serif;font-weight:600;font-size:24px;line-height:1.35;color:#3f342c;",
+      detailEn:"font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#a08972;",
+      pill:"font-size:13px;color:#5c4d40;"
+    };
+    return 'font-family:inherit;' + (map[preset] || map.body);
+  }
+  siteField(key, preset, ph, minRows){
+    const v = this.siteEff(key);
+    return { value:v, ph:ph||'', rows:this.rows(v, minRows||1), style:this.st(preset),
+      onInput:(ev)=>this.siteSet(key, ev.target.value) };
+  }
+  siteListField(key, minRows){
+    const v = this.siteEff(key);
+    return { value:v, rows:this.rows(v, minRows||3), onInput:(ev)=>this.siteSet(key, ev.target.value) };
+  }
+
+  // ---------- เนื้อหาสินค้า (ตาราง creator_brief) ----------
+  BASIC_KEYS(){ return ['thaiName','enName','claim','net','intro','howto','caution']; }
   DEFAULT_DONT(){ return [
     'ห้ามกล่าวอ้างสรรพคุณเกินจริงหรือเชิงรักษาโรค (เช่น รักษาสิว/ฝ้าหายขาด) — ผิดกฎ อย./แพลตฟอร์ม',
     'ห้ามการันตีผลลัพธ์ 100% หรือใช้คำเว่อร์ เช่น “ขาวใน 3 วัน / หายขาด”',
@@ -211,6 +481,59 @@ class Component extends DCLogic {
     'ไม่ลืมแท็กแบรนด์และแฮชแท็กที่กำหนด และห้ามลบคลิปหลังโพสต์',
     'ไม่ทำคอนเทนต์ที่เสี่ยงต่อความปลอดภัยของเด็ก (เช่น ทาใกล้ตา/ปากเด็กเกินจำเป็น)'
   ].join('\n'); }
+  defFor(id, key){
+    if (this.BASIC_KEYS().indexOf(key) !== -1){
+      const p = (window.KM_PRODUCTS||[]).find(x=>x.id===id) || {};
+      return p[key] != null ? p[key] : '';
+    }
+    const bd = (window.KM_BRIEF_DEFAULTS||{})[id] || {};
+    if (bd[key] != null) return bd[key];
+    if (key === 'dontList') return this.DEFAULT_DONT();
+    return '';
+  }
+  effective(id, key){ const e = this.state.edits[id] || {}; return (e[key] != null && e[key] !== '') ? e[key] : this.defFor(id, key); }
+  overridden(id, key){ const e = this.state.edits[id] || {}; return e[key] != null && e[key] !== ''; }
+  set(id, key, val){
+    const edits = Object.assign({}, this.state.edits); edits[id] = Object.assign({}, edits[id], { [key]: val });
+    if (window.KM_SB) window.KM_SB.saveField(id, key, val);
+    this.setState({ edits }); this.flash();
+  }
+  reset(id, key){
+    const edits = Object.assign({}, this.state.edits); const rec = Object.assign({}, edits[id]); delete rec[key];
+    if (Object.keys(rec).length) edits[id] = rec; else delete edits[id];
+    if (window.KM_SB) window.KM_SB.resetField(id, key);
+    this.setState({ edits }); this.flash();
+  }
+  resetProduct(id){
+    const edits = Object.assign({}, this.state.edits); delete edits[id];
+    if (window.KM_SB) window.KM_SB.resetProduct(id);
+    this.setState({ edits }); this.flash();
+  }
+
+  // ---------- รูปภาพ ----------
+  ensureRec(id){ const p=(window.KM_PRODUCTS||[]).find(x=>x.id===id); return this.state.gallery[id] ? this.state.gallery[id].slice() : (window.KM_defaultRecord?window.KM_defaultRecord(p):[]); }
+  setGalleryRec(id,rec){ const g=Object.assign({},this.state.gallery); g[id]=rec; if(window.KM_SB) window.KM_SB.saveGallery(id,rec); this.setState({gallery:g}); this.flash(); }
+  moveImg(id,idx,dir){ const rec=this.ensureRec(id); const j=idx+dir; if(j<0||j>=rec.length)return; const t=rec[idx];rec[idx]=rec[j];rec[j]=t; this.setGalleryRec(id,rec); }
+  removeImg(id,idx){ const rec=this.ensureRec(id).filter((_,i)=>i!==idx); this.setGalleryRec(id,rec); }
+  resetGallery(id){ const g=Object.assign({},this.state.gallery); delete g[id]; if(window.KM_SB) window.KM_SB.resetGallery(id); this.setState({gallery:g}); this.flash(); }
+  downscale(file){ return new Promise(res=>{ const rd=new FileReader(); rd.onload=()=>{ const img=new Image(); img.onload=()=>{ const max=1200; const sc=Math.min(1,max/Math.max(img.width,img.height)); const w=Math.round(img.width*sc),h=Math.round(img.height*sc); const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h); res(c.toDataURL('image/jpeg',0.82)); }; img.src=rd.result; }; rd.readAsDataURL(file); }); }
+  async addImages(id,fileList){ let rec=this.ensureRec(id); for(const f of [...(fileList||[])]){ if(!/^image\//.test(f.type))continue; const d=await this.downscale(f); rec=rec.concat([{t:'a',d,label:'รูปเพิ่มเติม'}]); } this.setGalleryRec(id,rec); }
+
+  // ---------- สำรอง / กู้คืน ----------
+  toggleJson(){ this.setState(s=>({ jsonOpen:!s.jsonOpen, jsonText: JSON.stringify({ site:s.site, products:s.edits }, null, 2) })); }
+  doImport(){
+    try {
+      const obj = JSON.parse(this.state.jsonText || '{}');
+      const products = obj.products || obj;      // รองรับไฟล์สำรองรูปแบบเดิม
+      const site = obj.site || {};
+      if (window.KM_SB) { window.KM_SB.saveAll(products); if (Object.keys(site).length) window.KM_SB.saveSite(site); }
+      this.setState({ edits:products, site:site }); this.flash();
+    } catch(e){ alert('รูปแบบข้อมูลไม่ถูกต้อง'); }
+  }
+  doDownload(){
+    const blob = new Blob([JSON.stringify({ site:this.state.site, products:this.state.edits }, null, 2)], { type:'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'kangaroo-creator-guide-backup.json'; a.click();
+  }
 
   shortEn(p){ const m={'wg-cleanser':'Facial Cleanser','wg-toner':'Toner','wg-eyecream':'Eye Cream','wg-essence':'Dual-Effect Essence','wg-cream':'Hydrating Cream','wg-lotion':'Hydrating Lotion','rd-cleanser':'Cleanser','rd-toner':'Toner','rd-serum':'Serum','rd-essence-lotion':'Essence Lotion','rd-essence-cream':'Essence Cream','tf-toner':'Essence Toner','tf-serum':'Serum','tf-facecream':'Face Cream','olive-50':'Olive Oil 50 ml','olive-96':'Olive Oil 96 ml','anti-wrinkle':'Anti-Wrinkle Body Essence','raspberry':'Raspberry Body Lotion','kids-soothing':'Soothing & Hydrating Cream','kids-moisture':'Moisturizing Cream','rd-giftset':'Gift Set (5)','wg-giftset':'Gift Set (4)'}; return m[p.id] || (p.enName||'').replace(/^Kangaroo Mommy\s*/,''); }
   lineMeta(){ return {
@@ -220,119 +543,207 @@ class Component extends DCLogic {
     body:{th:'บอดี้ & สเปเชียล แคร์',en:'Body & Special Care'},
     kids:{th:'สำหรับเด็ก',en:'Kids Care'}
   }; }
-  basicFieldDefs(){ return [
-    {key:'thaiName',th:'ชื่อสินค้า (ไทย)',en:'Thai Name',rows:2,ph:'ชื่อผลิตภัณฑ์ภาษาไทย…'},
-    {key:'enName',th:'ชื่อสินค้า (อังกฤษ)',en:'English Name',rows:2,ph:'Product name in English…'},
-    {key:'claim',th:'ประเภทผลิตภัณฑ์ (Claim)',en:'Claim',rows:1,ph:'เช่น ผลิตภัณฑ์ทำความสะอาดผิวหน้า…'},
-    {key:'net',th:'ปริมาณสุทธิ',en:'Net Quantity',rows:1,ph:'เช่น 100 กรัม…'},
-    {key:'intro',th:'รายละเอียดผลิตภัณฑ์',en:'Product Details',rows:5,ph:'คำอธิบายผลิตภัณฑ์ที่จะแสดงให้ครีเอเตอร์เห็น…'},
-    {key:'howto',th:'วิธีใช้',en:'How To Use',rows:4,ph:'ขั้นตอนการใช้…'},
-    {key:'caution',th:'ข้อควรระวัง',en:'Caution',rows:4,ph:'คำเตือน / ข้อควรระวัง…'}
-  ]; }
-  fieldDefs(){ return [
-    {key:'keymsg',th:'Key Message',en:'คีย์เมสเสจ',rows:3,ph:'ประโยคจุดขายหลัก…'},
-    {key:'features',th:'จุดเด่น / คุณสมบัติ',en:'Key Features',rows:5,ph:'จุดเด่น (บรรทัดละข้อ)…'},
-    {key:'ingredients',th:'ส่วนผสมหลัก',en:'Key Ingredients',rows:4,ph:'ส่วนผสมสำคัญและประโยชน์…'},
-    {key:'suitable',th:'เหมาะกับสภาพผิว / ปัญหา',en:'Suitable For',rows:4,ph:'กลุ่มผิว/ปัญหาที่เหมาะ…'},
-    {key:'content',th:'ไอเดียคอนเทนต์ / หัวข้อคลิป',en:'Content Ideas',rows:5,ph:'หัวข้อ/มุมเล่าเรื่อง…'},
-    {key:'scenes',th:'โครงคลิป (Scene 1–4)',en:'Video Structure',rows:6,ph:'โครงคลิปที่อยากให้เล่า…'},
-    {key:'refs',th:'คลิปอ้างอิง',en:'Reference Videos',rows:4,ph:'วางลิงก์คลิปตัวอย่าง บรรทัดละ 1 ลิงก์…'},
-    {key:'hashtags',th:'Hashtag & Tag',en:'Hashtag & Tag',rows:4,ph:'#แฮชแท็ก และ @แท็กแบรนด์…'},
-    {key:'doList',th:'Do — สิ่งที่ควรทำ',en:'Do',rows:9,ph:'สิ่งที่ควรทำ…'},
-    {key:'dontList',th:"Don't — สิ่งที่ห้ามทำ",en:"Don't",rows:9,ph:'สิ่งที่ห้ามทำ…'}
-  ]; }
-  BASIC_KEYS(){ return ['thaiName','enName','claim','net','intro','howto','caution']; }
-  defFor(id,key){
-    if(this.BASIC_KEYS().indexOf(key)!==-1){
-      const p=(window.KM_PRODUCTS||[]).find(x=>x.id===id)||{};
-      return p[key]!=null ? p[key] : '';
-    }
-    const bd=(window.KM_BRIEF_DEFAULTS||{})[id]||{};
-    if(bd[key]!=null) return bd[key];
-    if(key==='doList') return this.DEFAULT_DO();
-    if(key==='dontList') return this.DEFAULT_DONT();
-    return '';
-  }
-  effective(id,key){ const e=(this.state.edits[id]||{}); return (e[key]!=null && e[key]!=='') ? e[key] : this.defFor(id,key); }
-  overridden(id,key){ const e=(this.state.edits[id]||{}); return e[key]!=null && e[key]!==''; }
-
-  set(id,key,val){
-    const edits=Object.assign({},this.state.edits); edits[id]=Object.assign({},edits[id],{[key]:val});
-    if(window.KM_SB) window.KM_SB.saveField(id,key,val); this.setState({edits}); this.flash();
-  }
-  reset(id,key){
-    const edits=Object.assign({},this.state.edits); const rec=Object.assign({},edits[id]); delete rec[key];
-    if(Object.keys(rec).length) edits[id]=rec; else delete edits[id];
-    if(window.KM_SB) window.KM_SB.resetField(id,key); this.setState({edits}); this.flash();
-  }
-  resetProduct(id){
-    const edits=Object.assign({},this.state.edits); delete edits[id];
-    if(window.KM_SB) window.KM_SB.resetProduct(id); this.setState({edits}); this.flash();
-  }
-  toggleJson(){ this.setState(s=>({jsonOpen:!s.jsonOpen, jsonText: JSON.stringify(s.edits,null,2)})); }
-  doImport(){ try{ const obj=JSON.parse(this.state.jsonText||'{}'); if(window.KM_SB) window.KM_SB.saveAll(obj); this.setState({edits:obj}); this.flash(); }catch(e){ alert('รูปแบบ JSON ไม่ถูกต้อง'); } }
-  doDownload(){
-    const blob=new Blob([JSON.stringify(this.state.edits,null,2)],{type:'application/json'});
-    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='kangaroo-brief-edits.json'; a.click();
-  }
+  toggleKey(stateKey, key){ const next={}; next[stateKey] = (this.state[stateKey]===key) ? '' : key; this.setState(next); }
+  accIcon(o){ return o ? '−' : '+'; }
 
   renderVals(){
-    const P=window.KM_PRODUCTS||[]; const LM=this.lineMeta();
-    const order=['wheatgerm','radiant','truffle','body','kids'];
-    const selId=this.state.selId || (P[0] && P[0].id);
-    const groups=order.map(k=>({
+    const P = window.KM_PRODUCTS || [];
+    const LM = this.lineMeta();
+    const H = window.KM_SITE || { lines:function(){return [];}, parts:function(){return [];}, blocks:function(){return [];} };
+    const order = ['wheatgerm','radiant','truffle','body','kids'];
+    const selId = this.state.selId || (P[0] && P[0].id);
+    const isHome = this.state.view === 'home';
+
+    const groups = order.map(k=>({
       en:(LM[k]||{}).en||k,
       items:P.filter(p=>p.line===k).map(p=>{
-        const isSel=p.id===selId;
-        const anyEdit=!!this.state.edits[p.id] && Object.keys(this.state.edits[p.id]).length>0;
-        return { name:this.shortEn(p), thaiName:this.effective(p.id,'thaiName'), dot:(anyEdit?'#a9856f':'rgba(169,133,111,0.28)'),
+        const isSel = !isHome && p.id===selId;
+        const anyEdit = !!this.state.edits[p.id] && Object.keys(this.state.edits[p.id]).length>0;
+        return { name:this.shortEn(p), dot:(anyEdit?'#a9856f':'rgba(169,133,111,0.28)'),
           style:'display:flex;align-items:center;gap:10px;width:100%;padding:9px 20px;border:none;cursor:pointer;font-size:13.5px;color:'+(isSel?'#3f342c':'#7c6c5d')+';background:'+(isSel?'rgba(169,133,111,0.16)':'transparent')+';border-left:3px solid '+(isSel?'#a9856f':'transparent')+';',
-          open:()=>this.setState({selId:p.id}) };
+          open:()=>this.setState({ view:'product', selId:p.id, activeImg:0, openPanel:'intro', openGuide:'keymsg' }) };
       })
     })).filter(g=>g.items.length);
 
-    const cur=P.find(p=>p.id===selId)||{};
-    const mkField=(f)=>({
-      th:f.th, en:f.en, rows:f.rows, ph:f.ph||'',
-      value:this.effective(selId,f.key),
-      overridden:this.overridden(selId,f.key),
-      onInput:(ev)=>this.set(selId,f.key,ev.target.value),
-      reset:()=>this.reset(selId,f.key)
-    });
-    const basicFields=this.basicFieldDefs().map(mkField);
-    const fields=this.fieldDefs().map(mkField);
+    const savedMap = { idle:['#a9a08a','พร้อมแก้ไข · บันทึกอัตโนมัติ'], saved:['#7f9b62','บันทึกแล้ว ✓'] };
+    const sv = savedMap[this.state.saved] || savedMap.idle;
 
-    const savedMap={idle:['#a9a08a','พร้อมแก้ไข · บันทึกอัตโนมัติ'],saved:['#7f9b62','บันทึกแล้ว ✓']};
-    const sv=savedMap[this.state.saved]||savedMap.idle;
-
-    const galRec = this.state.gallery[selId] ? this.state.gallery[selId] : (window.KM_defaultRecord?window.KM_defaultRecord(cur):[]);
-    const gdef = window.KM_defaultShots?window.KM_defaultShots(cur):[]; const gByKey={}; gdef.forEach(s=>{gByKey[s.k]=s;});
-    const shots = galRec.map((item,idx)=>{
-      const src=item.t==='b'?(gByKey[item.k]?gByKey[item.k].src:''):item.d;
-      const label=item.t==='b'?(gByKey[item.k]?gByKey[item.k].label:''):(item.label||'รูปเพิ่มเติม');
-      return {src,label,thumb: src ? React.createElement('img',{src, alt:label, style:{maxWidth:'100%',maxHeight:'100%',objectFit:'contain'}}) : null,onLeft:()=>this.moveImg(selId,idx,-1),onRight:()=>this.moveImg(selId,idx,1),onRemove:()=>this.removeImg(selId,idx)};
-    }).filter(s=>s.src);
-
-    return {
+    const base = {
       groups,
-      shots,
-      galleryOverridden:!!this.state.gallery[selId],
-      onAddImages:(ev)=>{ this.addImages(selId, ev.target.files); ev.target.value=''; },
-      resetGallery:()=>this.resetGallery(selId),
-      cur:{ thaiName:this.effective(selId,'thaiName')||'—', enName:(this.effective(selId,'enName')||'').replace(/^Kangaroo Mommy\s*/,''), lineEn:(LM[cur.line]||{}).en||'' },
-      basicFields,
-      fields,
-      linkVal:this.effective(selId,'link'),
-      linkOverridden:this.overridden(selId,'link'),
-      onLink:(ev)=>this.set(selId,'link',ev.target.value),
-      resetProduct:()=>this.resetProduct(selId),
-      savedColor:sv[0], savedText:sv[1],
-      jsonOpen:this.state.jsonOpen, jsonText:this.state.jsonText,
-      toggleJson:()=>this.toggleJson(),
-      onJson:(ev)=>this.setState({jsonText:ev.target.value}),
-      doImport:()=>this.doImport(),
-      doDownload:()=>this.doDownload()
+      isHome: isHome, isProduct: !isHome,
+      openHome: ()=>this.setState({ view:'home' }),
+      homeDot: isHome ? '#a9856f' : 'rgba(169,133,111,0.28)',
+      homeBtnStyle: "display:flex;align-items:center;gap:10px;width:100%;padding:11px 20px;border:none;cursor:pointer;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14px;color:"+(isHome?'#3f342c':'#7c6c5d')+";background:"+(isHome?'rgba(169,133,111,0.16)':'transparent')+";border-left:3px solid "+(isHome?'#a9856f':'transparent')+";",
+      savedColor: sv[0], savedText: sv[1],
+      jsonOpen: this.state.jsonOpen, jsonText: this.state.jsonText,
+      toggleJson: ()=>this.toggleJson(),
+      onJson: (ev)=>this.setState({ jsonText: ev.target.value }),
+      doImport: ()=>this.doImport(),
+      doDownload: ()=>this.doDownload(),
+      resetSite: ()=>this.resetSite(),
+      mainImage: null
     };
+
+    if (isHome){
+      const badgesField  = this.siteListField('badges', 4);
+      const whyField     = this.siteListField('why', 5);
+      const assetField   = this.siteListField('assets', 3);
+      const faqField     = this.siteListField('faq', 10);
+      const contactField = this.siteListField('contacts', 2);
+      const channelField = this.siteListField('channels', 5);
+      const chipPreview  = [{ label:'ทั้งหมด' }].concat(
+        order.filter(k=>P.some(p=>p.line===k)).map(k=>({ label:(LM[k]||{}).en||k }))
+      );
+      return Object.assign(base, {
+        heroFields: [
+          this.siteField('heroTitle','h1','พาดหัวหน้าแรก',1),
+          this.siteField('heroTag','heroTag','บรรทัดภาษาอังกฤษใต้พาดหัว',1),
+          this.siteField('heroLead','lead','คำโปรยสั้น ๆ',2)
+        ],
+        aboutFields: [
+          this.siteField('aboutTag','tag','ป้ายหัวข้อ (อังกฤษ)',1),
+          this.siteField('aboutTitle','h2th','หัวข้อเกี่ยวกับแบรนด์',1),
+          this.siteField('aboutBody','body','เนื้อหาเกี่ยวกับแบรนด์',3)
+        ],
+        badgesField: badgesField,
+        badgePreview: H.lines(badgesField.value).map(l=>({ label:l })),
+        colFields: [
+          this.siteField('colTitleEn','h2en','หัวข้ออังกฤษ',1),
+          this.siteField('colTitleTh','sub','หัวข้อไทย',1),
+          this.siteField('colDesc','small','คำอธิบายสั้น',2)
+        ],
+        chipPreview: chipPreview,
+        whyTitleFields: [ this.siteField('whyTitleEn','h2en','หัวข้ออังกฤษ',1), this.siteField('whyTitleTh','sub','หัวข้อไทย',1) ],
+        whyField: whyField,
+        whyPreview: H.lines(whyField.value).map(l=>{ const p=H.parts(l,3); return { th:p[0], en:p[1], desc:p[2] }; }),
+        assetTitleFields: [
+          this.siteField('assetsTitleEn','h2en','หัวข้ออังกฤษ',1),
+          this.siteField('assetsTitleTh','sub','หัวข้อไทย',1),
+          this.siteField('assetsDesc','small','คำอธิบายสั้น',2)
+        ],
+        logoCardFields: [ this.siteField('assetLogoTitle','cardTitle','หัวข้อการ์ดโลโก้',1), this.siteField('assetLogoBody','cardBody','คำอธิบายการใช้โลโก้',2) ],
+        assetField: assetField,
+        assetPreview: H.lines(assetField.value).map(l=>{ const p=H.parts(l,2); return { title:p[0], body:p[1] }; }),
+        faqTitleFields: [ this.siteField('faqTitleEn','h2en','หัวข้ออังกฤษ',1), this.siteField('faqTitleTh','sub','หัวข้อไทย',1) ],
+        faqField: faqField,
+        faqPreview: H.blocks(faqField.value),
+        helpFields: [
+          this.siteField('helpTag','tag','ป้ายหัวข้อ (อังกฤษ)',1),
+          this.siteField('helpTitle','h2th','หัวข้อติดต่อ',1),
+          this.siteField('helpBody','small','ข้อความชวนติดต่อ',2)
+        ],
+        contactField: contactField,
+        contactPreview: H.lines(contactField.value).map(l=>({ label:H.parts(l,2)[0] })),
+        channelTitleField: this.siteField('channelTitle','tag','หัวคอลัมน์',1),
+        contactTitleField: this.siteField('contactTitle','tag','หัวคอลัมน์',1),
+        channelField: channelField,
+        channelPreview: H.lines(channelField.value).map(l=>{ const p=H.parts(l,2); return { label:p[0], note:(p[1] ? '' : '(เร็ว ๆ นี้)') }; }),
+        footFields: [ this.siteField('footNote','footSmall','ข้อความท้ายเว็บ',2), this.siteField('footBrand','footSmall','ชื่อแบรนด์ท้ายเว็บ',1) ],
+        recField: this.siteListField('recBadges', 3),
+        recKidsField: this.siteListField('recBadgesKids', 2)
+      });
+    }
+
+    // ---------- โหมดสินค้า ----------
+    const raw = P.find(p=>p.id===selId) || {};
+    const galRec = this.state.gallery[selId] ? this.state.gallery[selId] : (window.KM_defaultRecord ? window.KM_defaultRecord(raw) : []);
+    const gdef = window.KM_defaultShots ? window.KM_defaultShots(raw) : [];
+    const gByKey = {}; gdef.forEach(s=>{ gByKey[s.k] = s; });
+    const shotList = galRec.map(item=>{
+      const src = item.t==='b' ? (gByKey[item.k] ? gByKey[item.k].src : '') : item.d;
+      const label = item.t==='b' ? (gByKey[item.k] ? gByKey[item.k].label : '') : (item.label || 'รูปเพิ่มเติม');
+      return { src:src, label:label };
+    }).filter(s=>s.src);
+    let idx = this.state.activeImg; if (idx >= shotList.length) idx = 0;
+    const shots = shotList.map((s,i)=>Object.assign({}, s, {
+      border: i===idx ? 'var(--gold)' : 'rgba(169,133,111,0.28)',
+      thumb: React.createElement('img', { src:s.src, alt:s.label, style:{ maxWidth:'100%', maxHeight:'100%', objectFit:'contain' } }),
+      onPick: ()=>this.setState({ activeImg:i }),
+      onLeft: ()=>this.moveImg(selId,i,-1),
+      onRight: ()=>this.moveImg(selId,i,1),
+      onRemove: ()=>this.removeImg(selId,i)
+    }));
+    const active = shotList[idx];
+
+    const mkHead = (key, label, preset, ph, minRows) => {
+      const v = this.effective(selId, key);
+      return { label:label, ph:ph||'', style:this.st(preset), value:v, rows:this.rows(v, minRows||1),
+        overridden:this.overridden(selId, key),
+        onInput:(ev)=>this.set(selId, key, ev.target.value),
+        reset:()=>this.reset(selId, key) };
+    };
+
+    const panelDefs = [
+      { key:'intro',       th:'ภาพรวมสินค้า',    en:'Product Overview', kind:'text',   rows:5, hint:'ย่อหน้าแนะนำสินค้า', ph:'คำอธิบายสินค้า…' },
+      { key:'features',    th:'จุดเด่นของสินค้า', en:'Key Benefits',     kind:'text',   rows:5, hint:'พิมพ์บรรทัดละ 1 ข้อ', ph:'จุดเด่น (บรรทัดละข้อ)…' },
+      { key:'ingredients', th:'ส่วนผสมสำคัญ',    en:'Hero Ingredients', kind:'text',   rows:4, hint:'พิมพ์บรรทัดละ 1 ส่วนผสม', ph:'ส่วนผสมและประโยชน์…' },
+      { key:'suitable',    th:'เหมาะกับใคร',     en:'Recommended For',  kind:'badges', rows:4, hint:'ข้อความใต้ป้าย · แก้ป้ายได้ที่หน้าแรก', ph:'กลุ่มผิว/ปัญหาที่เหมาะ…' },
+      { key:'howto',       th:'วิธีใช้',         en:'How to Use',       kind:'text',   rows:4, hint:'ขั้นตอนการใช้', ph:'วิธีใช้…' },
+      { key:'caution',     th:'ข้อควรรู้',       en:'Things to Know',   kind:'text',   rows:4, hint:'คำเตือน / ข้อควรระวัง', ph:'ข้อควรระวัง…', tone:'warn' },
+      { key:'__assets',    th:'ดาวน์โหลดไฟล์',   en:'Download Assets',  kind:'assets' },
+      { key:'__link',      th:'ลิงก์สินค้า',     en:'Product Links',    kind:'link' }
+    ];
+    const detailPanels = panelDefs.map(p=>{
+      const isOpen = this.state.openPanel === p.key;
+      const editable = p.kind === 'text' || p.kind === 'badges';
+      const v = editable ? this.effective(selId, p.key) : '';
+      return Object.assign({}, p, {
+        open: isOpen, icon: this.accIcon(isOpen),
+        iconColor: isOpen ? 'var(--gold)' : '#b3a696',
+        accentColor: p.tone === 'warn' ? '#b08a5f' : 'var(--gold)',
+        editable: editable, isBadges: p.kind==='badges', isAssets: p.kind==='assets', isLink: p.kind==='link',
+        value: v, rows: editable ? this.rows(v, p.rows||3) : 3,
+        overridden: editable ? this.overridden(selId, p.key) : false,
+        onInput: editable ? ((ev)=>this.set(selId, p.key, ev.target.value)) : null,
+        reset: editable ? (()=>this.reset(selId, p.key)) : null,
+        toggle: ()=>this.toggleKey('openPanel', p.key)
+      });
+    });
+
+    const guideDefs = [
+      { key:'keymsg',   th:'คีย์เมสเสจ',        en:'Key Message',        rows:3, hint:'ประโยคจุดขายหลักที่อยากให้ครีเอเตอร์พูด', ph:'ประโยคจุดขายหลัก…' },
+      { key:'content',  th:'ไอเดียคอนเทนต์',     en:'Content Ideas',      rows:5, hint:'บรรทัดละ 1 ไอเดีย', ph:'หัวข้อ / มุมเล่าเรื่อง…' },
+      { key:'scenes',   th:'โครงคลิป',          en:'Video Structure',    rows:6, hint:'เปิด 3 วิ / Scene 1–4', ph:'โครงคลิปที่อยากให้เล่า…' },
+      { key:'refs',     th:'คลิปอ้างอิง',        en:'Content References', rows:4, hint:'บรรทัดละ 1 ลิงก์', ph:'ลิงก์คลิปตัวอย่าง…' },
+      { key:'hashtags', th:'แฮชแท็กและการแท็ก',  en:'Hashtag & Tag',      rows:4, hint:'#แฮชแท็ก และ @แท็กแบรนด์', ph:'#แฮชแท็ก @แบรนด์…' },
+      { key:'dontList', th:'สิ่งที่ควรเลี่ยง',    en:"Don't",              rows:9, hint:'บรรทัดละ 1 ข้อ', ph:'สิ่งที่ควรเลี่ยง…', tone:'dont' }
+    ];
+    const guideFields = guideDefs.map(f=>{
+      const isOpen = this.state.openGuide === f.key;
+      const v = this.effective(selId, f.key);
+      return Object.assign({}, f, {
+        open: isOpen, icon: this.accIcon(isOpen),
+        iconColor: isOpen ? 'var(--gold)' : '#b3a696',
+        accentColor: f.tone === 'dont' ? '#c07a52' : 'var(--gold)',
+        value: v, rows: this.rows(v, f.rows||3),
+        overridden: this.overridden(selId, f.key),
+        onInput: (ev)=>this.set(selId, f.key, ev.target.value),
+        reset: ()=>this.reset(selId, f.key),
+        toggle: ()=>this.toggleKey('openGuide', f.key)
+      });
+    });
+
+    const recKey = raw.line === 'kids' ? 'recBadgesKids' : 'recBadges';
+
+    return Object.assign(base, {
+      cur: { thaiName: this.effective(selId,'thaiName') || '—', lineEn: (LM[raw.line]||{}).en || '' },
+      mainImage: active ? React.createElement('img', { src:active.src, alt:'', style:{ maxWidth:'100%', maxHeight:'100%', objectFit:'contain', filter:'drop-shadow(0 16px 28px rgba(90,70,55,0.16))' } }) : null,
+      shots: shots, shotCount: shotList.length,
+      galleryOverridden: !!this.state.gallery[selId],
+      onAddImages: (ev)=>{ this.addImages(selId, ev.target.files); ev.target.value=''; },
+      resetGallery: ()=>this.resetGallery(selId),
+      resetProduct: ()=>this.resetProduct(selId),
+      headFields: [
+        mkHead('thaiName','ชื่อสินค้า (ไทย)','detailH1','ชื่อสินค้าภาษาไทย…',1),
+        mkHead('enName','ชื่อสินค้า (อังกฤษ)','detailEn','Product name in English…',1),
+        mkHead('claim','ประเภทสินค้า','pill','เช่น ผลิตภัณฑ์ทำความสะอาดผิวหน้า…',1),
+        mkHead('net','ปริมาณสุทธิ','pill','เช่น 100 กรัม…',1)
+      ],
+      detailPanels: detailPanels, guideFields: guideFields,
+      recPreview: H.lines(this.siteEff(recKey)).map(l=>({ label:l })),
+      linkVal: this.effective(selId,'link'),
+      onLink: (ev)=>this.set(selId,'link',ev.target.value)
+    });
   }
 }
 </script>

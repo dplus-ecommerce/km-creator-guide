@@ -24,14 +24,19 @@
   }
   function nowIso(){ try { return new Date().toISOString(); } catch(_){ return null; } }
 
+  // เนื้อหาระดับหน้าเว็บ (hero / about / why / faq / footer …) เก็บในแถวพิเศษ
+  // product_id = '__site__' คอลัมน์ gallery (jsonb) — ไม่ต้องเพิ่มคอลัมน์ใหม่ในตาราง
+  var SITE_ID = '__site__';
+
   // ---- read: build the same {edits, gallery} maps the pages used from localStorage
   async function load(){
-    var edits = {}, gallery = {};
+    var edits = {}, gallery = {}, site = null;
     try {
       var r = await fetch(URL+'/rest/v1/'+TABLE+'?select=*', { headers: headers() });
       if (r.ok) {
         var rows = await r.json();
         rows.forEach(function(row){
+          if (row.product_id === SITE_ID) { site = row.gallery || null; return; }
           var id = row.product_id, e = {};
           Object.keys(COLS).forEach(function(k){
             var v = row[COLS[k]];
@@ -42,7 +47,7 @@
         });
       }
     } catch(err){ console.warn('KM_SB.load failed', err); }
-    return { edits: edits, gallery: gallery };
+    return { edits: edits, gallery: gallery, site: site };
   }
 
   // ---- write: upsert (INSERT ... ON CONFLICT DO UPDATE of the sent columns only)
@@ -80,6 +85,9 @@
     // gallery record (array of {t:'b',k} | {t:'a',d:'data:...',label})
     saveGallery:  function(id, rec){ queue(id, { gallery: rec }); },
     resetGallery: function(id){      queue(id, { gallery: null }); },
+    // เนื้อหาหน้าเว็บทั้งก้อน (แถว __site__) — ส่งทั้ง object ทุกครั้ง
+    saveSite:  function(obj){ queue(SITE_ID, { gallery: obj }); },
+    resetSite: function(){    clearTimeout(timer[SITE_ID]); pend[SITE_ID] = null; return upsert(SITE_ID, { gallery: null }); },
     // bulk import (restore from a downloaded JSON backup)
     saveAll: function(editsObj){
       Object.keys(editsObj||{}).forEach(function(id){
