@@ -63,8 +63,8 @@
 
     channelTitle: 'ช่องทางแบรนด์',
     channels: [
-      'Shopee | ',
-      'Lazada | ',
+      'Shopee | https://shopee.co.th/shop/1873357206',
+      'Lazada | https://www.lazada.co.th/shop/kangaroo-mommy-th/',
       'TikTok Shop | ',
       'LINE OA | ',
       'Facebook | ',
