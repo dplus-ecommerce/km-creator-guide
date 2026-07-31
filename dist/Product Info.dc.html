@@ -162,24 +162,6 @@
       <section class="kmSec" style="margin-top:58px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
           <div>
-            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.whyTitleEn }}</h2>
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.whyTitleTh }}</div>
-          </div>
-        </div>
-        <div class="kmCardGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;">
-          <sc-for list="{{ whyCards }}" as="w" hint-placeholder-count="5">
-            <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:18px 20px 19px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
-              <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ w.th }}</div>
-              <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:#a4917f;margin-top:3px;">{{ w.en }}</div>
-              <p style="margin:10px 0 0;font-size:13.5px;color:#5f5044;line-height:1.75;">{{ w.desc }}</p>
-            </div>
-          </sc-for>
-        </div>
-      </section>
-
-      <section class="kmSec" style="margin-top:58px;">
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
-          <div>
             <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.assetsTitleEn }}</h2>
             <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.assetsTitleTh }}</div>
             <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">{{ s.assetsDesc }}</p>
@@ -473,7 +455,7 @@ class Component extends DCLogic {
   siteLines(key){ const H = window.KM_SITE; return H ? H.lines(this.siteVal(key)) : []; }
   siteText(){
     const keys = ['heroTitle','heroTag','heroLead','aboutTag','aboutTitle','aboutBody',
-      'colTitleEn','colTitleTh','colDesc','whyTitleEn','whyTitleTh',
+      'colTitleEn','colTitleTh','colDesc',
       'assetsTitleEn','assetsTitleTh','assetsDesc','assetLogoTitle','assetLogoBody',
       'faqTitleEn','faqTitleTh','helpTag','helpTitle','helpBody',
       'channelTitle','contactTitle','footNote','footBrand',
@@ -485,13 +467,6 @@ class Component extends DCLogic {
     return o;
   }
   brandBadgeList(){ return this.siteLines('badges').map(l => ({ label: l })); }
-  whyCardList(){
-    const H = window.KM_SITE;
-    return this.siteLines('why').map(line => {
-      const p = H ? H.parts(line, 3) : ['','',''];
-      return { th: p[0], en: p[1], desc: p[2] };
-    });
-  }
   assetCardList(){
     const H = window.KM_SITE;
     return this.siteLines('assets').map(line => {
@@ -614,7 +589,6 @@ class Component extends DCLogic {
       isDetail: route.view==='detail',
       sections, chips,
       brandBadges: this.brandBadgeList(),
-      whyCards: this.whyCardList(),
       assetCards: this.assetCardList(),
       faqs, contactChannels, footerGroups,
       saveLogo: () => this.saveLogoFile(),

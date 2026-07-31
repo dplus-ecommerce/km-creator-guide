@@ -141,26 +141,6 @@
 
         <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
           <div style="padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid rgba(169,133,111,0.28);">
-            <sc-for list="{{ whyTitleFields }}" as="f" hint-placeholder-count="2">
-              <div style="margin-bottom:8px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
-            </sc-for>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
-            <sc-for list="{{ whyItems }}" as="w" hint-placeholder-count="5">
-              <div style="position:relative;background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:14px 18px 16px;">
-                <div style="display:flex;justify-content:flex-end;gap:2px;margin-bottom:2px;"><button onClick="{{ w.up }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▲</button><button onClick="{{ w.down }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▼</button><button onClick="{{ w.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button></div>
-                <div style="margin-top:0px;"><textarea class="kmEdit" value="{{ w.f1.value }}" onInput="{{ w.f1.onInput }}" rows="{{ w.f1.rows }}" placeholder="{{ w.f1.ph }}" style="{{ w.f1.style }}"></textarea></div>
-                <div style="margin-top:5px;"><textarea class="kmEdit" value="{{ w.f2.value }}" onInput="{{ w.f2.onInput }}" rows="{{ w.f2.rows }}" placeholder="{{ w.f2.ph }}" style="{{ w.f2.style }}"></textarea></div>
-                <div style="margin-top:7px;"><textarea class="kmEdit" value="{{ w.f3.value }}" onInput="{{ w.f3.onInput }}" rows="{{ w.f3.rows }}" placeholder="{{ w.f3.ph }}" style="{{ w.f3.style }}"></textarea></div>
-              </div>
-            </sc-for>
-          </div>
-          <button onClick="{{ addWhy }}" style="margin-top:10px;background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:9px;padding:9px 15px;color:#8a6f4e;cursor:pointer;font-size:12.5px;">+ เพิ่มการ์ด</button>
-          <p class="kmHint">คลิกที่ข้อความในการ์ดเพื่อแก้ · ▲▼ สลับลำดับ · ✕ ลบการ์ด</p>
-        </section>
-
-        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
-          <div style="padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid rgba(169,133,111,0.28);">
             <sc-for list="{{ assetTitleFields }}" as="f" hint-placeholder-count="3">
               <div style="margin-bottom:8px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
             </sc-for>
@@ -693,7 +673,6 @@ class Component extends DCLogic {
 
     if (isHome){
       const badgesField  = this.siteListField('badges', 4);
-      const whyField     = this.siteListField('why', 5);
       const assetField   = this.siteListField('assets', 3);
       const faqField     = this.siteListField('faq', 10);
       const contactField = this.siteListField('contacts', 2);
@@ -721,14 +700,6 @@ class Component extends DCLogic {
           this.siteField('colDesc','small','คำอธิบายสั้น',2)
         ],
         chipPreview: chipPreview,
-        whyTitleFields: [ this.siteField('whyTitleEn','h2en','หัวข้ออังกฤษ',1), this.siteField('whyTitleTh','sub','หัวข้อไทย',1) ],
-        whyField: whyField,
-        whyItems: this.cardList('why', 3, [
-          { preset:'cardTitle', ph:'หัวข้อไทย', rows:1 },
-          { preset:'detailEn',  ph:'หัวข้ออังกฤษ', rows:1 },
-          { preset:'cardBody',  ph:'คำอธิบาย', rows:3 }
-        ]),
-        addWhy: this.addCard('why', 3, ['หัวข้อใหม่','New Card','คำอธิบาย']),
         assetTitleFields: [
           this.siteField('assetsTitleEn','h2en','หัวข้ออังกฤษ',1),
           this.siteField('assetsTitleTh','sub','หัวข้อไทย',1),
