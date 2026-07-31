@@ -135,9 +135,9 @@
           <div class="kmProdGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:20px;">
             <sc-for list="{{ sec.products }}" as="p" hint-placeholder-count="4">
               <button onClick="{{ p.open }}" style="text-align:left;cursor:pointer;background:#fffdf9;border:1px solid rgba(169,133,111,0.2);border-radius:9px;padding:0;overflow:hidden;color:inherit;display:flex;flex-direction:column;transition:border-color .25s,transform .25s,box-shadow .25s;box-shadow:0 2px 10px rgba(120,95,75,0.05);" style-hover="border-color:rgba(169,133,111,0.6);transform:translateY(-4px);box-shadow:0 16px 34px rgba(120,95,75,0.16);">
-                <div style="position:relative;aspect-ratio:1/1;background:radial-gradient(circle at 50% 42%, rgba(169,133,111,0.13), rgba(255,255,255,0) 68%),#f9f3ea;display:flex;align-items:center;justify-content:center;padding:22px;">
+                <div style="position:relative;width:100%;aspect-ratio:1/1;flex:none;overflow:hidden;background:radial-gradient(circle at 50% 42%, rgba(169,133,111,0.13), rgba(255,255,255,0) 68%),#f9f3ea;display:flex;align-items:center;justify-content:center;padding:22px;">
                   <sc-if value="{{ p.hasImage }}" hint-placeholder-val="{{ true }}">
-                    <img src="{{ p.heroSrc }}" alt="{{ p.enName }}" loading="lazy" style="max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 14px 22px rgba(90,70,55,0.16));"/>
+                    <img src="{{ p.heroSrc }}" alt="{{ p.enName }}" loading="lazy" style="position:absolute;inset:22px;width:calc(100% - 44px);height:calc(100% - 44px);object-fit:contain;filter:drop-shadow(0 14px 22px rgba(90,70,55,0.16));"/>
                   </sc-if>
                   <sc-if value="{{ p.noImage }}">
                     <div style="display:flex;flex-direction:column;align-items:center;gap:12px;opacity:.6;">
