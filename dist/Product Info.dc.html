@@ -162,6 +162,34 @@
       <section class="kmSec" style="margin-top:58px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
           <div>
+            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.buyTitleEn }}</h2>
+            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.buyTitleTh }}</div>
+            <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">{{ s.buyDesc }}</p>
+          </div>
+        </div>
+        <div class="kmCardGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;">
+          <sc-for list="{{ buyCards }}" as="c" hint-placeholder-count="6">
+            <div>
+              <sc-if value="{{ c.hasHref }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ c.href }}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:19px 20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);transition:border-color .25s,transform .25s,box-shadow .25s;" style-hover="border-color:rgba(169,133,111,0.6);transform:translateY(-3px);box-shadow:0 14px 28px rgba(120,95,75,0.14);">
+                  <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ c.label }}</span>
+                  <span style="font-size:15px;color:#a9856f;">↗</span>
+                </a>
+              </sc-if>
+              <sc-if value="{{ c.noHref }}">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fbf6ee;border:1px dashed rgba(169,133,111,0.35);border-radius:11px;padding:19px 20px;">
+                  <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#8a7a6b;">{{ c.label }}</span>
+                  <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ c.note }}</span>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section class="kmSec" style="margin-top:58px;">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
+          <div>
             <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.assetsTitleEn }}</h2>
             <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.assetsTitleTh }}</div>
             <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">{{ s.assetsDesc }}</p>
@@ -455,7 +483,7 @@ class Component extends DCLogic {
   siteLines(key){ const H = window.KM_SITE; return H ? H.lines(this.siteVal(key)) : []; }
   siteText(){
     const keys = ['heroTitle','heroTag','heroLead','aboutTag','aboutTitle','aboutBody',
-      'colTitleEn','colTitleTh','colDesc',
+      'colTitleEn','colTitleTh','colDesc','buyTitleEn','buyTitleTh','buyDesc',
       'assetsTitleEn','assetsTitleTh','assetsDesc','assetLogoTitle','assetLogoBody',
       'faqTitleEn','faqTitleTh','helpTag','helpTitle','helpBody',
       'channelTitle','contactTitle','footNote','footBrand',
@@ -576,6 +604,7 @@ class Component extends DCLogic {
     }));
     const contactChannels = mark(this.linkListOf('contacts'), false);
     const st = this.siteText();
+    const buyCards = mark(this.linkListOf('channels'), true);
     const footerGroups = [
       { title: st.channelTitle, items: mark(this.linkListOf('channels'), true) },
       { title: st.contactTitle, items: mark(this.linkListOf('contacts'), false) }
@@ -589,6 +618,7 @@ class Component extends DCLogic {
       isDetail: route.view==='detail',
       sections, chips,
       brandBadges: this.brandBadgeList(),
+      buyCards,
       assetCards: this.assetCardList(),
       faqs, contactChannels, footerGroups,
       saveLogo: () => this.saveLogoFile(),

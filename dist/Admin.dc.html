@@ -141,6 +141,25 @@
 
         <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
           <div style="padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid rgba(169,133,111,0.28);">
+            <sc-for list="{{ buyTitleFields }}" as="f" hint-placeholder-count="3">
+              <div style="margin-bottom:8px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;">
+            <sc-for list="{{ channelItems }}" as="c" hint-placeholder-count="6">
+              <div style="border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:12px 14px;background:#fffdf9;">
+                <div style="display:flex;justify-content:flex-end;gap:2px;"><button onClick="{{ c.up }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▲</button><button onClick="{{ c.down }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▼</button><button onClick="{{ c.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button></div>
+                <input value="{{ c.f1.value }}" onInput="{{ c.f1.onInput }}" placeholder="{{ c.f1.ph }}" style="background:transparent;border:none;outline:none;font-family:'Noto Serif Thai',serif;font-weight:600;width:100%;font-size:14.5px;color:#3f342c;"/>
+                <input value="{{ c.f2.value }}" onInput="{{ c.f2.onInput }}" placeholder="{{ c.f2.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;width:100%;margin-top:6px;font-size:12px;color:#a4917f;"/>
+              </div>
+            </sc-for>
+          </div>
+          <button onClick="{{ addChannel }}" style="margin-top:10px;background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:9px;padding:9px 15px;color:#8a6f4e;cursor:pointer;font-size:12.5px;">+ เพิ่มช่องทาง</button>
+          <p class="kmHint">ช่องบน = ชื่อช่องทาง · ช่องล่าง = ลิงก์ร้าน (วางลิงก์แล้วกลายเป็นปุ่มกดทันที) · ยังไม่ใส่ลิงก์ = แสดง “(เร็ว ๆ นี้)” · รายการชุดนี้ใช้ทั้งหัวข้อนี้และคอลัมน์ “ช่องทางแบรนด์” ท้ายเว็บ</p>
+        </section>
+
+        <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
+          <div style="padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid rgba(169,133,111,0.28);">
             <sc-for list="{{ assetTitleFields }}" as="f" hint-placeholder-count="3">
               <div style="margin-bottom:8px;"><textarea class="kmEdit" value="{{ f.value }}" onInput="{{ f.onInput }}" rows="{{ f.rows }}" placeholder="{{ f.ph }}" style="{{ f.style }}"></textarea></div>
             </sc-for>
@@ -208,17 +227,7 @@
             <div class="kmTop2" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
               <div>
                 <textarea class="kmEdit" value="{{ channelTitleField.value }}" onInput="{{ channelTitleField.onInput }}" rows="1" style="{{ channelTitleField.style }}"></textarea>
-                <div style="display:flex;flex-direction:column;gap:7px;margin:10px 0 4px;">
-                  <sc-for list="{{ channelItems }}" as="c" hint-placeholder-count="5">
-                    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;border:1px solid rgba(169,133,111,0.22);border-radius:9px;padding:7px 9px;">
-                      <input value="{{ c.f1.value }}" onInput="{{ c.f1.onInput }}" placeholder="{{ c.f1.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;flex:1;min-width:110px;font-size:13px;color:#5c4d40;"/>
-                      <input value="{{ c.f2.value }}" onInput="{{ c.f2.onInput }}" placeholder="{{ c.f2.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;flex:1.4;min-width:130px;font-size:12px;color:#a4917f;"/>
-                      <button onClick="{{ c.up }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▲</button><button onClick="{{ c.down }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▼</button><button onClick="{{ c.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button>
-                    </div>
-                  </sc-for>
-                  <button onClick="{{ addChannel }}" style="margin-top:10px;background:#fffdf9;border:1px dashed rgba(169,133,111,0.55);border-radius:9px;padding:9px 15px;color:#8a6f4e;cursor:pointer;font-size:12.5px;align-self:flex-start;margin-top:2px;">+ เพิ่มช่องทาง</button>
-                </div>
-                <p class="kmHint">ยังไม่ใส่ลิงก์ = หน้าเว็บแสดง “เร็ว ๆ นี้” · ใส่ลิงก์แล้วกดได้ทันที</p>
+                <p class="kmHint" style="margin-top:9px;">คอลัมน์นี้ใช้รายการชุดเดียวกับหัวข้อ “ช่องทางการขาย” ด้านบน — แก้ชื่อ/ลิงก์ที่นั่นที่เดียว</p>
               </div>
               <div>
                 <textarea class="kmEdit" value="{{ contactTitleField.value }}" onInput="{{ contactTitleField.onInput }}" rows="1" style="{{ contactTitleField.style }}"></textarea>
@@ -700,6 +709,11 @@ class Component extends DCLogic {
           this.siteField('colDesc','small','คำอธิบายสั้น',2)
         ],
         chipPreview: chipPreview,
+        buyTitleFields: [
+          this.siteField('buyTitleEn','h2en','หัวข้ออังกฤษ',1),
+          this.siteField('buyTitleTh','sub','หัวข้อไทย',1),
+          this.siteField('buyDesc','small','คำอธิบายสั้น',2)
+        ],
         assetTitleFields: [
           this.siteField('assetsTitleEn','h2en','หัวข้ออังกฤษ',1),
           this.siteField('assetsTitleTh','sub','หัวข้อไทย',1),
