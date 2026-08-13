@@ -72,6 +72,7 @@
     .kmProdGrid{grid-template-columns:repeat(2,1fr) !important;gap:12px !important;}
     .kmDetail{padding:16px 16px 76px !important;}
     .kmTopGrid{gap:22px !important;grid-template-columns:1fr !important;}
+    .kmStickyImg{position:static !important;top:auto !important;}
     .kmDetH1{font-size:23px !important;}
     .kmMainImg{padding:26px !important;border-radius:14px !important;}
     .kmBriefGrid{grid-template-columns:1fr !important;}
@@ -280,7 +281,8 @@
 
     <div class="kmTopGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:50px;margin-top:26px;align-items:start;">
 
-      <div>
+      <div style="align-self:stretch;">
+       <div class="kmStickyImg" style="position:sticky;top:92px;">
         <div class="kmMainImg" style="position:relative;aspect-ratio:1/1;border-radius:12px;background:radial-gradient(circle at 50% 40%, rgba(169,133,111,0.14), rgba(255,255,255,0) 70%),#fbf6ee;border:1px solid rgba(169,133,111,0.2);display:flex;align-items:center;justify-content:center;padding:44px;overflow:hidden;">
           {{ mainImage }}
           <sc-if value="{{ current.noImage }}">
@@ -300,6 +302,7 @@
           </div>
           <div style="margin-top:9px;font-size:11.5px;letter-spacing:0.06em;color:#9c8b7c;">{{ activeShot.label }}</div>
         </sc-if>
+       </div>
       </div>
 
       <div>
