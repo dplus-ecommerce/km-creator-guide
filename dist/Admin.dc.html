@@ -14,7 +14,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200..700;1,200..700&family=Noto+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
 <style>
   html,body{margin:0;padding:0;background:#f4ede2;}
   *{box-sizing:border-box;}
@@ -46,14 +46,14 @@
 <script src="site-defaults.js"></script>
 <script src="sb-data.js"></script>
 </helmet>
-<div style="--gold:#a9856f;min-height:100vh;background:linear-gradient(180deg,#faf5ec 0%,#f1e7d8 100%);color:#6a5a4d;font-family:'Noto Sans Thai',sans-serif;line-height:1.65;">
+<div style="--gold:#a9856f;min-height:100vh;background:linear-gradient(180deg,#faf5ec 0%,#f1e7d8 100%);color:#6a5a4d;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;line-height:1.75;">
 
   <header style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px 26px;background:rgba(250,245,236,0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(169,133,111,0.28);">
     <div style="display:flex;align-items:center;gap:13px;">
       <img src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:40px;width:auto;"/>
       <div>
-        <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:16px;color:#3f342c;">หลังบ้าน · แก้ไขหน้าเว็บ</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13.5px;color:#a9856f;">คลิกที่ข้อความไหนก็แก้ได้ · บันทึกอัตโนมัติ</div>
+        <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:16px;color:#3f342c;">หลังบ้าน · แก้ไขหน้าเว็บ</div>
+        <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:400;font-size:13px;color:#a9856f;">คลิกที่ข้อความไหนก็แก้ได้ · บันทึกอัตโนมัติ</div>
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;">
@@ -83,9 +83,9 @@
         <span style="width:6px;height:6px;border-radius:50%;background:{{ homeDot }};flex:none;"></span>
         <span style="flex:1;text-align:left;">หน้าแรกของเว็บ</span>
       </button>
-      <div style="padding:14px 20px 6px;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:0.2em;text-transform:uppercase;color:#a9856f;">Products</div>
+      <div style="padding:14px 20px 6px;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:400;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#a9856f;">Products</div>
       <sc-for list="{{ groups }}" as="g" hint-placeholder-count="5">
-        <div style="padding:12px 20px 5px;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#b5a48f;">{{ g.en }}</div>
+        <div style="padding:12px 20px 5px;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:#b5a48f;">{{ g.en }}</div>
         <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
           <button onClick="{{ it.open }}" style="{{ it.style }}" style-hover="background:rgba(169,133,111,0.1);">
             <span style="width:6px;height:6px;border-radius:50%;background:{{ it.dot }};flex:none;"></span>
@@ -153,7 +153,7 @@
             <sc-for list="{{ channelItems }}" as="c" hint-placeholder-count="6">
               <div style="border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:12px 14px;background:#fffdf9;">
                 <div style="display:flex;justify-content:flex-end;gap:2px;"><button onClick="{{ c.up }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▲</button><button onClick="{{ c.down }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#a9856f;">▼</button><button onClick="{{ c.remove }}" style="background:none;border:none;cursor:pointer;font-size:12px;padding:2px 4px;color:#c07a52;">✕</button></div>
-                <input value="{{ c.f1.value }}" onInput="{{ c.f1.onInput }}" placeholder="{{ c.f1.ph }}" style="background:transparent;border:none;outline:none;font-family:'Noto Serif Thai',serif;font-weight:600;width:100%;font-size:14.5px;color:#3f342c;"/>
+                <input value="{{ c.f1.value }}" onInput="{{ c.f1.onInput }}" placeholder="{{ c.f1.ph }}" style="background:transparent;border:none;outline:none;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;width:100%;font-size:14.5px;color:#3f342c;"/>
                 <input value="{{ c.f2.value }}" onInput="{{ c.f2.onInput }}" placeholder="{{ c.f2.ph }}" style="background:transparent;border:none;outline:none;font-family:inherit;width:100%;margin-top:6px;font-size:12px;color:#a4917f;"/>
               </div>
             </sc-for>
@@ -248,7 +248,7 @@
 
         <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
           <div style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.4);border-radius:11px;padding:20px 24px;">
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">ป้าย “เหมาะกับใคร” ในหน้าสินค้า</div>
+            <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">ป้าย “เหมาะกับใคร” ในหน้าสินค้า</div>
             <p class="kmHint" style="margin:0 0 12px;">ใช้กับทุกสินค้า — สินค้าเด็กใช้ชุดแยก · บรรทัดละ 1 ป้าย</p>
             <div class="kmTop2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
               <div>
@@ -275,7 +275,7 @@
 
         <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:22px 40px 0;">
           <div style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.4);border-radius:11px;padding:20px 24px;">
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">คอลเลกชันสินค้า</div>
+            <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">คอลเลกชันสินค้า</div>
             <p class="kmHint" style="margin:0 0 12px;">ชื่อหมวดที่แสดงบนหน้าแรกและปุ่มเลือกคอลเลกชัน · บรรทัดละ 1 คอลเลกชัน · รูปแบบ <strong>คีย์ | ชื่อไทย | ชื่ออังกฤษ | ชื่อบนปุ่ม | คำอธิบาย</strong> — <strong style="color:#b5623f;">ห้ามแก้คีย์</strong> (คีย์คือตัวผูกสินค้าเข้าหมวด)</p>
             <textarea class="kmList" value="{{ collectionsField.value }}" onInput="{{ collectionsField.onInput }}" rows="{{ collectionsField.rows }}"></textarea>
           </div>
@@ -283,7 +283,7 @@
 
         <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:22px 40px 0;">
           <div style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.4);border-radius:11px;padding:20px 24px;">
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">ชื่อหัวข้อในหน้าสินค้า</div>
+            <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">ชื่อหัวข้อในหน้าสินค้า</div>
             <p class="kmHint" style="margin:0 0 12px;">รูปแบบ <strong>คีย์ | ชื่อไทย | ชื่ออังกฤษ</strong> · เรียงบรรทัดใหม่ = เรียงลำดับหัวข้อบนเว็บ · <strong style="color:#b5623f;">ห้ามแก้คีย์</strong></p>
             <div class="kmTop2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
               <div>
@@ -300,7 +300,7 @@
 
         <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:22px 40px 0;">
           <div style="background:#fffdf9;border:1px dashed rgba(169,133,111,0.4);border-radius:11px;padding:20px 24px;">
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">ข้อความ ปุ่ม และสีบนเว็บ</div>
+            <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:15px;color:#3f342c;margin-bottom:4px;">ข้อความ ปุ่ม และสีบนเว็บ</div>
             <p class="kmHint" style="margin:0 0 14px;">ข้อความเล็ก ๆ ที่เหลือทั้งหมด — แถบด้านบน ปุ่มต่าง ๆ และป้ายในหน้าสินค้า · <strong>{n}</strong> จะถูกแทนด้วยจำนวนรูป</p>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
               <sc-for list="{{ uiFields }}" as="f" hint-placeholder-count="10">
@@ -339,7 +339,7 @@
             <div style="margin-top:14px;padding:14px 16px;background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;">
               <div class="kmBar" style="justify-content:space-between;margin-bottom:11px;">
                 <div class="kmBar">
-                  <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14px;color:#3f342c;">รูปภาพ &amp; ลำดับการแสดง</span>
+                  <span style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:14px;color:#3f342c;">รูปภาพ &amp; ลำดับการแสดง</span>
                   <sc-if value="{{ galleryOverridden }}"><span style="font-size:10.5px;color:#8a6f4e;background:rgba(169,133,111,0.16);border-radius:20px;padding:2px 9px;">แก้ไขแล้ว</span></sc-if>
                 </div>
                 <div class="kmBar">
@@ -365,7 +365,7 @@
           </div>
 
           <div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:12.5px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;">{{ cur.lineEn }}</div>
+            <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-size:12.5px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;">{{ cur.lineEn }}</div>
             <sc-for list="{{ headFields }}" as="f" hint-placeholder-count="4">
               <div style="margin-top:9px;">
                 <div class="kmBar" style="margin-bottom:3px;">
@@ -382,8 +382,8 @@
                   <button class="kmAccBtn" onClick="{{ d.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;padding:13px 17px;">
                     <span style="width:7px;height:7px;border-radius:50%;background:{{ d.accentColor }};flex:none;"></span>
                     <span style="flex:1;">
-                      <span style="display:block;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ d.th }}</span>
-                      <span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ d.en }}</span>
+                      <span style="display:block;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ d.th }}</span>
+                      <span style="display:block;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:400;font-size:12.5px;color:#a4917f;">{{ d.en }}</span>
                     </span>
                     <sc-if value="{{ d.overridden }}"><span style="font-size:10.5px;color:#8a6f4e;background:rgba(169,133,111,0.16);border-radius:20px;padding:2px 9px;">แก้ไขแล้ว</span></sc-if>
                     <span style="flex:none;font-size:13px;color:{{ d.iconColor }};">{{ d.icon }}</span>
@@ -422,8 +422,8 @@
         <section class="kmPad2" style="max-width:1100px;margin:0 auto;padding:34px 40px 0;">
           <div class="kmBar" style="justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(169,133,111,0.28);">
             <div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:12.5px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;margin-bottom:5px;">Content Guide</div>
-              <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:22px;color:#3f342c;">แนวทางทำคอนเทนต์</div>
+              <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-size:12.5px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;margin-bottom:5px;">Content Guide</div>
+              <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:22px;color:#3f342c;">แนวทางทำคอนเทนต์</div>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:9px;">
@@ -432,8 +432,8 @@
                 <button class="kmAccBtn" onClick="{{ f.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;padding:13px 17px;">
                   <span style="width:7px;height:7px;border-radius:50%;background:{{ f.accentColor }};flex:none;"></span>
                   <span style="flex:1;">
-                    <span style="display:block;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ f.th }}</span>
-                    <span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ f.en }}</span>
+                    <span style="display:block;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ f.th }}</span>
+                    <span style="display:block;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:400;font-size:12.5px;color:#a4917f;">{{ f.en }}</span>
                   </span>
                   <sc-if value="{{ f.overridden }}"><span style="font-size:10.5px;color:#8a6f4e;background:rgba(169,133,111,0.16);border-radius:20px;padding:2px 9px;">แก้ไขแล้ว</span></sc-if>
                   <span style="flex:none;font-size:13px;color:{{ f.iconColor }};">{{ f.icon }}</span>
@@ -497,20 +497,20 @@ class Component extends DCLogic {
   }
   st(preset){
     const map = {
-      h1:"font-family:'Noto Serif Thai',serif;font-weight:600;font-size:32px;line-height:1.3;color:#3f342c;text-align:center;",
-      heroTag:"font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#a9856f;text-align:center;",
+      h1:"font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:30px;line-height:1.3;color:#3f342c;text-align:center;",
+      heroTag:"font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:300;font-size:18px;color:#a9856f;text-align:center;",
       lead:"font-size:15px;color:#7c6c5d;text-align:center;line-height:1.75;",
-      tag:"font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;",
-      h2en:"font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;color:#3f342c;",
-      h2th:"font-family:'Noto Serif Thai',serif;font-weight:600;font-size:21px;color:#3f342c;",
-      sub:"font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;",
+      tag:"font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:400;font-size:11.5px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;",
+      h2en:"font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:27px;color:#3f342c;",
+      h2th:"font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:21px;color:#3f342c;",
+      sub:"font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:500;font-size:15px;color:#a9856f;",
       body:"font-size:15px;color:#5f5044;line-height:1.85;",
       small:"font-size:14px;color:#8a7a6b;line-height:1.75;",
-      cardTitle:"font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;",
+      cardTitle:"font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:15px;color:#3f342c;",
       cardBody:"font-size:13.5px;color:#5f5044;line-height:1.8;",
       footSmall:"font-size:12px;color:#a4917f;",
-      detailH1:"font-family:'Noto Serif Thai',serif;font-weight:600;font-size:24px;line-height:1.35;color:#3f342c;",
-      detailEn:"font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#a08972;",
+      detailH1:"font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:23px;line-height:1.35;color:#3f342c;",
+      detailEn:"font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:300;font-size:15px;color:#a08972;",
       pill:"font-size:13px;color:#5c4d40;"
     };
     return 'font-family:inherit;' + (map[preset] || map.body);
@@ -673,7 +673,7 @@ class Component extends DCLogic {
       isHome: isHome, isProduct: !isHome,
       openHome: ()=>this.setState({ view:'home' }),
       homeDot: isHome ? '#a9856f' : 'rgba(169,133,111,0.28)',
-      homeBtnStyle: "display:flex;align-items:center;gap:10px;width:100%;padding:11px 20px;border:none;cursor:pointer;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14px;color:"+(isHome?'#3f342c':'#7c6c5d')+";background:"+(isHome?'rgba(169,133,111,0.16)':'transparent')+";border-left:3px solid "+(isHome?'#a9856f':'transparent')+";",
+      homeBtnStyle: "display:flex;align-items:center;gap:10px;width:100%;padding:11px 20px;border:none;cursor:pointer;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:14px;color:"+(isHome?'#3f342c':'#7c6c5d')+";background:"+(isHome?'rgba(169,133,111,0.16)':'transparent')+";border-left:3px solid "+(isHome?'#a9856f':'transparent')+";",
       savedColor: sv[0], savedText: sv[1],
       jsonOpen: this.state.jsonOpen, jsonText: this.state.jsonText,
       toggleJson: ()=>this.toggleJson(),

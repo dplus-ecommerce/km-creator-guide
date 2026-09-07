@@ -28,7 +28,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200..700;1,200..700&family=Noto+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
 <style>
   html,body{margin:0;padding:0;background:#f4ede2;}
   *{box-sizing:border-box;}
@@ -49,7 +49,7 @@
   /* ---- mobile ---- */
   @media (max-width:680px){
     .kmAbout{padding:20px 18px !important;}
-    .kmAboutH2{font-size:20px !important;}
+    .kmAboutH2{font-size:19px !important;}
     .kmChipRow{gap:8px !important;}
     .kmChip{font-size:12px !important;padding:7px 12px !important;}
     .kmCardGrid{grid-template-columns:1fr !important;gap:12px !important;}
@@ -59,21 +59,21 @@
     .kmHeader{padding:11px 16px !important;}
     .kmHeaderTag{display:none !important;}
     .kmHeaderLogo{height:42px !important;}
-    .kmHeaderSub{font-size:14px !important;}
+    .kmHeaderSub{font-size:13px !important;}
     .kmHero{padding:40px 18px 16px !important;}
     .kmHeroLogo{height:120px !important;margin-bottom:16px !important;}
-    .kmHeroH1{font-size:26px !important;}
-    .kmHeroSub{font-size:18px !important;}
+    .kmHeroH1{font-size:25px !important;}
+    .kmHeroSub{font-size:16px !important;}
     .kmHeroLead{font-size:14px !important;}
     .kmPad{padding:12px 16px 72px !important;}
     .kmSec{margin-top:40px !important;}
-    .kmSecEn{font-size:25px !important;}
-    .kmSecCount{font-size:30px !important;}
+    .kmSecEn{font-size:24px !important;}
+    .kmSecCount{font-size:26px !important;}
     .kmProdGrid{grid-template-columns:repeat(2,1fr) !important;gap:12px !important;}
     .kmDetail{padding:16px 16px 76px !important;}
     .kmTopGrid{gap:22px !important;grid-template-columns:1fr !important;}
     .kmStickyImg{position:static !important;top:auto !important;}
-    .kmDetH1{font-size:23px !important;}
+    .kmDetH1{font-size:22px !important;}
     .kmMainImg{padding:26px !important;border-radius:14px !important;}
     .kmBriefGrid{grid-template-columns:1fr !important;}
     .kmFooter{padding:20px 16px !important;flex-direction:column;text-align:center;}
@@ -81,7 +81,7 @@
   }
   @media (max-width:380px){
     .kmProdGrid{grid-template-columns:1fr !important;}
-    .kmHeroH1{font-size:23px !important;}
+    .kmHeroH1{font-size:22px !important;}
   }
 </style>
 <script src="products.js"></script>
@@ -90,13 +90,13 @@
 <script src="site-defaults.js"></script>
 <script src="sb-data.js"></script>
 </helmet>
-<div class="kmScroll" style="--gold:{{ accent }};min-height:100vh;background:linear-gradient(180deg,#faf5ec 0%,#f1e7d8 100%);color:#6a5a4d;font-family:'Noto Sans Thai',sans-serif;font-weight:400;line-height:1.65;">
+<div class="kmScroll" style="--gold:{{ accent }};min-height:100vh;background:linear-gradient(180deg,#faf5ec 0%,#f1e7d8 100%);color:#6a5a4d;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:400;line-height:1.75;">
 
   <header class="kmHeader" style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 40px;background:rgba(250,245,236,0.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(169,133,111,0.22);">
     <button onClick="{{ goHome }}" style="display:flex;align-items:center;gap:14px;background:none;border:none;padding:0;cursor:pointer;">
       <img class="kmHeaderLogo" src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:52px;width:auto;display:block;"/>
       <span style="height:30px;width:1px;background:rgba(169,133,111,0.35);"></span>
-      <span class="kmHeaderSub" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:0.02em;color:#a9856f;">{{ s.headerTag }}</span>
+      <span class="kmHeaderSub" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:300;font-size:15px;letter-spacing:0.02em;color:#a9856f;">{{ s.headerTag }}</span>
     </button>
     <div class="kmHeaderTag" style="font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#a4917f;">{{ productCount }} {{ s.headerUnit }}</div>
   </header>
@@ -105,15 +105,15 @@
   <div style="animation:kmFade .5s ease both;">
     <section class="kmHero" style="text-align:center;padding:66px 24px 30px;">
       <img class="kmHeroLogo" src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:190px;width:auto;margin-bottom:22px;"/>
-      <h1 class="kmHeroH1" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:39px;line-height:1.25;color:#3f342c;margin:0 auto;max-width:16em;">{{ s.heroTitle }}</h1>
-      <p class="kmHeroSub" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#a9856f;margin:12px 0 0;">{{ s.heroTag }}</p>
+      <h1 class="kmHeroH1" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:37px;line-height:1.25;color:#3f342c;margin:0 auto;max-width:16em;">{{ s.heroTitle }}</h1>
+      <p class="kmHeroSub" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:300;font-size:19px;color:#a9856f;margin:12px 0 0;">{{ s.heroTag }}</p>
       <p class="kmHeroLead" style="max-width:42em;margin:20px auto 0;font-size:15.5px;color:#7c6c5d;">{{ s.heroLead }}</p>
     </section>
 
     <section class="kmPad" style="max-width:1180px;margin:0 auto;padding:6px 40px 0;">
       <div class="kmAbout" style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:26px 30px 24px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">{{ s.aboutTag }}</div>
-        <h2 class="kmAboutH2" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:23px;color:#3f342c;margin:0 0 12px;">{{ s.aboutTitle }}</h2>
+        <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:400;font-size:11.5px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">{{ s.aboutTag }}</div>
+        <h2 class="kmAboutH2" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:22px;color:#3f342c;margin:0 0 12px;">{{ s.aboutTitle }}</h2>
         <p style="margin:0;font-size:15px;color:#5f5044;line-height:1.85;max-width:58em;">{{ s.aboutBody }}</p>
         <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:18px;">
           <sc-for list="{{ brandBadges }}" as="b" hint-placeholder-count="4">
@@ -127,11 +127,11 @@
       <section class="kmSec" style="margin-top:48px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:20px;border-bottom:1px solid rgba(169,133,111,0.28);">
           <div>
-            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.colTitleEn }}</h2>
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.colTitleTh }}</div>
+            <h2 class="kmSecEn" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:30px;letter-spacing:0.05em;color:#3f342c;margin:0 0 4px;">{{ s.colTitleEn }}</h2>
+            <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.colTitleTh }}</div>
             <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">{{ s.colDesc }}</p>
           </div>
-          <div class="kmSecCount" style="font-family:'Cormorant Garamond',serif;font-size:42px;color:rgba(169,133,111,0.4);line-height:1;">{{ productCount }}</div>
+          <div class="kmSecCount" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:200;font-size:34px;letter-spacing:0.02em;color:rgba(169,133,111,0.4);line-height:1;">{{ productCount }}</div>
         </div>
         <div class="kmChipRow" style="display:flex;flex-wrap:wrap;gap:9px;">
           <sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
@@ -145,11 +145,11 @@
         <section class="kmSec" style="margin-top:44px;">
           <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:26px;border-bottom:1px solid rgba(169,133,111,0.28);">
             <div>
-              <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ sec.en }}</h2>
-              <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ sec.th }}</div>
+              <h2 class="kmSecEn" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:30px;letter-spacing:0.05em;color:#3f342c;margin:0 0 4px;">{{ sec.en }}</h2>
+              <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:500;font-size:15px;color:#a9856f;">{{ sec.th }}</div>
               <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">{{ sec.desc }}</p>
             </div>
-            <div class="kmSecCount" style="font-family:'Cormorant Garamond',serif;font-size:42px;color:rgba(169,133,111,0.4);line-height:1;">{{ sec.countLabel }}</div>
+            <div class="kmSecCount" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:200;font-size:34px;letter-spacing:0.02em;color:rgba(169,133,111,0.4);line-height:1;">{{ sec.countLabel }}</div>
           </div>
           <div class="kmProdGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:20px;">
             <sc-for list="{{ sec.products }}" as="p" hint-placeholder-count="4">
@@ -167,8 +167,8 @@
                 </div>
                 <div style="padding:15px 17px 18px;border-top:1px solid rgba(169,133,111,0.16);display:flex;flex-direction:column;flex:1;">
                   <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#a9856f;">{{ p.lineShort }}</div>
-                  <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15.5px;color:#3f342c;margin-top:7px;line-height:1.4;min-height:2.8em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;">{{ p.thaiName }}</div>
-                  <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#a08972;margin-top:4px;line-height:1.3;min-height:2.6em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;">{{ p.enShort }}</div>
+                  <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:500;font-size:15.5px;color:#3f342c;margin-top:7px;line-height:1.4;min-height:2.8em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;">{{ p.thaiName }}</div>
+                  <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:400;font-size:13.5px;color:#a08972;margin-top:4px;line-height:1.3;min-height:2.6em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;">{{ p.enShort }}</div>
                   <div style="margin-top:12px;display:inline-block;align-self:flex-start;font-size:11px;color:#8a7a6b;border:1px solid rgba(169,133,111,0.3);border-radius:20px;padding:3px 11px;">{{ p.net }}</div>
                 </div>
               </button>
@@ -181,8 +181,8 @@
       <section class="kmSec" style="margin-top:58px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
           <div>
-            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.buyTitleEn }}</h2>
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.buyTitleTh }}</div>
+            <h2 class="kmSecEn" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:30px;letter-spacing:0.05em;color:#3f342c;margin:0 0 4px;">{{ s.buyTitleEn }}</h2>
+            <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.buyTitleTh }}</div>
             <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">{{ s.buyDesc }}</p>
           </div>
         </div>
@@ -191,14 +191,14 @@
             <div>
               <sc-if value="{{ c.hasHref }}" hint-placeholder-val="{{ true }}">
                 <a href="{{ c.href }}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:19px 20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);transition:border-color .25s,transform .25s,box-shadow .25s;" style-hover="border-color:rgba(169,133,111,0.6);transform:translateY(-3px);box-shadow:0 14px 28px rgba(120,95,75,0.14);">
-                  <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ c.label }}</span>
+                  <span style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:15px;color:#3f342c;">{{ c.label }}</span>
                   <span style="font-size:15px;color:#a9856f;">↗</span>
                 </a>
               </sc-if>
               <sc-if value="{{ c.noHref }}">
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fbf6ee;border:1px dashed rgba(169,133,111,0.35);border-radius:11px;padding:19px 20px;">
-                  <span style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#8a7a6b;">{{ c.label }}</span>
-                  <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ c.note }}</span>
+                  <span style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:15px;color:#8a7a6b;">{{ c.label }}</span>
+                  <span style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:400;font-size:12.5px;color:#a4917f;">{{ c.note }}</span>
                 </div>
               </sc-if>
             </div>
@@ -209,8 +209,8 @@
       <section class="kmSec" style="margin-top:58px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
           <div>
-            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.assetsTitleEn }}</h2>
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.assetsTitleTh }}</div>
+            <h2 class="kmSecEn" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:30px;letter-spacing:0.05em;color:#3f342c;margin:0 0 4px;">{{ s.assetsTitleEn }}</h2>
+            <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.assetsTitleTh }}</div>
             <p style="margin:7px 0 0;font-size:14px;color:#8a7a6b;max-width:40em;">{{ s.assetsDesc }}</p>
           </div>
         </div>
@@ -218,14 +218,14 @@
           <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);display:flex;flex-direction:column;gap:14px;align-items:flex-start;">
             <img src="img/logo/km-trans.png" alt="Kangaroo Mommy" style="height:64px;width:auto;"/>
             <div>
-              <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ s.assetLogoTitle }}</div>
+              <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:15px;color:#3f342c;">{{ s.assetLogoTitle }}</div>
               <p style="margin:7px 0 0;font-size:13.5px;color:#5f5044;line-height:1.75;">{{ s.assetLogoBody }}</p>
             </div>
             <button class="kmSaveBtn" onClick="{{ saveLogo }}" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fffaf3;border:none;border-radius:9px;padding:11px 18px;font-size:13.5px;font-weight:500;cursor:pointer;">⤓ ดาวน์โหลดโลโก้</button>
           </div>
           <sc-for list="{{ assetCards }}" as="a" hint-placeholder-count="2">
             <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:20px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
-              <div style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:15px;color:#3f342c;">{{ a.title }}</div>
+              <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:15px;color:#3f342c;">{{ a.title }}</div>
               <p style="margin:9px 0 0;font-size:13.5px;color:#5f5044;line-height:1.8;">{{ a.body }}</p>
             </div>
           </sc-for>
@@ -235,14 +235,14 @@
       <section class="kmSec" style="margin-top:58px;">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(169,133,111,0.28);">
           <div>
-            <h2 class="kmSecEn" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;letter-spacing:0.02em;color:#3f342c;margin:0 0 4px;">{{ s.faqTitleEn }}</h2>
-            <div style="font-family:'Noto Serif Thai',serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.faqTitleTh }}</div>
+            <h2 class="kmSecEn" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:30px;letter-spacing:0.05em;color:#3f342c;margin:0 0 4px;">{{ s.faqTitleEn }}</h2>
+            <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:500;font-size:15px;color:#a9856f;">{{ s.faqTitleTh }}</div>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;">
           <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
             <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;overflow:hidden;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
-              <button class="kmAccBtn kmAccHead" onClick="{{ q.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:14px;background:none;border:none;cursor:pointer;padding:15px 20px;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">
+              <button class="kmAccBtn kmAccHead" onClick="{{ q.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:14px;background:none;border:none;cursor:pointer;padding:15px 20px;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:14.5px;color:#3f342c;">
                 <span>{{ q.q }}</span>
                 <span style="flex:none;font-size:13px;color:{{ q.iconColor }};">{{ q.icon }}</span>
               </button>
@@ -256,8 +256,8 @@
 
       <section class="kmSec" style="margin-top:58px;">
         <div style="background:#fffdf9;border:1px solid rgba(169,133,111,0.22);border-radius:11px;padding:26px 30px 24px;box-shadow:0 2px 10px rgba(120,95,75,0.04);">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">{{ s.helpTag }}</div>
-          <h2 class="kmAboutH2" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:23px;color:#3f342c;margin:0 0 10px;">{{ s.helpTitle }}</h2>
+          <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:400;font-size:11.5px;letter-spacing:0.22em;text-transform:uppercase;color:#a9856f;margin-bottom:8px;">{{ s.helpTag }}</div>
+          <h2 class="kmAboutH2" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:22px;color:#3f342c;margin:0 0 10px;">{{ s.helpTitle }}</h2>
           <p style="margin:0;font-size:14.5px;color:#5f5044;line-height:1.85;max-width:52em;">{{ s.helpBody }}</p>
           <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;">
             <sc-for list="{{ contactChannels }}" as="c" hint-placeholder-count="2">
@@ -306,9 +306,9 @@
       </div>
 
       <div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;">{{ current.lineFull }}</div>
-        <h1 class="kmDetH1" style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:30px;line-height:1.3;color:#3f342c;margin:13px 0 0;">{{ current.thaiName }}</h1>
-        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:#a08972;margin-top:8px;line-height:1.4;">{{ current.enName }}</div>
+        <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:400;font-size:12px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;">{{ current.lineFull }}</div>
+        <h1 class="kmDetH1" style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:29px;line-height:1.3;color:#3f342c;margin:13px 0 0;">{{ current.thaiName }}</h1>
+        <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:300;font-size:17px;color:#a08972;margin-top:8px;line-height:1.4;">{{ current.enName }}</div>
 
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;">
           <span style="font-size:12px;color:#5c4d40;background:rgba(169,133,111,0.14);border:1px solid rgba(169,133,111,0.32);border-radius:22px;padding:5px 14px;">{{ current.claim }}</span>
@@ -321,8 +321,8 @@
               <button class="kmAccBtn kmAccHead" onClick="{{ d.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;padding:14px 18px;">
                 <span style="width:7px;height:7px;border-radius:50%;background:{{ d.accentColor }};flex:none;"></span>
                 <span style="flex:1;">
-                  <span style="display:block;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ d.th }}</span>
-                  <span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ d.en }}</span>
+                  <span style="display:block;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ d.th }}</span>
+                  <span style="display:block;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:400;font-size:12.5px;color:#a4917f;">{{ d.en }}</span>
                 </span>
                 <span style="flex:none;font-size:13px;color:{{ d.iconColor }};">{{ d.icon }}</span>
               </button>
@@ -370,8 +370,8 @@
     <section style="margin-top:48px;padding-top:32px;border-top:1px solid rgba(169,133,111,0.28);">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px;">
         <div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;margin-bottom:6px;">{{ s.guideTag }}</div>
-          <h2 style="font-family:'Noto Serif Thai',serif;font-weight:600;font-size:24px;color:#3f342c;margin:0;">{{ s.guideTitle }}</h2>
+          <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:400;font-size:12px;letter-spacing:0.26em;text-transform:uppercase;color:#a9856f;margin-bottom:6px;">{{ s.guideTag }}</div>
+          <h2 style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:300;font-size:23px;color:#3f342c;margin:0;">{{ s.guideTitle }}</h2>
         </div>
         <span style="font-size:11px;letter-spacing:0.03em;color:#a4917f;background:#fffdf9;border:1px solid rgba(169,133,111,0.3);border-radius:20px;padding:6px 14px;white-space:nowrap;">{{ s.guideHint }}</span>
       </div>
@@ -383,8 +383,8 @@
             <button class="kmAccBtn kmAccHead" onClick="{{ f.toggle }}" style="width:100%;text-align:left;display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;padding:14px 18px;">
               <span style="width:7px;height:7px;border-radius:50%;background:{{ f.accentColor }};flex:none;"></span>
               <span style="flex:1;">
-                <span style="display:block;font-family:'Noto Serif Thai',serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ f.th }}</span>
-                <span style="display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#a4917f;">{{ f.en }}</span>
+                <span style="display:block;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:600;font-size:14.5px;color:#3f342c;">{{ f.th }}</span>
+                <span style="display:block;font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-style:italic;font-weight:400;font-size:12.5px;color:#a4917f;">{{ f.en }}</span>
               </span>
               <span style="flex:none;font-size:13px;color:{{ f.iconColor }};">{{ f.icon }}</span>
             </button>
@@ -412,7 +412,7 @@
         </div>
         <sc-for list="{{ footerGroups }}" as="g" hint-placeholder-count="2">
           <div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:0.2em;text-transform:uppercase;color:#a9856f;margin-bottom:10px;">{{ g.title }}</div>
+            <div style="font-family:'Montserrat','Noto Sans Thai',system-ui,sans-serif;font-weight:400;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#a9856f;margin-bottom:10px;">{{ g.title }}</div>
             <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="3">
               <div style="margin-bottom:7px;">
                 <sc-if value="{{ i.hasHref }}">
