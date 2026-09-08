@@ -683,10 +683,18 @@ class Component extends DCLogic {
 
     // ---- Product Details — accordion (ลำดับตามที่ครีเอเตอร์ต้องใช้จริง)
     const recBadges = this.siteLines(raw.line === 'kids' ? 'recBadgesKids' : 'recBadges');
+    // ---- ข้อมูลสินค้าทางการ (ซิงก์จากชีตฟอร์มสินค้า -> products.js: p.facts)
+    const FL = this.titleMap('factLabels');
+    const FV = raw.facts || {};
+    const factLines = ['fda','sku','priceFull','priceSale','box','parcel']
+      .filter(k => FL[k] && FV[k])
+      .map(k => FL[k].th + ': ' + FV[k])
+      .join('\n');
     const PT = this.titleMap('panelTitles');
     const ttl = (k, thFb, enFb) => ({ th:(PT[k]&&PT[k].th)||thFb, en:(PT[k]&&PT[k].en)||enFb });
     const panelDefs = [
       Object.assign({ key:'overview',    kind:'text',   value: current.intro },      ttl('overview','ภาพรวมสินค้า','Product Overview')),
+      Object.assign({ key:'facts',       kind:'text',   value: factLines },          ttl('facts','ข้อมูลสินค้า','Product Facts')),
       Object.assign({ key:'benefits',    kind:'text',   value: val('features') },    ttl('benefits','จุดเด่นของสินค้า','Key Benefits')),
       Object.assign({ key:'ingredients', kind:'text',   value: val('ingredients') }, ttl('ingredients','ส่วนผสมสำคัญ','Hero Ingredients')),
       Object.assign({ key:'recommended', kind:'badges', value: val('suitable') },    ttl('recommended','เหมาะกับใคร','Recommended For')),

@@ -104,6 +104,7 @@
     // ---- หัวข้อ accordion ในหน้าสินค้า: บรรทัดละ "คีย์ | ชื่อไทย | ชื่ออังกฤษ" (ห้ามแก้คีย์)
     panelTitles: [
       'overview | ภาพรวมสินค้า | Product Overview',
+      'facts | ข้อมูลสินค้า | Product Facts',
       'benefits | จุดเด่นของสินค้า | Key Benefits',
       'ingredients | ส่วนผสมสำคัญ | Hero Ingredients',
       'recommended | เหมาะกับใคร | Recommended For',
@@ -111,6 +112,15 @@
       'know | ข้อควรรู้ | Things to Know',
       'assets | ดาวน์โหลดไฟล์ | Download Assets',
       'links | ลิงก์สินค้า | Product Links'
+    ].join('\n'),
+    // ป้ายกำกับในพาเนล "ข้อมูลสินค้า" — คีย์ | ไทย | อังกฤษ (ลบบรรทัด = ซ่อนข้อมูลนั้น)
+    factLabels: [
+      'fda | เลขจดแจ้ง อย. | FDA Notification No.',
+      'sku | รหัสสินค้า (SKU) | SKU Code',
+      'priceFull | ราคาปกติ | Regular Price',
+      'priceSale | ราคาขาย | Selling Price',
+      'box | ขนาดกล่อง (ก x ย x ส) | Box Size',
+      'parcel | น้ำหนักรวมพัสดุ | Parcel Weight'
     ].join('\n'),
     guideTitles: [
       'keymsg | คีย์เมสเสจ | Key Message',
